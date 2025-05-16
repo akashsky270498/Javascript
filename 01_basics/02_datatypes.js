@@ -47,4 +47,6 @@ Primitive Datatypes:
 
 Non-primitive datatypes:
 - object
+- Array
+- functions
 */

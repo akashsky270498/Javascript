@@ -11,6 +11,27 @@ ex: let x = 10 --> you can do x = 20.
 - It is also allowed to assign  a value directly in a variable without using cont, let & var, it becomes "global variable" which is bad practise and can lead to bugs or memory issues.
 ===============================================================================================================================
 - Datatypes => Number, Big Int, Boolean, String, Null , Undefined, Symbol & Object(function || array).
+
+- Based on how we are storing & how we can access Datatypes are divided into two types:
+- primitive: (call by value).
+- Non-primitive: (call by reference)
+
+- Js is dynamically typed language.
+
+===============================================================================================================================
+Stack (Primitive Data Types):
+When a variable is stored in the stack, a copy of the value is created.
+
+This means any changes made to the copied value do not affect the original variable.
+
+Primitive data types like number, string, boolean, null, and undefined are stored in the stack.
+
+Heap (Non-Primitive Data Types):
+When a variable is stored in the heap, a reference to the actual memory location is stored.
+
+This means any changes made through that reference directly affect the original value.
+
+Non-primitive data types like objects, arrays, and functions are stored in the heap.
 ===============================================================================================================================
 - Hoisting => Hoisting in JS means that "variables & function" declarations are moved to the top of thier scope(page or function) before the code runs. In other word we can use function & variables before they are written into the code.
 
