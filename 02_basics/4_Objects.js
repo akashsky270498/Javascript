@@ -58,3 +58,14 @@ console.log(Object.values(tinderUser1)); // [ '123abc', 'Venkatesh', false ]
 console.log(Object.entries(tinderUser1)); // [[ 'id', '123abc' ],[ 'name', 'Venkatesh' ],[ 'isLoggedIn', false ]]
 
 console.log(tinderUser1.hasOwnProperty("isLoggedIn")); // true
+
+//object destructing
+const exObject = {
+  username: "Radhika Sharma",
+  age: 29,
+  location: "Delhi, India",
+};
+
+const { username, location: place } = exObject;
+
+console.log(username, place); // Radhika Sharma Delhi, India
