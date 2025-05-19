@@ -390,6 +390,7 @@ function curryed(a) {
 ===============================================================================================================================
 - IIFE => Self-invoking function (Immediately Invoked Function Expression) IIFE is a function that immediately executes after it is defined. It is typically used to create private scope & avoid polluting the global namespace.
 
+- An IIFE (Immediately Invoked Function Expression) in JavaScript is a function that runs as soon as it is defined. We use IIFEs to execute code immediately and to avoid polluting the global scope with variables.
 ex:
 (function(){
     console.log("IIFE executing...")
