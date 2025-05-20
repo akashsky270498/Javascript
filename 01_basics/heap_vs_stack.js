@@ -12,7 +12,7 @@ When a variable is stored in the heap, a reference to the actual memory location
 This means any changes made through that reference directly affect the original value.
 
 Non-primitive data types like objects, arrays, and functions are stored in the heap.
-
+*/
 
 let channelOne = "Coding Ninjas";
 

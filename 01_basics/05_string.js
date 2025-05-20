@@ -12,8 +12,8 @@ const gameName = new String('battle-ground-mobile');
 console.log(gameName.__proto__); // {}
 console.log(gameName.length); // 20
 console.log(gameName[2]); // t
-console.log(gameName.toUpperCase()); //BATTLEGROUNDMOBILE
-console.log(gameName.toLocaleLowerCase()); // battlegroundmobile
+console.log(gameName.toUpperCase()); //BATTLE-GROUND-MOBILE
+console.log(gameName.toLocaleLowerCase()); // battle-ground-mobile
 console.log(gameName.charAt(3)); // t
 console.log(gameName.indexOf('l')); // 4
 

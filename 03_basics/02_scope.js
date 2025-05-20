@@ -61,4 +61,4 @@ const bottom = function (num) {
 
 console.log(bottom(6)) // 8
 
-// normal function in JS can be access before its initialization but if we will holfd any function inside a variable(known as expression) it cant be accessed before its initialization.
+// normal function in JS can be access before its initialization but if we will hold any function inside a variable(known as expression) it cant be accessed before its initialization.
