@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body style="background-color: #212121; color: #ffffff">
+    <div class="parent">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thrusday</div>
+    </div>
+  </body>
+  <script>
+    const parent = document.querySelector(".parent");
+    console.log(parent);
+    console.log(parent.children); //HTML Collection of <div>
+    console.log(parent.children[0].innerHTML); // Monday
+
+    for (i = 0; i < parent.children.length; i++) {
+      console.log(parent.children[i].innerHTML);
+      /*
+      Monday
+      Tuesday
+      Wednesday
+      thrusday
+      */
+    }
+
+    parent.children[1].style.color = "orange";
+    console.log(parent.firstElementChild); // <div class="day">Monday</div>
+    console.log(parent.lastElementChild); // <div class="day">Thrusday</div>
+
+    const dayOne = document.querySelector(".day");
+    console.log(dayOne); // <div class="day">Monday</div>
+    console.log(dayOne.parentElement); // div parent will all its child will come.
+    console.log(dayOne.nextElementSibling); // <div class="day" style="color: orange;">Tuesday</div>
+
+    console.log("Nodes: ", parent.childNodes); // All the tags will come including line breaks and all.
+  </script>
+</html>
