@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .bg-black {
+        background-color: #212121;
+        color: #fff;
+      }
+    </style>
+    <title>DOM</title>
+  </head>
+  <body class="bg-black">
+    <h1 id="title" class="heading">
+      Learning DOM Manipulation
+      <span style="display: none">Hidden content</span>
+    </h1>
+    <h2>Lorem ipsum dolor sit.</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing.</h2>
+    <input type="password" name="" id="" />
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio, sunt?
+    </p>
+    <ul>
+      <li class="list-item">One</li>
+      <li class="list-item">Two</li>
+      <li class="list-item">Three</li>
+      <li class="list-item">Four</li>
+    </ul>
+  </body>
+</html>
+
+<!--
+document.getElementById('title');
+document.getElementById('title').id()
+document.getElementById('title').class ==> undefined
+document.getElementById('title').className
+document.getElementById('title').getAttribute
+document.getElementById('title').getAttribute('id') ==> title
+document.getElementById('title').getAttribute('class') ==> heading
+document.getElementById('title').setAttribute('class', 'test heading') ==> it will always override the values
+const title = document.getElementById('title')
+title.style.backgroundColor = "green";
+title.style.padding = "15px";
+title.style.borderRadius = "15px";
+title.textContent // text content value we will get.
+title.innerText
+title.innerHTML
+document.getElementsByClassName('heading')
+
+document.querySelector('h1') // it will give the first tag that gets matched in the document
+document.querySelector('#title') // for selecting id.
+document.querySelector('.heading') // for selecting class.
+document.querySelector('input[type=password]')
+document.querySelector('ul')
+const ul = document.querySelector('ul')
+const turnGreen = ul.querySelector('li')
+turnGreen.style.backgroundColor = "green"
+turnFreen.style.padding = "15px"
+turnGreen.innerText 
+turnGreen.innerText = "five"
+
+const tempLiList = querySelectorAll('li')
+-> tempLiList is a NodeList & it is not a pure array.
+-> tempLiList.style.color = "green" // not work as it looks like array but it is not an array.
+-> temLiList[0].style.color = "green" // this will work
+const myH1 = querySelectorAll('h1') 
+myHi[0].style.color = "orange"
+
+tempLiList.forEach(function (l) {
+    l.style.color = "orange"
+})
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+const tempClassList = document.getElementsByClassName('list-item') // this will always return HTML Collection which is not an array. Also it doesn't have forEach()
+
+convert tempClassList into an array using Array.from()
+
+const myConvertedArray = Array.from(temClassList)
+
+myConvertedArray.forEach(function (li) {
+    li.style.color = "orange"
+})
+
+
+myConvertedArray.forEach(function (h) {
+    h.style.backgroundColor = "orange";
+    h.style.padding = "7px";
+    h.style.margin = "10px";
+    h.style.color = "black"
+})
+title.innerText v/s textContent:
+suppose i add <span display: none>Test text</span> in my h1
+in innerText it will not show but in textContent it will show
+-> in innerText only visible text will be shown visible text means text displaying in web page.
+-> in textContent the text which we are hiding using CSS will not be displayed neither in web page nor in console.
+-> whereas innerHTMl is difference bcoz it will display the html tags also which we have used inside, where as innerText and textContent didnot show.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-> Get Element By Id
+const title = document.getElementById('title');
+
+title.id → "title" ✅
+title.className → "heading" ✅
+title.getAttribute('id') → "title"
+title.getAttribute('class') → "heading"
+title.setAttribute('class', 'test heading') → ✅ overrides the class
+
+-> Style with JavaScript
+title.style.backgroundColor = "green";
+title.style.padding = "15px";
+title.style.borderRadius = "15px";
+
+-> Get Text or HTML
+title.textContent  // All text including hidden elements
+title.innerText    // Only visible text
+title.innerHTML    // HTML with tags
+
+-> Selecting Elements
+document.getElementsByClassName('heading') // HTMLCollection (not an array)
+document.querySelector('h1')              // first <h1>
+document.querySelector('#title')          // ID selector
+document.querySelector('.heading')        // class selector
+document.querySelector('input[type="password"]') // attribute selector
+document.querySelector('ul')              // first <ul>
+
+-> Working with Nested Elements
+const ul = document.querySelector('ul');
+const firstLi = ul.querySelector('li');
+
+firstLi.style.backgroundColor = "green";
+firstLi.style.padding = "15px";
+firstLi.innerText = "five";
+
+->  NodeList (querySelectorAll)
+const tempLiList = document.querySelectorAll('li'); // NodeList (NOT a real array)
+
+// ❌ tempLiList.style.color = "green"; // won't work
+tempLiList[0].style.color = "green"; // ✅ this works
+
+// Looping through NodeList
+tempLiList.forEach((li) => {
+  li.style.color = "orange";
+});
+
+-> HTMLCollection (getElementsByClassName)
+const tempClassList = document.getElementsByClassName('list-item'); // HTMLCollection
+
+// Convert to real array
+const myConvertedArray = Array.from(tempClassList);
+
+// Now we can use forEach
+myConvertedArray.forEach((li) => {
+  li.style.color = "orange";
+  li.style.backgroundColor = "orange";
+  li.style.padding = "7px";
+  li.style.margin = "10px";
+});
+
+
+-->
