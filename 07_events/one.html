@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling Example</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing Images</h2>
+    <ul id="images">
+      <li>
+        <img
+          width="200px"
+          id="photoshop"
+          src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt="Photoshop"
+        />
+      </li>
+      <li>
+        <img
+          width="200px"
+          id="japan"
+          src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt="Japan"
+        />
+      </li>
+      <li>
+        <img
+          width="200px"
+          id="river"
+          src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt="River"
+        />
+      </li>
+      <li>
+        <img
+          width="200px"
+          id="owl"
+          src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt="Owl"
+        />
+      </li>
+      <li>
+        <img
+          width="200px"
+          id="prayer"
+          src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          alt="Prayer"
+        />
+      </li>
+      <li>
+        <a style="color: aliceblue" href="https://www.google.com" id="google"
+          >Google</a
+        >
+      </li>
+    </ul>
+
+    <script>
+      // ✅ 1. Inline `onclick` should be avoided
+      // Instead of this:
+      // <img onclick="alert('clicked')">
+      // Use `addEventListener` for separation of concerns and better control
+
+      // ✅ 2. Best practice: using addEventListener
+      document.getElementById("owl").addEventListener("click", function () {
+        alert("You clicked the OWL 🦉");
+      });
+
+      // ✅ 3. Event Bubbling (default behavior)
+      // Inner element's event triggers first, then outer
+      document.getElementById("images").addEventListener(
+        "click",
+        function () {
+          console.log("Clicked inside <ul> (Bubbling)");
+        },
+        false // false means bubbling
+      );
+
+      document.getElementById("owl").addEventListener(
+        "click",
+        function () {
+          console.log("Clicked the owl (Bubbling)");
+        },
+        false
+      );
+
+      // ✅ 4. Event Capturing (top-down)
+      // Outer element triggers first, then inner
+      // Uncomment below to test capturing
+      /*
+      document.getElementById("images").addEventListener(
+        "click",
+        function () {
+          console.log("UL clicked (Capturing)");
+        },
+        true // true means capturing
+      );
+
+      document.getElementById("owl").addEventListener(
+        "click",
+        function () {
+          console.log("OWL clicked (Capturing)");
+        },
+        true
+      );
+      */
+
+      // ✅ 5. Stop propagation (prevent bubbling/capturing from continuing)
+      // document.getElementById("owl").addEventListener("click", function (e) {
+      //   e.stopPropagation();
+      //   console.log("Owl clicked — Propagation stopped.");
+      // });
+
+      // ✅ 6. Prevent default behavior of anchor tag
+      document.getElementById("google").addEventListener("click", function (e) {
+        e.preventDefault(); // prevents redirect
+        e.stopPropagation(); // optional: stops bubbling
+        console.log("Google link clicked — Default prevented.");
+      });
+
+      // ✅ 7. Project Example: Click image to remove it (event delegation)
+      document.getElementById("images").addEventListener("click", function (e) {
+        console.log("Clicked:", e.target.tagName);
+
+        if (e.target.tagName === "IMG") {
+          const removeLi = e.target.parentNode; // remove the <li> to avoid leftover bullet
+          removeLi.remove();
+
+          // Alternative:
+          // removeLi.parentNode.removeChild(removeLi);
+        }
+      });
+    </script>
+  </body>
+</html>
+
+

@@ -291,7 +291,7 @@ console.log(deepObject); //{ a: 1, b: { c: 3 } }
 - Using try cacth with async-await.
 - Using event listeners (process.on()).
 ===============================================================================================================================
-- Event Bubbling => Event bubbling is a mechanism in which the an event start from its target element & propagates up to its ancestors (parent element) in the DOM hierarchy.
+- Event Bubbling => Event bubbling(It is usually sequential in JS) is a mechanism in which the an event start from its target element & propagates up to its ancestors (parent element) in the DOM hierarchy.
 ===============================================================================================================================
 
 - Arrow function => Arrow function in JS is a short hand syntax for writing a function that uses "=>" symbol & they dont have thier own "this" they inherit it from thier surroundings.
