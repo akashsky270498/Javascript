@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>Async code</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // setTimeout(function () {
+    //   console.log("executed");
+    // }, 2000);
+
+    const hello = function () {
+      console.log("javascript");
+    };
+
+    setTimeout(hello, 4000);
+
+    const changeH1 = function () {
+      document.querySelector("h1").innerHTML = "Best JS in Youtube.";
+    };
+
+    const changeMe = setTimeout(changeH1, 5000);
+
+    document.querySelector("#stop").addEventListener("click", function () {
+      clearTimeout(changeMe);
+      console.log("Stoopped");;
+    });
+    
+  </script>
+</html>

@@ -408,9 +408,10 @@ readData.on('data', (chunks) => {
     console.log(`Reading Data: $(chunks)`);
 })
 ===============================================================================================================================
-- Clustering => Clustering in nodejs means running multiple copies of your nodejs application at the same time. These copies are called "Work processess", and they all share the same server & port.
+- Clustering in Node.js means running multiple instances (copies) of your Node.js application simultaneously. These instances are called "worker processes", and they all share the same server and port.
 
-Normally, nodejs runs on a single CPU core, which can limit performance. clustering allows your app to use all CPU cores, so that it can handle more users & multiple requests at the same time.
+By default, Node.js runs on a single CPU core, which can limit performance. Clustering allows your app to utilize all CPU cores, enabling it to handle more users and concurrent requests at the same time.
+
 ===============================================================================================================================
 - Buffer => A buffer is a store in memory used to store raw binary data like - images, files or network data. So that nodejs can process it efficiently, especially when data arrives in chunks(like from streams).
 
@@ -474,7 +475,7 @@ fs.readFile('image.png', (err, data) => {
 - Rest v/s GraphQl => Rest gives you a set meal. GraphQl let u pick exactly what u want from the buffet with a single plate.
 
 ===============================================================================================================================
-- Docker => Docker is tool that lets you package your app & everything that it needs into a small unit called container, so that it can run anywhere, fast, safely & the same every time.
+- Docker => Docker is tool that lets you package your app & everything that it needs into a small unit called container, so that it can run anywhere, fast, safely & consistently.
 
 ===============================================================================================================================
 - CI/CD (Continous Integration/Continous Deployment) => CI/CD is a process where code is automatically tested, build & deployed so that developer can push there changes faster & safely.
