@@ -1,0 +1,12 @@
+is class exist in JS ?
+Ans: Technically no, JS is prototype based language & its classes are primilarly syntactic sugar over existing prototype based inheritance mechanisms. In other words, it provide a similar or familiar syntax for developers coming from class based programming language, but under hood it works differently.
+
+oop: oop is a programming paradigm.
+
+object: collectuon of properties and methods.
+
+- Contructor function allows us to create new multiple instances from one object. This is good bcooz we have less memory usage but sometime what we want is to create copy of an object so to acheive this we use "new" keyword called as Contructor function.
+
+- new keyword
+. When we use new keyword an empty {} is created that is called instances.
+. Contructor function get calls bcoz of new keyword.
