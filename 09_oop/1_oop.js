@@ -8,6 +8,7 @@ const user = {
     // console.log("Username", this.username); 
     console.log(`Username: ${this.username}`) // Kl rahul
     console.log(this)
+    // console.log(this.getUserDetails()) infinite loop
   },
 };
 
