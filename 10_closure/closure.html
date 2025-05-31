@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+  <body style="background-color: #313131">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+  <script>
+    //Lexical scoping: means inner function can access the properties of the outer function but not vice versa.
+    function outer() {
+      let count = 100;
+      function inner() {
+        console.log("Inner:", count);
+      }
+      inner();
+    }
+    outer();
+  </script>
+  <script>
+    //closure is when a outer function return the entire lexical context of the inner function.
+    // document.getElementById("orange").onclick = function () {
+    //   document.body.style.backgroundColor = "orange";
+    // };
+
+    // document.getElementById("green").onclick = function () {
+    //   document.body.style.backgroundColor = "green";
+    // };
+
+    function changeColor(color) {
+      // document.body.style.backgroundColor = `${color}`; using this the function will directly execute so we have to use closure
+      // instead we return a function that will execute when the button is clicked.
+
+      return function () {
+        document.body.style.backgroundColor = `${color}`;
+      };
+    }
+    document.getElementById("orange").onclick = changeColor("orange");
+    document.getElementById("green").onclick = changeColor("green");
+  </script>
+</html>
