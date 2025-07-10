@@ -489,3 +489,6 @@ fs.readFile('image.png', (err, data) => {
 ===============================================================================================================================
 
 - Debugging => Debugging is the process of identifying, analysing & fixing the defects in the code to restore expected functionality. Debugging often involves using tools like debugger, logs & tests to pinpoint the issues.
+
+
+- Setter's and Getter's are used to control access and validation of an object properties while keeping the internal data encapsulated and protected.

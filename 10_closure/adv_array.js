@@ -12,7 +12,7 @@ console.log(arrTwo); //[ 1, 2, 3, 4, 5, 6, '7', <3 empty items>, 11 ]
 // Now arrTwo is a Holey array because it has holes in it. It has 3 empty items in it.
 console.log(arrTwo.length); // 11
 console.log(arrTwo[8]); // undefined: Here the tracing is quite difficult (Holes & hasOwnProperty are very expensive operations in JS)
-console.log(arrTwo[18]); // undefined : this is a bound check here tracing this is easy bcoa we are trying to get the element from index which is not presnt.
+console.log(arrTwo[18]); // undefined : this is a bound check here tracing this is easy bcoz we are trying to get the element from index which is not presnt.
 // hasOwnProperty(arrTwo, 9)
 // hasOwnProperty(arrTwo.prototype, 9)
 // hasOwnProperty(Object.prototype, 9)

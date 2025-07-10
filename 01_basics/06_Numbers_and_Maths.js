@@ -1,5 +1,5 @@
 const score = 4000;
-console.log(score); // 400
+console.log(score); // 4000
 
 const anotherScore = new Number(522);
 console.log(anotherScore); //[Number: 522]

@@ -33,6 +33,7 @@ class User {
 }
 
 const userObject = new User("romario@gmail.com", "12345678");
+console.log(userObject); // User { _username: 'Andy Flower', _email: 'Flower@gmail.com' }
 console.log(userObject.email); // ROMARIO@GMAIL.COM
 console.log(userObject.password); // 12345678@hit
 
