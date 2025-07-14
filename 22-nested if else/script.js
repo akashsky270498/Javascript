@@ -25,6 +25,16 @@ if (userAge >= 0 && userAge <= 4) {
 } else if (userAge >= 18 && userAge <= 24) {
   console.log(`${userName} is a college student`);
   console.log(`And ${userGender === "M" ? "he" : "she"} is learning CS`);
+  if (userAge >= 20) {
+    console.log("belongs to 20+ age group");
+  } else {
+    console.log("belongs to 20- age group");
+    if (userName.length >= 5) {
+      console.log("username length is greater then or equal to 5");
+    } else {
+      console.log("username length is less then 5");
+    }
+  }
 } else if (userAge >= 25 && userAge <= 45) {
   console.log(`${userName} is a working professional`);
   console.log(`And ${userGender === "M" ? "he" : "she"} is web developer`);
