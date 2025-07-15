@@ -20,3 +20,5 @@ const user = {
 Object.freeze(user); // can't update, add or delete anything the object will remain intect.
 
 // IMP:  const means the variable itself is locked, but the contents can be edited if it is an Object or an Array. why bcoz in case of object & array refernce remains the same the content are edited
+
+console.log("firstName" in user) // true (checking the key exist in the object or not)
