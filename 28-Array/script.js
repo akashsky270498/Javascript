@@ -93,3 +93,32 @@ const score2 = 200;
 const score3 = 300;
 
 console.log(Array.of(score1, score2, score3)); //[ 100, 200, 300 ]
+
+const evenArr = [0, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30];
+const animalsArr = ["Cat", "Dog", "Rat", "Mouse", "Elephant"];
+const oddArr = [1, 3, 5, 7, 9];
+
+evenArr.push(295);
+console.log(evenArr);
+evenArr.pop();
+console.log(evenArr);
+evenArr.shift();
+console.log(evenArr);
+evenArr.unshift(0);
+console.log(evenArr);
+
+const addedArr = evenArr.concat(animalsArr, oddArr);
+console.log(addedArr);
+
+console.log(evenArr.includes(500)); // false
+console.log(evenArr.includes(18)); // true
+console.log(animalsArr.indexOf("Dog")); // 1
+console.log(animalsArr.indexOf("dog")); // -1 (dog is not present in the array)
+console.log(evenArr.reverse());
+console.log(animalsArr.reverse()); // same array
+console.log(animalsArr.sort());
+console.log(oddArr.sort());
+console.log(evenArr.slice(3, 7)); // returns new Array
+console.log(evenArr);
+console.log(evenArr.splice(2, 6));
+console.log(evenArr);
