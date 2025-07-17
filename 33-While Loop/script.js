@@ -4,15 +4,7 @@ while (num <= 100) {
   num++;
 }
 
-const users = [
-  "Akash",
-  "Rahul",
-  "Adarsh",
-  "Arif",
-  "Gaurav",
-  "Anurag",
-  "Rakesh",
-];
+
 
 let i = 0;
 while (i < users.length) {
