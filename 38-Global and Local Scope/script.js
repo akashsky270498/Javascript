@@ -55,3 +55,6 @@ function parent() {
 parent();
 
 // Note: parent & child are lexical scope for grandChild
+/*
+suppose if i eclare one variable without using var,let and const lets say "num2" anywhere inside or outside the function it will become window object and it will be accessible from anywhere, to avoid this we use 'use strict'.
+*/
