@@ -53,7 +53,7 @@ function secondLargestNumber(arr) {
       secondLargest = arr[i];
     }
   }
-  return secondLargest;
+  return secondLargest === -Infinity ? null : secondLargest;
 }
 
 const secLargest = secondLargestNumber([
