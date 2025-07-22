@@ -19,3 +19,4 @@ const orResult4 = undefined || 4 + 8 * 5;
 
 const andResult5 = "Hello" && console.log("hello1");
 const orResult5 = undefined || console.log("hello2");
+console.log(andResult5) // undefined as console.log return undefined it returns nothing

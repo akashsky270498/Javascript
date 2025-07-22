@@ -1,0 +1,140 @@
+-Event loop:
+Ans: Event loop in nodejs ia a mechanism which is used to handle async operations. Instead of blocking the whole program while waiting for the longer tasks like reading the file or DB queries, Nodejs uses event loop to handle them on background continue running other parts of the code. This makes JS non-blocking and efficient.
+event loop checks if the callstack is empty if so it picks the code from callback queue or priority queue and puts it in the callstack
+
+
+- process.NextTick(): Runs immediately after the current function finishes, before anything else(even timers & I/O)
+- setImmediate(): Runs after the current I/O event completes, in the next round of the event loop.
+- setTimeout(): Runs after specified delay.
+
+ - How do Promises work? Difference between Promise.all and Promise.allSettled?
+Ans: Promise is an object and Promise represents future results of async operations. 
+3 states are there pending, fullfill & rejected.
+- Promise.all(): resolves when all the promises succeed, rejects if any fail.
+- Promise.allSettled: resolves when all promises settled, regardless of success & failure.
+
+-What are streams and where have you used them?
+Ans: Streams in nodejs are object that are used to read and write data piece by piece in chunks intead of loading them all into the memory at once it improve the performance for large files. Reading large csv file & for uploading file in AWS s3
+
+
+middleware: 
+app.use((req, res, next) => {
+    console.log("Req. received)
+    next();
+})
+
+app.use(): app.use() is to handle all the HTTP methods. and also use for applying middlewares.
+app.get():  app.get() is used to handle only GET req. for specific routes.
+
+Q: How do u handle global error?
+Ans: using 4 para in middleware.
+app.use((req, res, next, error) {
+    res.status(404).jon({ message: error.message}) 
+})
+
+Q: How did you implement rate limiting and RBAC?
+Ans: Using express-rate-limiter && RBAC custom middleware that check user role before accessing routes.
+
+Q: What is idompotent API?
+Ans: Idompotent Apis are those which returns same results no matter how many time they are called. (GET, PUT, DELETE)
+
+Q:  How do you secure APIs using JWTs and CORS policies?
+Ans: using Authorization: Bearer headers.
+- CORS using cors package to verify that the req is coming from verified origin.
+
+Q: When would you choose Redis over PostgreSQL?
+Ans: when we want frequent access of any data.
+
+Q: How do you manage DB schema design in microservices?
+Ans: 
+- each service owns it own DB schema.
+- use migrations like sequelize or typeORM.
+- Define relations locally avoid tight coupling
+
+Q:  How did Redis help in reducing response time in your app?
+Ans: by caching frequently used data like (userprofile, user followers/followings), reducing db calls.
+
+Q: How did you implement WebSocket communication?
+Ans: using library like socket.io to manage the connection rooms, emits/receive events. Also used for live chat and VC notifications.
+
+Q: Describe your microservices setup in Talentprise
+Ans: 
+Services: Auth, Chat, AI, notification, Headhunter, matching scoring, talent, enterprise
+Each has its own Db and git repo
+communicate via gRPC 
+deployed independently using CI/CD 
+
+
+Q: What happens if one microservice goes down?
+Ans: Mostly a specific service and not all the services goes down,
+we must use Add retry logic / circuit braker
+log failure events
+
+Q: How did you integrate Zegocloud SDK in Taso?
+Ans: used thier SDK in Frontend
+- from BE issued access token and handled session logic
+- managed events like join, leave, end via web socket.
+
+Q:  Explain how you designed the email filtering logic in Thapala
+Ans: used db indexing (sender, subjects and tags)
+filtering at wuery level like seect * from emails where sender = "@gamil.com" and tags LIKE "%S%
+user sepcific role (blocked member shoudl not come while sleeping)
+
+Q: Why did you use signed URLs for S3 and Azure Blob?
+Ans: for security reason 
+prevent direct access of bucket
+reduces BE load
+
+
+// Middleware to log request IP, URL, and time
+app.use((req, res, next) => {
+    console.log(`${req.ip}": ${req.method} ${req.originalUrl} ${Date.now}`)
+    next();
+})
+
+Q:  How would you optimize a slow API?
+- Use Pagination
+- Optimize Db queries with indexes.
+- Use redis cache
+- use async tasks.
+
+Did you write unit tests? If not, how do you ensure code reliability?
+
+If no tests: manual testing via Postman, Swagger, logging, and by reproducing real user flows
+
+Q: How do you handle memory leaks in Node.js?
+Ans: by using
+
+setInterval(() => {
+    const usage = process.memoryUsage()
+})
+- Avoid using global variable and cleanup timers and intervals
+
+put: entire data 
+patch: specified data
+
+accestoken: short lived token, use to access protected routes.
+refreshtoken: long lived token, never sent with every api call only used to hit refresh-token endpoint typically stored in cookies used to get new access token without user login
+
+How do you store tokens securely on the client side?
+Ans:HttpOnly cookie to avoid xss attack (accesstoken) db (refreshtoken)
+
+How do you handle errors from DB or async operations?
+Ans: using try catch also use winston to log errors and to hide it from the client.
+
+How do you handle a slow third-party API?
+Ans: if the 3rd party API is getting slow i will use timeout, retry logic, fallback or error handling, caching, proper logging and monitoring.
+
+
+Q2. What would you do if your app starts throwing 500 errors in production?
+Ans: 
+- i will check the logs given by winston trying to get the reason and stack trace
+- I will copy the curl and check in dev or local env.
+- I will check the dependencies
+- rollback
+- hotfix
+
+
+shallow and deep:
+shalow means top level property will get copied plus if i will make any changes in copied obj it will make the changes in originalUrl
+deep copy is vice versa of it. also we use _.cloneDeep() from loadash as json cant handles functions or special types properly

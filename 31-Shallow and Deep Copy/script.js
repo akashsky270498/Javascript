@@ -41,7 +41,7 @@ const user3 = { ...user1 };
 console.log("user 1: ", user1);
 console.log("user 3: ", user3);
 
-// problem with Shallow copy is
+// problem with Shallow copy is update will make changes in both the objects 
 user3.subject.push("Chemistry");
 console.log(
   "*******************************After assigning**************************************"

@@ -1,4 +1,4 @@
-const dayNumber = 10;
+const dayNumber = 0;
 
 switch (dayNumber) {
   case 0:

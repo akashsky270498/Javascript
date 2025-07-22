@@ -8,7 +8,7 @@ ex:- app.use((req, res, next) => {
 console.log("Middleware created");
 next();
 })
-
+    
 3. What is the difference between app.use() & app.get() ?
    Ans:
 
