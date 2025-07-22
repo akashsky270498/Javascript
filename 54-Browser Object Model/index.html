@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Object Model (BOM) - Notes</title>
+    <script src="script.js"></script>
+  </head>
+  <body style="background-color: #222; color: white; font-family: Georgia, serif; font-size: 14px; padding: 20px;">
+    <h1>Browser Object Model (BOM) - Quick Notes</h1>
+    <p>BOM allows JavaScript to interact with the browser window.</p>
+
+    <ul style="line-height: 1.8;">
+      <li><strong>location.reload()</strong> — Reloads the current page.</li>
+      <li><strong>location.href</strong> — Changes the current URL.</li>
+
+      <li><strong>history.back()</strong> or <strong>history.go(-n)</strong> — Goes back in history.</li>
+      <li><strong>history.forward()</strong> or <strong>history.go(n)</strong> — Goes forward in history.</li>
+
+      <li><strong>window.innerHeight</strong> — Viewport height (excluding toolbars).</li>
+      <li><strong>window.innerWidth</strong> — Viewport width.</li>
+
+      <li><strong>window.open("url", "name", "options")</strong> — Opens a new browser window/tab.</li>
+      <li><strong>window.close()</strong> — Closes the current window (only if it was opened via script).</li>
+
+      <li><strong>resizeBy(x, y)</strong> — Resizes the window by a relative amount.</li>
+      <li><strong>resizeTo(x, y)</strong> — Resizes the window to specific dimensions.</li>
+
+      <li><strong>moveBy(x, y)</strong> — Moves the window by a relative amount.</li>
+      <li><strong>moveTo(x, y)</strong> — Moves the window to specific screen coordinates.</li>
+
+      <li><strong>scrollBy(x, y)</strong> — Scrolls the document by given pixels.</li>
+      <li><strong>scrollTo(x, y)</strong> — Scrolls to a specific position in the document.</li>
+
+      <li><strong>print()</strong> — Opens the print dialog for the page.</li>
+
+      <li><strong>document</strong> — Entry point to the DOM (Document Object Model).</li>
+    </ul>
+  </body>
+</html>

@@ -59,7 +59,7 @@ res.send("File uploaded successfully");
    Ans: The purpose of body-parser is to parse the incoming JSON request bodies and make them accessible via req.body. Modern expressjs uses express.json() by default.
 
 10. How do you implement Authentication in ExpressJs?
-    Ans: We use jwt to implement uthentication in expressjs.
+    Ans: We use jwt to implement authentication in expressjs.
     ex:
     import jwt from "jsonwebtoken";
     const token = jwt.sign({userId}, process.env.SECRET);
@@ -118,7 +118,7 @@ app.use(auth)
 
 - setImmediate(): setImmediate executes the callback in the next iteration of event loop , after I/O events.
 
-20. What is nodejs and why it is used in MERN?
+20. What is nodejs and why it is used in MERN & How does it work?
     Ans: Nodejs is a JS runtime which is built in chrome v8 engine. It allows to run JS in server side. In the MERN stack nodejs is used to handle the backend login and APIs that connect the FE with the DB.
 
 21. What is event loop?
