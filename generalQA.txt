@@ -1,0 +1,385 @@
+Q:1 What is System Design?
+Ans: System Design is the process of designing the elements of the system such as Architecture, Components & Modules and the different interfaces of the components that goes through that system.
+===============================================================================================================================
+Q:2 What are the different types of System Design we have?
+Ans: We have two designs:
+- High Level Design 
+- Low Level Design
+===============================================================================================================================
+Q:3 What is an Architecture?
+Ans: Internal design details for building an application is called Architecture.
+===============================================================================================================================
+Q:4 What is Monolithic Architecture?
+Ans: A single unified application that handle everything, Frontend Backend and DB all together is called Monolithic Architecture OR A Monolithic Architecture is a combination of FE, BE and DB which is written and deployed together. Also known as Centralized System.
+
+-> Structure: One Codebase, One deployment.
+
+-> Pros:
+- Easy to understand.
+- Easy to test, build and deploy.
+- Less DevOps complexity.
+- Best for small teams & MVPs.
+
+-> Cons:
+- Tight Coupling (SPOF): even a single small bug can crash the whole app.
+- Hard to scale individual components.
+- CI/CD is riskier: even a small change requires full redeployment.
+
+-> Use: We should use Monolithic Architecture when we are building small app or MVP or when we have less number of developers working on it or when we want quick setup & deployment.
+
+-> Avoid using: We should not use Monolithic Architecture when the app is growing faster or when the app has too many features or modules or when we want to scale any individual service or module seprately(like chat service gets heavy).
+
+===============================================================================================================================
+Q:5 What is Microservices?
+Ans: Breaking the app into individual, loosely-coupled services, where each services have there own responsibility OR Microservices are the collection of single individual services connected through a network that share common resources, communicate & coordinate to achieve common goals.
+
+-> Structure: 
+- Every services will have thier own DB, API & codebase.
+
+-> Pros:
+- We can scale the services Independently.
+- Faster Deployment (We need to deploy only those services which have changes).
+- Teams can work independently.
+- Fault isolation - one crash doesn't take anything down (NO SPOF).
+- Each microservice owns its own database (Database per Service Pattern), to ensure loose coupling.
+
+-> Cons:
+- Complex to manage (network, data sync, security).
+- Requires Devops, CI/CD, Monitoring.
+- Communication overhead we require (gRPC, HTTP etc)
+
+-> Use: We should use when we have large app with multiple teams and multiple features also when we want to deploy and scale the services Independently.
+
+-> Avoid using: When we have small app or we have small team also when we dont have enough time or enough DevOps resources and network management.
+===============================================================================================================================
+Q:6 What is REST?
+Ans: REST (Representational State Transfer) is an HTTP based architecture style for designing web APIs.
+
+-> Methods: POST = Create Data | PUT = Replace entire data | PATCH = replace partial data | GET = Fetch data | DELETE = Delete data
+
+-> REST is stateless — every request must carry auth/data (like JWT), because server doesn’t remember anything between requests.
+-> Pros: 
+- Easy to learn.
+- Globally used.
+- Easy to cache.
+- Clear meaning of operations.
+
+-> Cons: 
+- Over-fetching: returns too much data.
+- Under-fetching: doesn't return everything we need.
+- Not real time.
+
+-> Use: We should use rest when we need simple CRUD operations or when the system is stateless & not real time.
+
+-> Avoid: We should avoid using rest when we need Real-time updates (chat socket apis, notifications etc) or when we are sending nested or flexible data bcoz it might get over fetch.
+
+
+Q:7 What is stateless in REST?
+Ans: Stateless in REST means server doesn't store anything any data about client every request from client must include all the information needed (e.g. token)
+
+===============================================================================================================================
+Q:8 What is GraphQL?
+Ans: GraphQL is a query language for APIs that lets the client ask exactly what it needs, nothing more, nothing less. It uses a single endpoint (usually /graphql) for all requests.
+
+-> Pros: 
+- Single API call (Faster data fetch).
+- No versioning is required.
+- Smart queries, searching & filtering (client ask exactly what they need)
+
+-> Cons: 
+- Harder to build more code is required.
+- Harder to cache.
+- File upload is a bit tricky.
+
+-> Use: We should use graphql when FE need customized or nested data or when we want to reduce multiple API calls.
+
+-> Avoid: We should avoid using graphql when we need to upload file or when we need simple endpoints or when we are woking with limited infra.
+
+Q:9 When should you use GraphQL?
+Ans: We should use graphql when FE want a customized and nested data or when we want to reduce multiple API calls.
+
+Q:10 Does graphQL replace REST?
+Ans: No not at all, we can mix both. We can use graphQL for fetching complex data and REST for file uploads, Auth etc.
+
+Q:11 How is graphQL more efficient then REST?
+Ans: In graphQL we asked for exactly what we need - no over & under fetching.
+
+===============================================================================================================================
+Q:12 What is WebSocket?
+Ans: A protocol that allows persistent two way communication between client and server over a single TCP connection - great for Real time apps.
+
+-> Use: We should use web sockets when we want live updates (chat, typing status, live feed etc) also when we need two way instant communication.
+
+-> Avoid: We should avoid using web sockets when we need standard requests (CRUD) also we should avoid when scaling large number of open connections is a concern.
+
+ex: Chat, Real time notification, Live scores, Live actions etc
+
+Q:13 What is the differenece between socket.io and WebScoket?
+Ans: Socket.io is a libraray on top of web socket with fallbacks and better event handling.
+
+Q:14 How do you scale web scoket in production?
+Ans: We can scale web socket in production by using tool like Redis pub/sub and Kafka to sync messages between multiple WebSocket server instances.
+
+Q:15 Which is more secure — REST or GraphQL?
+Ans: Both can be secure but GraphQL needs query depth limiting, whitelisting and auth middleware to prevent abuse.
+===============================================================================================================================
+Q:16 What is Latency?
+Ans: Latency = Network Delay( Response Time to client to server) + Computational Delay(processing) + Network Delay(Response Time from server to client)
+
+- Response Time: Time taken for the request to travel from client to server.
+- Computational Time: Time taken to process the request.
+- Response Time: Time taken for the response to come back from server to client.
+
+-> To reduce the latency we can caching, CDN or upgrading the hardwares.
+===============================================================================================================================
+Q:17 What is throughput?
+Ans: Throughput is the amount of work or data a system can handle in a given time, such as number of API requests processed per second or amount of data transmitted per second. It's a key metric for measuring system performance and capacity.
+-> Higher Throughput === More Efficient System.
+-> Lower Throughput means Latency is high.
+
+Q:18 What causes low throughput?
+Ans:
+- High Latency: means response is coming after time.
+- Server bottlenecks: means CPU, memory or threads reched its max limit.
+- DB slowness: poor indexing, slow joins or too many DB calls.
+- Synchronous Operations: I/O blocking, long running tasks slow downs the system.
+
+Q:19 How to improve throughput?
+Ans:
+- Use caching.
+- Asynchronous operations.
+- Optimizing DB Queries.
+- Use messaging queues.
+- Load Balancing.
+- Connection Pooling.
+- Horizontal Scaling.
+- Compress Responses.
+- Implement Rate Limiting.
+- Switch to gRPC.
+
+Q:20 How would u monitor throughput in production?
+Ans: Datadog, Grafana, Prometheus, AWS Cloudwatch
+===============================================================================================================================
+Q:21 What is caching?
+Ans: Caching is the process of storing data for a short period of time in a fast access locations like memory to avoid hitting the database or server repeatedly.
+
+Q:22 Why is caching useful?
+Ans: Caching is useful bcoz it improves the performance, reduce the latency and saves backend resources by serving the frequently requested data faster.
+
+Q:23 When should we avoid caching?
+Ans: We should avoid caching when data is changing frequently or when consistency is critical like - payment processing, live score, live auction, stock trading etc.
+
+Q:24 What is cache invalidation?
+Ans: Cahe invalidation is the process of removing  or updating stale cache when the original data changes to avoid serving the outdated results.
+
+Q:25 What is CDN Cache and Redis?
+Ans: CDN cache static files(Images, CSS) close to user. Redis cache dynamic backend data like user profiles or search results in memory.
+===============================================================================================================================
+
+Q:26 What is CDN?
+Ans: CDN extends to Content Delivery Network, It is a geographically distributed network of proxy servers that deliver content (Images, videos, static files) to the users from the nearest locations, improving Speed and Availability.
+Instead of fetching the content from origin server every time, the CDN caches content and serves it from the edge locations closer to the user.
+
+Q:27 When to use CDN?
+Ans: When u have global and distributed users or when u want to improve latency, performance and loading speed or when we want to reduce server load in the origin or when we have static assets in out site.
+
+Q:28 What kind of content is served by CDN?
+Ans: Mostly static content like Images, Files, videos, CSS, Fonts, JS. Some advanced CDN can also cache dynamic content.
+
+Q:29 How does CDN reduces latency?
+Ans: CDN reduces latency by reducing the physical distance between the client and the server by serving cache content from the nearest edge server.
+
+Q:30 Can CDN serve Dynamic content?
+Ans: Some modern CDN like (Cloud Flare, Fastly) can server dynamic with rules, but it is mostly for static content.
+
+Q:31 Will CDN improve Backend API?
+Ans: No, CDNs are mainly for static assets. To speed up the APIs use caching, load balancers and DB optimization.
+
+Q:32 What happens when CDN doesn't have the file?
+Ans: When CDN doesn't have the file it fetches the content from the origin server caches it and then serve the users from its nearest edge locations.
+
+-> Popular CDN providers: CloundFlare, AWS CloudFront, Fastly, Google Cloud CDN, Akamai etc.
+===============================================================================================================================
+Q:33 What is Availability?
+Ans: Availability refers to the ability of the system to remain operational and accessible when it is needed.It is typically expressed as a percentage of uptime over a specific period of time.
+
+Q:34 How to improve Availability?
+Ans: 
+- Load balancing.
+- Failover Mechanism.
+- Redundancy.
+- Health Checks.
+- Auto Scaling.
+- Graceful Degradation.
+- Database Replica.
+
+Q:35 Availability v/s Reliability?
+Ans: Is the system up and running well when needed | Will the system work correctly over time?
+
+-> A system can be highly available but still unrealible if it fails often and auto recovers quickly.
+So Availability != Stability
+
+
+Q:36 Is 100% availability realistic?
+Ans: Theoritically it is yes, but in practical its hard due to harware failure, updates or unexpected traffics so we aim for 5 9's => 99.999% (26 sec downtime per month)
+===============================================================================================================================
+Q:37 What is Consistency?
+Ans: Consistency is system design ensures that all the users or nodes get the same and correct data after any update regardless of who reads it or where they read it from.
+
+-> Strong consistency: All the nodes will show updated data instantly after a write.
+-> Eventual consistency: All nodes will eventualy show the same data after a write, but some delay may happen.
+-> Casual consistency: maintains cause effect relationship in data updates.
+
+-> Factors to improve consistency
+- Database Transactions.
+- Improved network bandwidth
+- Data validation checks.
+- Stop reads during writes.
+===============================================================================================================================
+Q:38 What is CAP Theoram?
+Ans: CAP theoram states that it is possible to attain 2 two properties and the third will be compromised.
+Consistency, Availability and Partition Tolerance.
+===============================================================================================================================
+Q:39 What is Scalability?
+Ans: Scalability is the ability of the system to handle increased load (traffic, data, users) by adding more resources  without impacting the performance.
+
+Q:40 What is Vertical and Horizontal Scaling?
+Ans:
+-> Vertical Scaling: Adding more power to one machine is called Vertical scaling (increasing the size of RAM, making the CPU faster).
+-> Horizontal Scaling: Adding more machines and distributes the load is called Horizontal scaling (via load balancer).
+
+Q:41 Which is more preferred — vertical or horizontal?
+Ans: Horizontal Scaling is more preferred for large scale system as it has no physical limit, is fault Tolerance and cloud friendly.
+
+Q:42 Tools to achieve Scalability?
+Ans: 
+- Load Balancers (NGINX, HAProxy, AWS ALB)
+- Container Orchestration (Kubernetes, Docker Swarn)
+- Distributed DBs(MongoDb, Cassandra, DynamoDB)
+- Auto-Scaling groups (AWS ASG)
+
+Pros:
+- Improves App Availability and performance.
+- Fault Tolerance.
+- Handles the traffic spikes.
+- Future proof system ready for growth.
+===============================================================================================================================
+Q:43 What is Replication?
+Ans: Replication means copying data from one Db to others to improve availability, performance & fault Tolerance. It prevents data loss and hepls with scaling reads.
+
+Q:44 What is sync and async replication?
+Ans: 
+- Synchronous: The main DB will wait until the Replica (secondry DB) also writes the data, then only it confirms success to the user.
+ex: Where data loss is not acceptable (banking sector)
+
+- Asynchronous: The main DB writes the data and immediately says done, the replica (secondry DB) updates later in background.
+ex: Social Media Feed.
+
+Q:45 How does replication hepls in Scalability?
+Ans: It offloads the read operations from the primary database to replicas(secondary DB), allowing the system to handle more traffic.
+
+===============================================================================================================================
+Q:46 What is Redundancy?
+Ans: Redundancy means having extra components or system in place so the system can continue work if one part fails.
+
+Q:47 Types of Redundancy?
+Ans:
+- Hardware Redundancy: Multiple servers, Power supplies, Network interfaces.
+- Data Redundancy: Replicated databases or files.
+- Service Redundancy: Multiple load balancers or Microservices running in different containers or zones.
+
+Q:48 Why Redundancy?
+Ans: 
+- Fault Tolerance: System keeps working even after a failure.
+- High Availability: Downtime is minimized or eliminated.
+- Disaster Recovery: Easy to recover from system crashes or data loss.
+
+Q:49 Can you achieve redundancy without replication?
+Ans: Yes, you can run two web servers for redundancy, but they may connect to same database (no replication yet).
+
+Q:50 Differenece between Redundancy & Replication?
+Ans: Replication is copying data, but Redundancy is about duplicating entire components or systems to ensure reliability and fault tolereance.
+
+Q:51 What is Fault Tolerance?
+Ans: Fault Tolerance means system ability to keep working even when something fails like a server crash, db failure or network issue. 
+===============================================================================================================================
+Q:52 What is Load Balancer?
+Ans: A Load Balancer distributes the incoming services among the multiple servers or services ensuring that no single server gets overloaded improving performance, reliability and Scalability.
+
+Q:53 What happens if one server goes down?
+Ans: If one server goes down Load Balancer will detect the fault using health check and reroutes the traffic to healthy servers ensuring fault tolerance.
+
+Q:54 Where we use Load Balancer?
+Ans: 
+- Between Microservices.
+- Between users and app servers.
+- Between Microservices and DBs.
+
+Q:56 Can you name some Load Balancing Tools?
+Ans: NGINX, HAProxy,AWS ELB(Elastic Load Balancer), Azure Load Balancer, F5, Traefik, Envoy
+
+Q:57 What is Reverse Proxy?
+Ans: Reverse Proxy is a server that sits in front of backend servers, forward client requests to server while adding extra features like SSL, Caching, Payload compression, Filtering suspecious request, enhancing security etc.
+- Tools: NGINX, traefik, HAProxy, Apache HTTP server etc.
+===============================================================================================================================
+Q:58 Message Queue?
+Ans: To decouple services and handle async tasks like Sending email, notification, SMS and to process uploads we use Message Queues. We also use it to handle spikes, failure also it provides reliability and Scalability.
+===============================================================================================================================
+Q:59 What is Circuit Braker?
+Ans: Circuit Braker is used to detect the failure and cuts of the calls(repeated request) to prevent overloading the services. After timeout it retries again.
+===============================================================================================================================
+Q:60 What is API Gateway?
+Ans: An API Gateway is an entry point for all the services it routes the requests to correct microservices, enforcing security (JWT, CORS) and Centralizes logging & rate-limiting.
+===============================================================================================================================
+Q:61 What is DB Sharding and when do we shard DB?
+Ans: Splitting DB into parts based on key(like userId) is called DB Sharding. When a single DB cannot handle the volume, we split DB based on key (like region or userId) to multiple smaller DBs. DB Sharding improves performance and limits DB overload.
+===============================================================================================================================
+Q:62 How to secure public APIs?
+Ans: Use JWT for auth, CORS headers, Rate Limiter, Input Validation & Sanitization & HTTPS with SSL.
+===============================================================================================================================
+Q:63 What is Idempotency?
+Ans: Performing the same operation multiple times has the same result, no side effects no duplication.
+===============================================================================================================================
+Q:64 Design Pattern in System Design?
+Ans:
+1- Rate Limiter
+2- Authentication
+3- Notification
+4- File upload with signed URL
+5- API Gateway
+6- Message Queue
+7- Cache Aside
+8- Circuit Braker
+9- Load Balancer
+10- Sharding 
+11- Replication
+12- Retry
+13- Failover
+===============================================================================================================================
+Q:65 What is gRPC?
+Ans: gRPC is a high performance, open source RPC(Remote Procedure Call) framework developed by google. It allow the services to communicate each other efficiently, especially useful in microservices architecture.
+It uses prtobuf and HTTP/2.
+
+Q:66 When would you use gRPC over REST?
+Ans: I will use gRPC over REST when I need High performance, Low latency and efficient communication,  like in internal microservices, mobile to server communication or real time systems like video or chat. REST is better for public broser facing APIs.
+
+Q:67 Why is gRPC faster then REST?
+Ans: gRPC is faster then RESt bcoz:-
+- HTTP2: HTTP2 allows multiple request on a single connection.
+- Protocol Buffers: protobuf's are compact binary format and smaller than JSON.
+- Built in streaming support
+
+Q:68 What is Protocol Buffer?
+Ans: Protocol Buffer protobuf is a language neutral, platform nuetral data serialization format developed by google. It turns the structured data into compact binary messages, making the transmission fast & leightweight perfect for GRPC.
+
+Q:69 Can gRPC support streaming?
+Ans: Yes, gRPC supports all four modes of streaming - Uninary, Server side streaming, Client side streaming and Full duplex bi-directional streaming all four over single HTTP/2 connection.
+
+Q:70 Can gRPC be used in browser?
+Ans: No, gRPC cannot directly speak natively so it can't be used but we have web-gRPC a library that bridges support using a proxy like Envoy.
+
+Q:71 What are some limitations of gRPC and when not to use it?
+Ans: 
+- Not natively supported in browsers.
+- Harder to debug as it is in binary format not in human readble format like JSON.
+- Not ideal for simple public APIs.
