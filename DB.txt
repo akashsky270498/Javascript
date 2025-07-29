@@ -1,0 +1,415 @@
+Q:1 What is SQL?
+Ans: SQL extends to "structured query language" which is designed to manage and manipulate relational databases. It provides a set of commands that allows the user to interact with databases to perform tasks such as querying data, inserting, retrieveing, updating and deleting. Also creating and modifying the database schmeas and managing permissions.
+
+Q:2 What is MySQL?
+Ans: MySQL is a RDBMS like Oracle, Sequel server, IDBM2 which is used to manage sql.
+
+Q:3 What is table?
+Ans: Table is a collection of Records. Table is a collection of stored data which is stored in the form of rows and column.
+- Column: Column is a field in a table.
+- Row: Row is record in a table
+
+Q:4 What is Candidate key?
+Ans: A Candidate key is a set of attributes which uniquely identifies rows in a table.
+- Candidate key is a set of keys from where we select our Primary key.
+- A Candidate key can have NULL values.
+- A table must have atlest one CK can also have multiple CK but only one Primary key.
+
+Q:5 What is Primary key?
+Ans:
+- Unique + NOT NULL.
+- A Primary key is a combination of unique and not null which uniquely identifies rows in a table.
+- A table can have only one Primary key.
+
+Note: PK is a subset CK & CK is a subset of SK.
+
+Q:6 What is Alternate Key?
+Ans: Super key - Candidate key.
+
+Q:7 What is Super key?
+Ans: Candidate key + anything.
+
+Q:8 What is Foreign key?
+Ans:  Foreign key is a column in a table which creates relationship among two tables.
+- Foreign key can have NULL values.
+- Foreign key can have duplicate values.
+- A table can have multiple FK.
+- Fk maintains Refrential Integrity.
+- FK takes refrenced from PK.
+- A FK is a Primary key in refrencing table.
+
+Q:9 What is Integrity Constraints?
+Ans: Set of rules used to maintain quality of information is known as Integrity Constraints.
+
+Q:10 What is NOT NULL ?
+Ans: NOT NULL ensures that table or column cannot have NULL values.
+
+Q:11 What is Unique Key ?
+Ans: Unique Key ensures that a column can only have different values.
+
+Q:12 What is Check?
+Ans: Check ensures that a value in a column satiesfies specific condition.
+
+Q:13 What is default?
+Ans: Set a default value for a column, if no value is specified.
+
+Q:14 What is DBMS & RDBMS ?
+Ans: 
+- DBMS: DBMS is a software used to create, define & manage database & also provides control access to the data.
+- RDBMS: RDBMS is a used to manage and store only that data that is in the form of tables.
+
+===============================================================================================================================
+Q:15 What is DDL and its commands?
+Ans: DDL extends to Data Definition Language which is used to deal with the physical level of database such as creating, altering, dropping, truncating and renaming the table.
+
+-create: Create command is use for creating a table.
+eg. create table STUDENT(sId int, studentName varchar(45));
+
+- alter: Alter command is used for altering the table structure such as modifying or adding a new column in the table.
+eg. alter table STUDENT add studentAddress varchar(45);
+
+- drop: Drop command is used to dropping (deleting the entire table) from the Database.
+eg. drop table STUDENT;
+
+- truncate: Truncate command is used for removing all the rows (records) from the table.
+eg. truncate table STUDENT;
+
+ -rename: Rename command is used for renaming the name of the table.
+eg. rename STUDENT to STUDENTS;
+
+Note: Modification of table is not possible if column contains Data, CHECK condition or FK. If the column is PK its possible but in case of FK it's not possible.
+===============================================================================================================================
+Q:16 What is DML?
+Ans: DML extends to Data Manipulation Language which is used for manipulation of data like inserting, updating and deleting the records from the table.
+
+- insert:  Insert command is used to insert or store records in the table.
+- update: Update command is used to update/modify the records from the table
+- delete: Delete command is used to delete the records from the table.
+===============================================================================================================================
+Q:17 What is DCL?
+Ans: DCL extends to Data Control Language which is used to control the flow of data between the one user to another.
+- grant: Grant Command is used to give the permission to the other user to access our DB data.
+- revoke: Revoke command is used to take back the given permission from the user.
+===============================================================================================================================
+Q:18 What is TCL?
+Ans: TCL extends to Transaction Control Language which is to control the transaction that are done in DB. transaction means inserting, updating & deleting records.
+- commit: Commit command is used to save all the tranactions that are done in DB.
+- rollback: Rollback command is used to undo all the transactions that are done after commit.
+- savepoint: Savepoint is used to mark the position or restriction point.
+===============================================================================================================================
+Q:19 What is DQL?
+Ans: DQL extends to Data Query Language which is used to read the data from the database.
+- Select
+- joins
+- Projection
+- Selection
+===============================================================================================================================
+Q:20 What is the differenece between Delete, Drop and Truncate Command?
+Ans:
+- delete command is used to delete the selected rows from the table. delete command comes under DML. Row deleted using delete command can be rollbacked.
+
+- drop command is used to remove the entire data with table structure. drop command comes under DDL. Row deleted using drop command can not be rollbacked.
+
+- truncate command is used to remove the entire table data excluding the table headers (column names). truncate command comes under DDL. Row deleted using truncate command cannot be rollbacked.
+===============================================================================================================================
+Q:21 What is GroupBy() clause?
+Ans: GroupBy() clause is used to group the rows that have same value into summary rows, often used for aggregation function.
+- GroupBy() clause is applicable when when we use aggregation function for more then one set of rows.
+
+eg: Select Product, SUM(quantity) from FRUITS GROUP BY Product;
+===============================================================================================================================
+Q:22 What is OrderBy() clause?
+Ans: OrderBy() clause is applicable when we want to get the data obtained by query in sorted order.
+eg: Select Product, Quantity from FRUITS Order By ASC;
+===============================================================================================================================
+Q:23 What is Nested Query?
+Ans: In nested query, Inner subquery runs first, only once and gives result & then the outer query gets executed based on the result of inner query. (BOTTOM-UP Approach).
+
+eg. Select * from EMPLOYEE where Salary = (Select MAX(Salary) from Employee);
+===============================================================================================================================
+Q:24 What is Co-related query?
+Ans: In Co-related query the outer query executes first and then for every outer query row the inner query gets execute. (TOP-DOWN Approach).
+===============================================================================================================================
+Q:25 What is Pattern Matching?
+Ans: We use LIKE command for Pattern Matching.
+- %a : last letter is a.
+- a% : first letter is a.
+- %a% : a in between anywhere of the word.
+- "_a%": two letter.
+- "a_y": first letter a last letter y.
+===============================================================================================================================
+Q:26 How to find the second highest salary from the table ?
+Ans: Select name, MAX(Salary) as salary from Employee where Salary <> (Select MAX(Salary) from Employee);
+===============================================================================================================================
+Q:27 What is SQL & NoSQL?
+Ans:
+- SQL: SQL is structured language for retrieving and managing structured database.
+- NoSQL: NoSQL is a class of DBMS that are non-relational & generally do not use SQL
+===============================================================================================================================
+Q:28 What is varchar & varchar2?
+Ans: varchar is ANSI std & varchar2 is Oracle std.
+===============================================================================================================================
+Q:29 What is Trigger?
+Ans: Trigger is a Special Stored Procedure that automatically runs when an event occur in the DB server.
+===============================================================================================================================
+Q:30 What is Atomicity?
+Ans: "Either All or None". Transaction will restart not resume.
+===============================================================================================================================
+Q:31 What is Consistency?
+Ans: Total amount must be maintained (equal) before and after the transaction.
+===============================================================================================================================
+Q:32 What is Isolation?
+Ans: Transaction that runs concurrently appears to be serialized.
+===============================================================================================================================
+Q:33 What is Durability?
+Ans: Durability states that transaction has made permanenet changes.
+===============================================================================================================================
+Q:34 What is join?
+Ans: 
+- Join is a claise which is used add two or more table, based on the related columns between them.
+- Join is used to combine two or more tables (multiple tables) into a single output.
+- To perform join operation one column name in all the tables must be same.
+
+- INNER JOIN: Inner join returns records that have matched value in both the tables.
+- LEFT OUTER JOIN: Left Outer Join returns all the records from Left table and matched records from the Right table.
+- RIGHT OUTER JOIN: Right Outer Join returns all the records from the right table and only matched records from the Left table.4
+- FULL OUTER JOIN: Full Outer Join returns all the records where there is match either in Left table or in Right table.
+- SELF JOIN: A self join is regular join, where the table is joined with itself.
+===============================================================================================================================
+Q:35 What is union Operator?
+Ans: union operator is used to combine the result set of two select statements.
+- Every Select statement with union should have same number of columns.
+- The column name should have same datatypes.
+- The column name within select stm must be in same order.
+- Union operator removes duplicates.
+- Union All doesn't remove duplicates.
+
+eg: Select city from Employee union/union all Select city from Student Order by City;
+
+Note: In join we can combine two or more tables based on the common column between them but in case of union we can select alll the data from both the tables if datatype of columns are same.
+===============================================================================================================================
+Q:36 What is Select Statement?
+Ans: Select Statement is used to read the records from the table.
+
+TOP: Select TOP 5 from emp;
+DISTINCT: Select Distinct(eno) from emp;
+COUNT: Select COUNT(ename) from emp;
+MAX: Select MAX(salary) from emp;
+MIN: Select MIN(salary) from emp;
+AVG: Select AVG(salary) from emp;
+AS: Select eno as emp_no from emp;
+===============================================================================================================================
+Q:37 What is "where" statement?
+Ans: Where statement is used to limits the amount of data and specify which data you want in return.
+Operators used with where stms are:
+AND, OR, NOT NULL, NULL, LIKE, IN, NOT IN, >, <, >=,<=,=,<> 
+===============================================================================================================================
+Q:38 What is CASE Statement?
+Ans: A CASE statement allow us to specify the condition and also allow us to specify what data we want in return when the condition will get met.
+
+Ex: Select empDemo.empId, eName, eRole, jobTitle,
+	CASE
+		WHEN jobTitle = "HR" THEN Salary + (Salary * 10)
+		WHEN jobTitle = "Accountant" THEN Salary + (Salary * 18)
+	END as new_salary
+	from empDemo JOIN empTable  
+	on empDemo.empId = empTable.empId 
+	Order By Salary;
+===============================================================================================================================
+Q:39 What is having clause ?
+Ans: Having clause has been added in SQL bcoz "where" stm cannot be used with the aggregate function.
+- Having clause is used to give the condition for aggregate function.
+- Having clause must be written after the GroupBy clause & before the OrderBy clause.
+
+Ex: Select Salary, AVG(salary) from emp JOIN emp_sal ON emp.eId = emp_sal.eId
+	Group By(Salary)
+	Having AVG(Salary) > 5000;
+	Order By Avg(salary);
+===============================================================================================================================
+Q:40 What is Alias ?
+Ans: A temporary name given to the table or to the column in a table is called Aliasing.
+- An alias is often used to make the table or column name more readble.
+- An alias only exist for particular query.
+
+eg: SELECT emp_no as empNO;
+===============================================================================================================================
+Q:41 What are string functions ?
+Ans: trim(), ltrim(), rtrim(), upper(), lower(), replace(colname, "pant", " "), string(colname, 1,3)
+===============================================================================================================================
+Q:42 What is Partition By ?
+Ans: Partition by is used in window functionto split the data into logical groups, and apply function like RANK(), SUM() etc within each group while still keeping all rows visible.
+
+Partition by is often compared to GroupBy but group by is different. groupBy clause is used to reduce the number of rows by actually rolling them up by calculating the aggregate sum or average for each group.
+
+ex:
+Select Fname, Lname, Salary, Gender, COUNT(gender), OVER(Partition By Gender) as GC from EmpDemo as ED JOIN Salary as sal ON ED.empId = Sal.empId;
+===============================================================================================================================
+Q:43 What is CTE?
+Ans: CTE extends to Common table expression as the name suggests it is a temporary result set which is used to manipulate complex sub-queries. CTE is a virtual table, created during execution of complex sub queries & used by the query and eliminated after the query is executed.
+
+WITH CTE_EMP as
+	(Select ENo, Ename, Sal, Gender,
+	COUNT(Gender) OVER (Partition by Gender),
+	AVG(Salary) OVER (Partition by Gender),
+	from Emodemo as d
+	JOIN Empsal as sal
+	ON d.empid = s.empid
+	Where Salary > 4000
+	)
+	Select * from CTE_EMP;
+===============================================================================================================================
+Q:44 What is Temp table ?
+Ans: Temporary table is more likely as Permanent table. Temp tables are created in temp DB & automatically deleted when last connection is terminated.Temp tables are used to store & process intermidiate results. Temp tables are useful when we want to store temporary data.
+===============================================================================================================================
+Q:45 What is Stored Procedure ?
+Ans: Stored Procedure is a group of SQL stms. that is stored in the DB. A Store Procedure can take input parameter & A SP can be used over the networks by several different user and also several different users can call them by differernt inputs. A SP can reduce network traffic & increase performance and if we modify SP everyone who are going to use will get the updated SP.
+===============================================================================================================================
+Q:46 what is veiw ?
+Ans: A view in SQL is a virtual table that allows you to present data from one or more tables in a customized way without storing the data separately.
+It is defined by a SQL query that selects and possibly transforms data from existing tables. Views are used to simplify complex queries, enhance security, and provide a 
+consistent interface to the data.
+
+
+CREATE VIEW BorrowedBooks AS
+SELECT 
+    Books.title AS BookTitle,
+    Authors.name AS AuthorName,
+    Borrowers.name AS BorrowerName,
+    Loans.loan_date AS LoanDate,
+    Loans.return_date AS ReturnDate
+FROM 
+    Loans
+JOIN 
+    Books ON Loans.book_id = Books.book_id
+JOIN 
+    Authors ON Books.author_id = Authors.author_id
+JOIN 
+    Borrowers ON Loans.borrower_id = Borrowers.borrower_id;
+===============================================================================================================================
+
+Task 
+Context 
+References 
+Evaluate 
+Iterate 
+Thoughfully 
+Create 
+Really 
+Excellent 
+Input
+===============================================================================================================================
+Q:47 What is MongoDB?
+Ans: MongoDB is NoSQL, document oriented database. It stores the data in JSON like BSON format (Binary JSON). It is schema less, horizontaly scalable and great for unstructured or semi-structured data.
+
+Q:48 What is document in MongoDB?
+Ans: Document is basic unit of data in MongoDB, Similar to a row in RDBMS. It is stored in BSON format and can contain nested arrays and sub-documents.
+
+Q:49 What is collection in MongoDB?
+Ans: Collection is a group of documents, Similar to tables in RDBMS SQL but schema less, documents can have different fields.
+
+Q:50 What is the differenece between SQL & MongoDB?
+Ans: 
+- SQL: RDBMS, Tables/Rows, Fixed Schema, Joins, SQL Language.
+- MongoDB: NoSQL(Document DB), Collection/Document, Schemaless, $lookup, Query with JSON like syntax.
+
+Q:51 What is BSON?
+Ans: BSON extends to Binary JSON. It is a internal storage format used by MongoDB. It extends JSON with types like ObjectId, Date, etc.
+
+Q:52 What is ObjectId in MongoDB?
+Ans: An objectId is 12 bytes unique Identifier automatically generated by MongoDB for _id field. It includes Timestamp, MachineId, ProcessId and counter.
+
+Q:53 CRUD operations in MongoDB?
+Ans:
+- Create: insertOne(), insertMany().
+- Read: find(), findOne().
+- Update: updateOne(), updateMany(), replaceOne().
+- delete: deleteOne(), deleteMany().
+
+Q:54 What is schema in MongoDB?
+Ans: Although MongoDB is schema-less by default, but we can enforce schema validation using Mongoose or JSON Schema Validation.
+
+Q:55 What is Mongoose?
+Ans: Mongoose is an NPM package and an ODM(Object Document Mapper) for MongoDB and Nodejs. Mongoose allows defining Schemas & Model in MongoDB.
+
+Q:56 What is indexing?
+Ans: Indexing imporves query performance by allowing MongoDB to scan fewer documents. Default index is on _id.
+eg: db.users.createIndex({ email: 1 });
+
+Q:57 Types of Indexes?
+Ans:
+- Single Field.
+- Compound Index.
+- Multikey Index(for arrays).
+- Text Index (for search).
+- GeoSpatial Index.
+- Hashed Index.
+
+Q:58 What is Aggregation?
+Ans: MongoDB aggregation framework is used to process the data and returns compund results. It uses stages like a pipeline.
+
+ex: db.sales.aggregate([
+	{ $match: { region: "India"}},
+	{ $group: { _id: "$product", total: { $sum: "$amount" }}}
+])
+
+Q:59 What is the differenece between find() & aggregate() ?
+Ans: 
+- find(): Simple Read Queries, No grouping/aggregation, Fast for basic read.
+- aggregate(): Complex transformations, Group/Project/Filter/Join etc. , Powerful for Analytics.
+
+Q:60 What is $project in aggregation?
+Ans: $project is used to reshape the documents by exlcuding/including or by computing new fields.
+
+Q:61 What is $match in aggregation?
+Ans: $match is used to filter the document based on a condition(like WHERE clause in SQL).
+
+Q:62 What is $group in aggregation?
+Ans: $group groups the document by some key and applies accumulator function ($sum, $avg etc).
+
+Q:63 What is $loopup in aggregation?
+Ans: $loopkup function used to perform join between collections (like SQL Joins).
+
+Q:64 Difference between embedding and refrencing?
+Ans: 
+- Embedding (De-Normalized): Nest related data in one document, Fast reads, user.address.
+- Refrencing (Normalized): Link via obJectid, Better for large changing data, user.address_id.
+
+Q:65 How to perform Text Search?
+Ans:
+- db.products.createIndex({ name: "text" })
+- db.products.find({ $text: { $search: "shoes"}})
+
+Q:66 What is capped collection?
+Ans: Fixed size collections that overwrites the old collection when space is full. Good for Logs and Steams.
+
+Q:67  What is $in, $or, $and, $gt, $lt, $ne operators?
+Ans: These commands are used for conditional querying.
+- db.users.find({ age: {$gt: 18, $lt: 60 }})
+- db.users.find({ $or: [{ city: "Delhi"}, {city: "Mumbai"}]})
+
+Q:68 What is the differenece between insertOne and updateOne?
+Ans: 
+- insertOne: It will add the new document.
+- updateOne: It will update the existing document.
+
+Q:69 What id upsert()?
+Ans: In update(), if the document doesn't found, then it will create the new document.
+
+eg: db.users.update(
+	{ email: "a@b.com"},
+	{$set: { age: 25 }}
+	{ upsert: true }
+)
+
+Q:70 What is mongoDb Atlas?
+Ans: MongoDb atlas is a DB-as-a-service platform that provides managed mongoDb clusters with monitoring, scaling, backup & security.
+
+Q:71 What is bulkWrite()?
+Ans: bulkWrite() function allows us to do multiple insert, update and delete in a single call.
+
+Q:72 What is default port of MongoDB?
+Ans: 27017
+
+Q:73 What is explain() method?
+Ans: use to view query performance and execution plan.
+eg: db.users.find({ age: 25 }).explain("executionStats")
