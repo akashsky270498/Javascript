@@ -53,3 +53,5 @@ for (let i =0 ; i < allImgs.length; i++) {
 // AllImages.forEach((image, index) => {
 //   image.src = imagesUrl[index];
 // })
+
+const paragraph = document.querySelector('p');

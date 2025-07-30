@@ -5,3 +5,20 @@
 [alt="javascript roadmap"] {
   border: 6px solid hotpink;
 }
+
+p b {
+    display: none; 
+    /* visibility: hidden */
+    /* opacity: 0;  */
+    /* pointer-events: none; */
+}
+/* display: none means
+-> if the element and content will get hidden from display as well as from innerText.
+-> if we do textContent content will be visible but links and html tags will not be rendered.
+-> if we will do innerHTML everything will be visible 
+
+-> Same as above if we will do visibility: hidden but it will take the space in screen
+
+-> in case of Opacity: 0 the element will be visible in all 3 innerText, innerHTML and textContent but it will not be visible in screen.
+
+*/
