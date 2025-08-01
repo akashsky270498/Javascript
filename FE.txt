@@ -1,0 +1,37 @@
+Q:1 What is Parent Node?
+Ans: A Node that directly contains another node is called Parent Node.
+
+Q:2 What is Child Node?
+Ans: A node that directly nested inside the Parent node is called Child Node.
+
+Q:3 What is Sibling Node?
+Ans: Nodes that share the same Parent is called Sibling Node.
+
+ex: 
+<ul>             ← parent
+  <li></li>      ← child, sibling
+  <li></li>      ← child, sibling
+</ul>
+=======================================================================================================================
+| Property                         | Description                                    | Returns               |
+| -------------------------------- | ---------------------------------------------- | --------------------- |
+| `element.parentElement`          | Gets parent **element**                        | HTMLElement or `null` |
+| `element.children`               | Gets only element-type children                | HTMLCollection    |
+| `element.childNodes`             | Gets **all child nodes** (text, comment, etc.) | **NodeList**          |
+| `element.firstElementChild`      | Gets first element child                       | HTMLElement or `null` |
+| `element.lastElementChild`       | Gets last element child                        | HTMLElement or `null` |
+| `element.previousElementSibling` | Gets previous element sibling                  | HTMLElement or `null` |
+| `element.nextElementSibling`     | Gets next element sibling                      | HTMLElement or `null` |
+
+=======================================================================================================================
+
+| Case                                 | Return Type      |
+| ------------------------------------ | ---------------- |
+| `element.children`                   | HTMLCollection   |
+| `element.childNodes`                 | NodeList         |
+| `element.parentElement`              | HTMLElement/null |
+| `element.nextElementSibling`         | HTMLElement/null |
+| `element.firstElementChild`          | HTMLElement/null |
+| `element.querySelectorAll(".class")` | NodeList         |
+| `element.querySelector(".class")`    | HTMLElement/null |
+=======================================================================================================================
