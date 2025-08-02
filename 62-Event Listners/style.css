@@ -1,0 +1,138 @@
+/* h1 {
+  background-color: green;
+}
+
+h2 {
+  background-color: red;
+}
+
+h3 {
+  background-color: pink;
+}
+
+h4 {
+  background-color: yellow;
+}
+
+.container {
+  color: green;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card {
+  width: 100px;
+  height: 120px;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 36px;
+}
+
+.add-card {
+  cursor: pointer;
+  background-color: #ba2828;
+  color: white;
+  position: absolute;
+  bottom: 33px;
+  right: 32px;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  line-height: 10px;
+} */
+
+:root {
+  --color-primary: #ba2828;
+  --color-accent: pink;
+  --color-text: #333;
+  --card-width: 100px;
+  --card-height: 120px;
+  --radius: 8px;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 1rem;
+  color: var(--color-text);
+}
+
+:is(h1, h2, h3, h4) {
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  background-color: green;
+}
+
+h2 {
+  background-color: red;
+}
+
+h3 {
+  background-color: pink;
+  color: black;
+}
+
+h4 {
+  background-color: yellow;
+  color: black;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  background-color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.add-card {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: white;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-card:hover {
+  background-color: #a02222;
+  transform: scale(1.1);
+}
