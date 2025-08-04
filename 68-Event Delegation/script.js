@@ -23,5 +23,5 @@ container.addEventListener("click", (e) => {
 
 /*
 - Event Delegation: Event Delegation means adding an event to the parent element so it can handle events from its child elements.
-Event Delegation is a technique where a single event listener is added to a parent element to manage events triggered by its child elements. Instead of attaching event listeners to each child individually, the parent listens for events that bubble up from its children, improving performance and code simplicityz
+Event Delegation is a technique where a single event listener is added to a parent element to manage events triggered by its child elements. Instead of attaching event listeners to each child individually, the parent listens for events that bubble up from its children, improving performance and code simplicity.
 */
