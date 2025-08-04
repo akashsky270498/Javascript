@@ -1,0 +1,36 @@
+h2 {
+  background-color: seagreen;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.container {
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card {
+  width: 100px;
+  height: 120px;
+  background-color: seagreen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 32px;
+}
+
+.add-card {
+  cursor: pointer;
+  background-color: skyblue;
+  color: black;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 33px;
+  border-radius: 100%;
+  right: 32px;
+  line-height: 10px;
+}
