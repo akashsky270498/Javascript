@@ -84,7 +84,7 @@ Q-18:  Explain how you designed the email filtering logic in Thapala
 Ans: 
 - Used DB indexing (sender, subject & tags)
 - Filtering at query level -> Select * from emails where tCode="***********" and tags LIKE "%S%"
-- User specific role like if he/she is blocked he should not come  
+- User specific role like if he/she is blocked he should not come  .
 
 Q-19: Why did you use signed URLs for S3 and Azure Blob?
 Ans:
@@ -147,7 +147,7 @@ Ans:
 
 Q-29: What is Shallow & Deep copy?
 Ans:
-- Shallow copy means top level property will get copied also, if I'll make any changes in the copied object it will gwt update in the original object.
+- Shallow copy means top level property will get copied also, if I'll make any changes in the copied object it will get update in the original object.
 - Deep copy means copying all the property using JSON.parse(JSON.stringify(object)), & if I'll make any in the copied object it will not reflect on original object.
 
 Q-30: What is Session Based Authentication & Token Based Authentication?
@@ -166,7 +166,7 @@ Ans:
 - Authorization
 - Secure headers
 - Rate Limiting / Throtling
-- Data Encryption at returns
+- Data Encryption 
 
 Q-33: CI/CD??
 Ans: CI/CD is the process where your code is automatically tested, build and deployed so that developers can push there changes faster and safely.
