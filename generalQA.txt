@@ -383,3 +383,6 @@ Ans:
 - Not natively supported in browsers.
 - Harder to debug as it is in binary format not in human readble format like JSON.
 - Not ideal for simple public APIs.
+
+
+
