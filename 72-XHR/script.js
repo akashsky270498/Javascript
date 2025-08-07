@@ -6,10 +6,15 @@ button.addEventListener("click", (e) => {
 
   xhr.responseType = "json";
 
-  xhr.addEventListener("load", () => {
+  //   xhr.addEventListener("load", () => {
+  //     image.src = xhr.response.message;
+  //     console.log(xhr);
+  //   });
+
+  xhr.onload = () => {
     image.src = xhr.response.message;
     console.log(xhr);
-  });
+  };
 
   xhr.open("GET", "https://dog.ceo/api/breeds/image/random");
   xhr.send();
