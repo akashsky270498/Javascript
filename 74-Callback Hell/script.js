@@ -21,3 +21,4 @@ makeHttpRequest('GET', 'https://dummyjson.com/users', (usersData) => {
         })
     })
 })
+
