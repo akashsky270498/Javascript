@@ -1,23 +1,23 @@
 Q-1: What is event Loop?
 Ans: Event loop is a mechanism a JS which is used to handle async operaions. Insted of blocking the whole porgram while waiting for the longer tasks like reading the file or DB queries, Nodejs uses event loop to handle them on background while continue running the other parts of the code. This makes JS efficient & non-blocking.
 - Event checks if the CallStack is empty, if so it picks the tasks from CallBack Queue or Priority Queue and place them in CallStack.
-
+====================================================================================================================================
 Q-2: What is process.NextTick(), setImmediate() & setTimeout()?
 Ans: 
 - process.NextTick(): process.NextTick() runs immediately after the current function finishes it;'s execution, before anything else(Timers & I/O).
 - setImmediate(): setImmediate() runs after the current I/O event completes, in the next round of the event loop.
 - setTimeout(): setTimeout() runs after specified delay.
-
+====================================================================================================================================
 Q-3: What is Promise? What is Promise.all() & Promise.allSettled()?
 Ans: Promise is an object, Promise reprents future results of an async operations. We have 3 states in promise:-
 - pending, fullfilled, rejected.
 - Promise.all(): resolves when all the promises succeed, rejects if any failed. (used to handle multiple API's at same time.)
 - Promise.allSettled(): resolves when all the promises are settled, regardless of success & failure.
-
+====================================================================================================================================
 Q-4: What are Streams?
 Ans: Streams are object in JS that are used to read & write the data piece by piece in chunks instead of loading them all into the memory at once it improve the performance for large files. Reading large CSV files & for uploading files on AWS s3.
 -Buffer is a store in memory which is used to store raw data files like images, files or network data. So that nodejs can process it efficiently, especially when data arrives in Chunks.
-
+====================================================================================================================================
 Q-5: What is Middleware?
 Ans: Middleware in expressJs is a function that runs before the request reaches to the controller. It is used for Authentication, Error handling, Logs etc.
 
@@ -25,110 +25,110 @@ app.use((req, res, next) => {
     console.log("Req: ", req);
     next();
 })
-
+====================================================================================================================================
 Q-6: What is app.use() & app.get()?
 Ans:
 -app.use(): app.use() is used to handle all the HTTP methods and use for applying middlewares also.
--app.get(): app.get() is used to handle only GEt requset for specific routes.
-
+-app.get(): app.get() is used to handle only GET requset for specific routes.
+====================================================================================================================================
 Q-7: How do you handle Global Error?
 Ans: By using 4 params in middleware:
 
 - app.use((req, res, next, err) => {
     res.status(errCode).json({ message: err.message });
 })
-
+====================================================================================================================================
 Q-8: What is Rate Limiting? How you handle Rate Limiting and RBAC?
 Ans: Rate limiting is a technique use to control the number of API requet client can make in a given time period.
 Using express-rate-limiter && RBAC using custom middleware that check user role before accessing the routes.
-
+====================================================================================================================================
 Q-9: What is Idempotent API?
 Ans: Idempotent APIs are those which return same results for same input, no matter how many many times that API get called (GET, PUT, DELETE).
-
+====================================================================================================================================
 Q-10: How to do you secure Apis using JWT & CORS?
 Ans: Using Authorization Bearer headers,  CORS using cors package to verify the request of coming from the verified origin.
-
+====================================================================================================================================
 Q-11: When would you choose Redis over PostgreSQL?
 Ans: When we want frequent access of any data.
-
+====================================================================================================================================
 Q-12: How to manage DB schema design in microservices?
 Ans:-
 - Seprate dB schema for each services.
 - Define relations locally, avoid tight coupling.
 - Use migrations like Sequelize or typeORM.
-
+====================================================================================================================================
 Q-13: How did Redis help in reducing response time in your app?
 Ans: By caching frequently used data like (user profile, followers/followings), reducing DB calls.
-
+====================================================================================================================================
 Q-14: How did you implement WebSocket communication?
 Ans: I implement web scokets communication using socket.io for managing connection rooms, emits, receive events.
-
+====================================================================================================================================
 Q-15: Describe your microservices setup in Talentprise
 Ans: 
 Services: Auth, Enterprise, Talent, Notification, Chat, Scoring, Matching, AI, Headhunter
 Each services has its own DB schema & Git repo.
 For communication we used gRPC. (Google Remote Procedure Calls)
 Each services has its own CI/CD deployment.
-
+====================================================================================================================================
 Q-16: What happens if one microservice goes down?
 Ans: Mostly that service will go down & not all the services.
 - We must use retry logic, circuit braker(design pattern to enhance resiliance and fault tolerence) and logs.
-
+====================================================================================================================================
 Q-17: How did you integrate Zegocloud SDK in Taso?
 Ans: 
 - Used ther SDK in FE.
 - From be issued access token and handled session logic.
 - Managed events like Join, Leave & End via web socket.
-
+====================================================================================================================================
 Q-18:  Explain how you designed the email filtering logic in Thapala
 Ans: 
 - Used DB indexing (sender, subject & tags)
 - Filtering at query level -> Select * from emails where tCode="***********" and tags LIKE "%S%"
 - User specific role like if he/she is blocked he should not come  .
-
+====================================================================================================================================
 Q-19: Why did you use signed URLs for S3 and Azure Blob?
 Ans:
 - Bcoz of security reason.
 - Prevent the bucket from direct access.
 - Also reduces the load on BE.
-
+====================================================================================================================================
 // Middleware to log request IP, URL, and time
 app.use((req, res, next) => {
     console.log(`${req.ip}": ${req.method} ${req.originalUrl} ${Date.now()}`)
     next();
 })
-
+====================================================================================================================================
 Q-20: How would you optimize a slow API?
 Ans:
 - Use Pagination.
 - Optimize Db queries use indexing.
 - Redis cache.
 - Use async code.
-
+====================================================================================================================================
 Q-21: Did you write unit tests? If not, how do you ensure code reliability?
 Ans: If no tests: manual testing via Postman, Swagger, logging, and by reproducing real user flows.
-
+====================================================================================================================================
 Q-22: How do you handle memory leaks in Node.js?
 Ans: By monitoring memory usage and by avoiding Global variable and cleaning the Timers & Intervals.
 ->
 setImmediate(() => {
     process.memoryUsage()
 })
-
+====================================================================================================================================
 Q-23: What is PUT & PATCH?
 Ans: PUT -> update the entire data | PATCH -> update the required data.
-
+====================================================================================================================================
 Q-24: What is Access and refresh Token?
 Ans:
 - accessToken: The access token is a short-lived token used to access protected routes or APIs.It is sent with every API request in the headers (usually as a Bearer token) to verify user identity        
 - refreshToken:The refresh token is a long-lived token used to obtain a new access token when the old one expires.It is not sent with every API request, usually stored securely in HttpOnly cookies, and helps avoid forcing the user to log in again.
-
+====================================================================================================================================
 Q-25: How do you store tokens securely on the client side?
 Ans:HttpOnly cookie to avoid xss attack (accesstoken) db (refreshtoken)
-
+====================================================================================================================================
 Q-26: How do you handle errors from DB or async operations?
 Ans: Using try...catch block also I use winston to log errors and to hide it from the client.
-
+====================================================================================================================================
 Q-27: How do you handle a slow third-party API?
 Ans: If the 3rd party API is getting slow I use:
 - Timeout.
@@ -136,7 +136,7 @@ Ans: If the 3rd party API is getting slow I use:
 - Fallback or Error Handling.
 - Caching if data is static.
 - Proper logging and Monitoring.
-
+====================================================================================================================================
 Q-28: What would you do if your app starts throwing 500 errors in production?
 Ans: 
 - I will check the logs given by Winston trying to get & understand the stack trace errors.
@@ -144,20 +144,20 @@ Ans:
 - I will check for dependencies.
 - I will Rollback to previous commit or deployment if possible.
 - If rollback isn't possible, I will go for Hotfix.
-
+====================================================================================================================================
 Q-29: What is Shallow & Deep copy?
 Ans:
 - Shallow copy means top level property will get copied also, if I'll make any changes in the copied object it will get update in the original object.
 - Deep copy means copying all the property using JSON.parse(JSON.stringify(object)), & if I'll make any in the copied object it will not reflect on original object.
-
+====================================================================================================================================
 Q-30: What is Session Based Authentication & Token Based Authentication?
 Ans:
 1. SBA: In SBA the server will store the login information and share the cookie with the client to stay logged in.
 2. TBA: In TBA the server will not store anything instead it will give one token that client after login, and the client must send that token with every request.
-
+====================================================================================================================================
 Q-31: What is JWT Commonly used?
 Ans: JWT is commonly used as it is stateless(doesn't store in session info), self-contained(all info of the user) and easy to validate on the server making it scalable for distributed system.
-
+====================================================================================================================================
 Q-32: How you secure sensitive data in API?
 Ans:
 - Using HTTPS
@@ -167,37 +167,102 @@ Ans:
 - Secure headers
 - Rate Limiting / Throtling
 - Data Encryption 
-
+====================================================================================================================================
 Q-33: CI/CD??
 Ans: CI/CD is the process where your code is automatically tested, build and deployed so that developers can push there changes faster and safely.
 .yml file under .github/workflows folder
 - npm run install
 - npm run lint or test
 - npm run build
-
+====================================================================================================================================
 Q-34: What is Docker?
 Ans: Docker is a tool that lets u package your app and everything that needs to be into a small unit called container so that it can run anywhere, fast, safely and consistently
-
+====================================================================================================================================
 Q-35: What happens if you don’t await an async function?
 Ans: We will get a Promise we may get the result we may not.
-
+====================================================================================================================================
 Q-36: What is Closure?
 Ans:  A closure is a function that remembers the variables of it surrounding scope even if that scope has finished its execution.
-
+====================================================================================================================================
 Q-37: Why is Nodejs single threaded?
 Ans: NodeJs is single threaded bcoz it uses an "Event Driven and Non-blocking" I/O model. This design helps them to handle many connections at the same time without creating a new thread for each one. This makes nodejs fast and efficient, especially for heavy I/O tasks like reading files, accessing DBs and calling APIs.
-
+====================================================================================================================================
 Q-38: Why did you choose microservices in your project?
 Ans: We choose bcoz we have too many domains(Auth, Chat, Notification etc) and we want independent scaling & deployments.
-
+====================================================================================================================================
 Q-39: When we should avoid microservices?
 Ans: When our requirement is small or when we have small teams or when we dont have enough resources for DevOps and network management. 
-
+====================================================================================================================================
 Q-40: How do services talk to each other?
 Ans: Using REST (sync), message queues like Kafka/RabbitMQ(async) or gRPC for fast RPC-style communication.
+====================================================================================================================================
+Q-41: What is Expressjs?
+Ans: ExpressJs is a leightweight nodejs web application framework that is used to develop APIs & web servers easily, also simplefies the routing, middlewares & req/res mgmt.
+====================================================================================================================================
+Q-42: How do you handle errors in ExpressJs?
+Ans: 
+- Using try...catch.
+- Promise...catch.
+- Error handling middlewares.
+- try...catch using async await.
+- Validaion npms.
+- Process.on()
+====================================================================================================================================
+Q-43: Request & Response?
+Ans: 
+- Request: Request contains the data about HTTP request. (req.params, req.query, req.body)
+- Response: Response is used to send back the data to the client. (res.send(),res.json())
+====================================================================================================================================
+Q-44: What is next() in middleware?
+Ans: next() function is used in middleware to pass the controller to next middleware.
+====================================================================================================================================
+Q-45: What is NodeJs?
+Ans: Nodejs is open source, cross platform javascript runtime environment that executes js code outside the browser, buit on Google v8 engine & it is design for builing fast, scalable & event-driven network applications.
+====================================================================================================================================
+Q-46: What is let,const & var?
+Ans: 
+- let: let is a keyword which is used to define variable whose value cannot be changes further.
 
+- const: const is a keyword which is used to define variable whose value can be changed further.
 
+- var: var is a keyword which is used to define variable whose value can be changes further, but it is not recommended it should be avoided to do so as it doesn’t respect the block scope. Var is a function scoped & that can cause unexpected bugs.
 
+- It is allowed to initialize a variable without any value using let keyword (let a) bydefault it will store "undefined"
+
+- It is also allowed to assign a value directly in a variable without using cont, let & var, it becomes "global variable" which is bad practise and can lead to bugs or memory issues.
+====================================================================================================================================
+Q:47 Datatypes in JS?
+Ans: Based on how we are storing & accessing datatypes are divided into two parts:
+- Primitive & Non-Primitive.
+
+- Primitive(Stack || Call by value): When a variable is stored in stack a copy of value is created, It means any changes to the copied value will not affect the original value.
+- Number, BigInt, String, Boolean, Null, Undefined, Symbol.
+
+- Non- Primitive(Heap || call by reference): When a varibale is stored in Heap, the variable itself holds the reference (pointer) to the actual memory location where the value is created, It means any changes to the copied value will change the original value also.
+- Object(Array, function etc)
+====================================================================================================================================
+Q: 48 What is Hoisting?
+Ans:  Hoisting in JavaScript is the behavior where variable and function declarations appear to move to the top of their scope before the code runs. In reality, this happens during the memory creation phase of the JavaScript engine, where all variable and function declarations are stored in memory. Variables declared with var are hoisted and initialized with undefined, so they can be accessed before their declaration but will return undefined. However, variables declared with let and const are also hoisted but not initialized, which means accessing them before their declaration will throw a ReferenceError because they exist in a “Temporal Dead Zone” (TDZ). Function declarations (defined with the function keyword) are fully hoisted, meaning both their name and body are stored in memory, allowing you to call them even before their definition in the code. In contrast, function expressions and arrow functions behave like variables—only the variable name is hoisted (with var as undefined), so calling them before their definition results in an error. This is why understanding hoisting helps avoid bugs and unexpected behavior in JavaScript code.
+====================================================================================================================================
+Q:49 Undefined & Null?
+Ans: Undefined: A variable is declared but not given (assigned) any value.
+- Null: Intentionally setting or storing Null value to any variable.
+====================================================================================================================================
+Q:50 What is cookie?
+Ans: Cookie is a small piece of data stored in the browser by the website to remember information like login, user preference or traking data. It is automatically sent to ht server with every HTTP request.
+====================================================================================================================================
+Q:51 Whahat is currying in JS?
+Ans: Currying is a technique in JS where a function taking mutliple arguments can be transformed into the sequence of function, each taking one argument at a time.
+====================================================================================================================================
+Q:52 What is IIFE?
+Ans: IIFE is a function that immediately excutes after it is defined. It is typically used to create private scoping & avoid polluting the Global namespace.
+====================================================================================================================================
+Q:53 What is clustering in JS?
+Ans: 
+- Clustering in NodeJs means running mutliple instances(copies) of your Nodejs application simultaneously, this instances are called "Work process", they all share the same server and port number.
+By default nodejs runs on a single CPU core, which can limit the performance. Clustering allows your app to utilize all the CPU cores, enabling it handle more users & concurrent request at the same time.
+
+====================================================================================================================================
 Hey, I’m Akash Thakur — a backend-focused full stack developer with over 2.6 years of experience, mainly working with Node.js, Express.js, PostgreSQL, and SQL.
 I’ve been working at Ahex Technologies, where I’ve led the backend development of products like Talentprise, Taso, and Thapala — implementing real-time features such as OTP-based login, rate limiting, and signed media uploads using AWS S3 and Azure Blob Storage.
 I’m passionate about writing clean, maintainable code and optimizing API performance. I’ve also worked with Redis, upgraded microservice-based systems, and integrated GraphQL.

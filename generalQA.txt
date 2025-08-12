@@ -53,7 +53,12 @@ Ans: Breaking the app into individual, loosely-coupled services, where each serv
 -> Avoid using: When we have small app or we have small team also when we dont have enough time or enough DevOps resources and network management.
 ===============================================================================================================================
 Q:6 What is REST?
-Ans: REST (Representational State Transfer) is an HTTP based architecture style for designing web APIs.
+Ans: REST (Representational State Transfer):
+- REST API is a leightweight, stateless way for an applications to communicate over the web using standard HTTP methods to access & manipulate the the resources identified by URLs.
+- Stateless means for every request you need to pass frsh info, server doesn't remember any past requests.
+- Leightweight means it used JSON or XML not overheading heavy process like SOAP.
+
+
 
 -> Methods: POST = Create Data | PUT = Replace entire data | PATCH = replace partial data | GET = Fetch data | DELETE = Delete data
 
@@ -68,6 +73,7 @@ Ans: REST (Representational State Transfer) is an HTTP based architecture style 
 - Over-fetching: returns too much data.
 - Under-fetching: doesn't return everything we need.
 - Not real time.
+Note: by default REST apis will give fixed set of data if we want to control from BE we can do that.
 
 -> Use: We should use rest when we need simple CRUD operations or when the system is stateless & not real time.
 
@@ -115,7 +121,7 @@ Ans: A protocol that allows persistent two way communication between client and 
 ex: Chat, Real time notification, Live scores, Live actions etc
 
 Q:13 What is the differenece between socket.io and WebScoket?
-Ans: Socket.io is a libraray on top of web socket with fallbacks and better event handling.
+Ans: Socket.io is a library on top of web socket with fallbacks and better event handling.
 
 Q:14 How do you scale web scoket in production?
 Ans: We can scale web socket in production by using tool like Redis pub/sub and Kafka to sync messages between multiple WebSocket server instances.
@@ -361,7 +367,7 @@ Ans: gRPC is a high performance, open source RPC(Remote Procedure Call) framewor
 It uses prtobuf and HTTP/2.
 
 Q:66 When would you use gRPC over REST?
-Ans: I will use gRPC over REST when I need High performance, Low latency and efficient communication,  like in internal microservices, mobile to server communication or real time systems like video or chat. REST is better for public broser facing APIs.
+Ans: I will use gRPC over REST when I need High performance, Low latency and efficient communication,  like in internal microservices, mobile to server communication or real time systems like video or chat. REST is better for public browser facing APIs.
 
 Q:67 Why is gRPC faster then REST?
 Ans: gRPC is faster then RESt bcoz:-
