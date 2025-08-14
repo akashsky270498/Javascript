@@ -56,4 +56,5 @@ Global function (hi):	undefined (strict) / window (non-strict)	undefined (strict
 Object method (printTags):	The object itself	undefined (strict) / window (non-strict)
 Event listener:	The element that triggered the event	undefined (strict) / window (non-strict)
 Class method (getUser):	The instance of the class	The instance of the class
+
 */
