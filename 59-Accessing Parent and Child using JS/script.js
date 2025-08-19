@@ -1,23 +1,35 @@
+// Selecting the first <h2> and logging its parent
 const h2 = document.querySelector('h2');
-console.log(h2.parentElement) // Returns body tag an HTMLElement or null if the element (h2) has no parent.
+console.log("Parent of <h2>:", h2.parentElement); // -> Returns <body> (an HTMLElement) or null if no parent.
 
+
+// Selecting <ul> to explore children, nodes, siblings
 const ul = document.querySelector('ul');
-console.log(ul.children) // Returns HTMLCollection of <li> elements (no text nodes) or HTMLCollection [] if no children.
+console.log("========== Children ==========");
+console.log("ul.children:", ul.children); // -> Returns HTMLCollection of only <li> elements (ignores text nodes)
+console.log("ul.childNodes:", ul.childNodes); // -> Returns NodeList of ALL child nodes (elements + text nodes + comments)
 
-console.log(ul.childNodes) // Returns nodeList of all child nodes (including text nodes) or NodeList [] if no children.
+console.log("========== First & Last Child ==========");
+console.log("ul.firstElementchild: ", ul.firstElementChild); // -> First <li> element or null if empty
+console.log("ul.lastElementChild: ", ul.lastElementChild); // -> Last <li> element or null if empty
 
-console.log(ul.firstElementChild) // returns first <li> element or null if no children.
-console.log(ul.lastElementChild) // returns last <li> element or null if no children.
-console.log(ul.firstChild) // returns first child node (could be a text node) or null if no children.
-console.log(ul.lastChild) // returns last child node (could be a text node)
+console.log("ul.firstChild: ", ul.firstChild); // -> Could be a text node (like whitespace/newline) or element
+console.log("ul.lastChild: ",ul.lastChild) // -> Could be a text node (like whitespace/newline) or element
 
-console.log(ul.nextElementSibling) // returns next sibling element (could be another <ul> or <li>) or null if no next sibling.
-console.log(ul.previousElementSibling) // returns previous sibling element (could be another <ul> or <li>) or null if no previous sibling.
-console.log(ul.nextSibling) // returns next sibling node (could be a text node) or null if no next sibling.
-console.log(ul.previousSibling) // returns previous sibling node (could be a text node) or null if no previous sibling.
+console.log("========== Siblings ==========");
+console.log("ul.nextElementSibling: ", ul.nextElementSibling); // -> // Next sibling element of <ul>
+console.log("ul.previousElementSibling: ", ul.previousElementSibling); // -> // Previous sibling element of <ul>
 
+console.log("ul.nextSibling: ", ul.nextSibling); // -> // Next sibling node (could be text node)
+console.log("ul.previousSibling: ", ul.previousSibling); // -> // Previous sibling node (could be text node)
 
-//To update the text node 
+console.log("========== Text Node Update ==========");
+// To update a text node inside <body>
+// childNodes[2] because whitespace/newline count as nodes too
+// Be careful: index depends on HTML structure
 document.body.childNodes[2].nodeValue = "Updated text node value";
 
-//Each element is a Node but each node is not an Element.
+
+// Key Point for Interview:
+// Each element is a Node, 
+// but each node is not necessarily an Element (it could be text, comment, etc).

@@ -258,13 +258,135 @@ Q:52 What is IIFE?
 Ans: IIFE is a function that immediately excutes after it is defined. It is typically used to create private scoping & avoid polluting the Global namespace.
 ====================================================================================================================================
 Q:53 What is clustering in JS?
-Ans: 
-- Clustering in NodeJs means running mutliple instances(copies) of your Nodejs application simultaneously, this instances are called "Work process", they all share the same server and port number.
+Ans: Clustering in NodeJs means running mutliple instances(copies) of your Nodejs application simultaneously, this instances are called "Work process", they all share the same server and port number.
 By default nodejs runs on a single CPU core, which can limit the performance. Clustering allows your app to utilize all the CPU cores, enabling it handle more users & concurrent request at the same time.
 
 ====================================================================================================================================
+Q:54 What is null?
+Ans: Null in JS is not just a datatype but it is also a standalone value, it is used to represnt an empty value.
+====================================================================================================================================
+Q: 55 What is undefined?
+Ans: Undefined is when you defined a variable but didn't assign any value.
+====================================================================================================================================
+Q:56 What are slice and splice methods?
+Ans: 
+- Slice: Slice method of an array excludes the last index value we passed as well it doesn't modify the original array.
+- Splice: Splice method of an array includes the last index value we passed as well as it modifies the original array it pops out the gien range of elements from original array.
+====================================================================================================================================
+45. What is System Design?
+Ans: System design is a process of designing the elements of the system like architecture, components and modules and the diferent interfaces of the components that goes 
+through that system.
+
+46. Types of System Design?
+Ans: Two types we have: Low level design && High level design.
+
+47. What is architecture?
+Ans: Internal design details for building an application is called architecture.
+==================================================================================================================================================================================
+48. What is Monolitihic Architecture?
+Ans: A simple unified application that handle everything FE, BE & DB all together is called Monolithic Architecture || A cobination of FE, BE and DB written & deployed together 
+is called Monolithic Architecture it is also called Centralized System.
+
+Str: One codebase -> One deployment.
+
+Pros: 
+- Easy to understand.
+- Easy to test, build & deploy.
+- Less devOps complexity.
+- Best for small size team & MVPs.
+
+Cons:
+- SPOF (Tight Coupling).
+- Hard to scale.
+- CI/CD is riskier as for small change also we need to do full redeployment.
+======================================================================================================================================
+49. What is Microservices?
+Ans: Breaking the app into individual, loosley coupled services where each services has its own responsibility is called Microservices || Microservices are the collection of 
+single individual services connected through the network that share common resources, communicate and co-ordinate to achieve common goals.
+
+str: Each services have thier own DB, API & codebase.
+
+Pros:
+- We can scale the services independently.
+- Faster deployment (we need to deploy only those services which have changes).
+- Teams can work independently.
+- No SPOF (Fault Tolerence) one bug cannot crash the whole app.
+- Each services will have thier own DBs to ensure loose coupling.
+
+Cons:
+- Complex to manage the data sync, network, security etc.
+- Requires DevOps, CI/CD Monitoring
+- Communication overhead we required to make the communication happens between two systems.
+
+======================================================================================================================================
+50. What is Web Scokets?
+Ans: Web Scoket is a protocol that allows persistent communication between client and server over a single TCP connection, its great for real time applications.
+
+- We should use web sockets when we need real time updates and also when we need two way instant communication.
+- We should avoid using web socket when we are dealing with CRUD operation also when scaling large number of open connections is a concern.
+
+======================================================================================================================================
+51. What is Message Queue?
+Ans: To decouple services & handling async tasks like sending emails, notification & SMS and process uploads we use Message queues, Message queue is also use to handle spikes 
+and failures, also it provides realibiity & scalability.
+======================================================================================================================================
+52. What is Circuit Braker?
+Ans: Circuit Braker is used to detect the failure & cuts of the calls(repeated requests) to prevent overloading the services. After timeout it retries again.
+======================================================================================================================================
+53. What is API Gateway?
+Ans: An API Gateway is an entry point for all the services it routes the requests to the right microservices enforcing security(JWT & CORS), centralizing logging & rate limiting.
+======================================================================================================================================
+54. What is DB Sharding?
+Ans: Splitting the DB into parts based on key(like userId) is called DB Shard. When a single DB cannot handle the volume, we do DB sharding based on the key like (region & userId). 
+Db sharding helps in performance and limits the DB overloads.
+======================================================================================================================================
+Q:55 What is gRPC?
+Ans: gRPC is a high performance, open source RPC (Remote Procedure Call) developed by gooogle. It allows the services to communicate with each other effectively especially use in microservices
+arcitecture.
+======================================================================================================================================
+Q:56 What is BOM?
+Ans: BOM stands for Browser Object Model, BOM allows javascript to interact with browser window.
+ex: location.reload(), location.href(), history.forward(n), history.back(-n)
+======================================================================================================================================
+Q:57 What is DOM?
+Ans: Document Object Model
+- DOM is a programming interface for web document(HTML, XML).
+- DOM represents the page structure as tree of objects,where each elements, attributes and piece of text is a node.
+- Using DOM, JS can access, modify, add or delete the elements.
+======================================================================================================================================
+Q:58 What is the diff between DOM & BOM?
+Ans:
+- DOM is about the page(content and structure), DOM is W3C standardized.
+- BOM is about the browser(env & features), BOM is not standardized.
+======================================================================================================================================
+Q:59 Elements Selectors?
+Ans:
+- getElementByTagName(): getElementByTagName() return HTML collection, if no data found it will return HTML collection[].
+
+- getElementByClassName(): getElementByClassName() returns HTML collection, if no data found it will return HTML collection[]. To extract the first element we can use document.getElementByClassName('test')[0]
+
+- getElementById(): getElementById() returns the first element with that ID, if not found it will return null, if multiple elements are present with that ID it will return the first element.
+
+- querySelector(): querySelector() returns the first element that matches the selector, if not found it returns null.
+
+- querySelectorAll(): querySelectorAll() returns the nodelist of all the elements that macthes the selector, if no element found it returns empty NodeList [].
+======================================================================================================================================
+
+- The differenece between HTML collection & Nodelist is, HTML collection dont have forEach loop where as Nodelist have forEach() loop. for loop we can use in both HTML collection & also in NodeList. We can convert the HTML collection into Array usig Array.form() and then we can use for loop.
+
+- HTML collection is live, means it updates automatically when the document got updated, whereas Nodelist is static it doesnot automatically gets updated.
+
+======================================================================================================================================
+
+
+
+
+
+
+
 Hey, I’m Akash Thakur — a backend-focused full stack developer with over 2.6 years of experience, mainly working with Node.js, Express.js, PostgreSQL, and SQL.
 I’ve been working at Ahex Technologies, where I’ve led the backend development of products like Talentprise, Taso, and Thapala — implementing real-time features such as OTP-based login, rate limiting, and signed media uploads using AWS S3 and Azure Blob Storage.
 I’m passionate about writing clean, maintainable code and optimizing API performance. I’ve also worked with Redis, upgraded microservice-based systems, and integrated GraphQL.
 While I’m actively improving my frontend skills with React, my core strength lies in building robust, secure, and scalable backend systems.
+
 

@@ -14,7 +14,7 @@ const myUser = {
 };
 
 //accessing object
-console.log("Using . :", myUser.firstName); // Philip
+console.log("Using .:", myUser.firstName); // Philip
 console.log("Using [] :", myUser["email"]); // saltofrcb@rcb.com
 
 //problem

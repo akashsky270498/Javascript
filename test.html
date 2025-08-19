@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Thakur - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: white;
+        }
+
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            min-height: 11in;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .page {
+            width: 100%;
+            min-height: 11in;
+            padding: 0.75in;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: #2ecc71;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .job-title-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #3498db;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #ecf0f1;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #2ecc71;
+        }
+
+        /* Professional Summary */
+        .summary {
+            font-size: 12px;
+            text-align: justify;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .skill-item {
+            display: flex;
+            margin-bottom: 5px;
+            align-items: flex-start;
+        }
+
+        .skill-category {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 90px;
+            margin-right: 10px;
+        }
+
+        .skill-list {
+            color: #555;
+            flex: 1;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ecf0f1;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .job-title {
+            font-size: 12px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .date-location {
+            font-size: 11px;
+            color: #7f8c8d;
+            text-align: right;
+            font-style: italic;
+        }
+
+        .job-description {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .job-description ul {
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .job-description li {
+            margin-bottom: 4px;
+            text-align: justify;
+            position: relative;
+        }
+
+        .job-description li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Projects */
+        .project {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ecf0f1;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .project-description {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .project-description ul {
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .project-description li {
+            margin-bottom: 3px;
+            position: relative;
+        }
+
+        .project-description li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Achievements */
+        .achievements ul {
+            margin-left: 15px;
+        }
+
+        .achievements li {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Education */
+        .education-item {
+            font-size: 12px;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .university {
+            color: #7f8c8d;
+            margin-top: 3px;
+            font-style: italic;
+        }
+
+        /* Additional Strengths */
+        .strengths ul {
+            margin-left: 15px;
+        }
+
+        .strengths li {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .strengths li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Highlight Keywords */
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                font-size: 11px;
+            }
+            
+            .page {
+                page-break-after: always;
+                margin: 0;
+                padding: 0.6in;
+                min-height: 10.8in;
+                box-shadow: none;
+            }
+            
+            .page:last-child {
+                page-break-after: avoid;
+            }
+
+            .resume-container {
+                max-width: 100%;
+            }
+
+            .section {
+                margin-bottom: 12px;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Page 1 -->
+        <div class="page">
+            <div class="header">
+                <div class="name">AKASH THAKUR</div>
+                <div class="job-title-header">Full Stack Developer</div>
+                <div class="contact-info">
+                    Hyderabad, India • +91-9926632348 • <a href="mailto:akashsky270498@gmail.com">akashsky270498@gmail.com</a><br>
+                    <a href="https://github.com/akashsky270498">GitHub</a> • <a href="http://www.linkedin.com/in/akashsky270498">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Professional Summary</div>
+                <div class="summary">
+                    Full Stack Developer with 2.5+ years of experience in building secure, scalable, and high-performance backend systems, while currently growing skills in React and frontend development. Proven expertise in microservices architecture, real-time communication, cloud integrations, and third-party API usage. Adept at delivering production-ready solutions, optimizing system performance, and implementing DevOps best practices. Experienced in mentoring and collaborating with cross-functional teams. Strong commitment to clean, maintainable code and continuous learning.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Technical Skills</div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-category">Frontend:</div>
+                        <div class="skill-list">React.js (learning), JavaScript, HTML5, CSS3</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">Backend:</div>
+                        <div class="skill-list">Node.js, TypeScript, NestJS, Express, FastAPI, Python</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">Databases:</div>
+                        <div class="skill-list">PostgreSQL, MySQL, MongoDB, Redis</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">Messaging:</div>
+                        <div class="skill-list">Msg91, Twilio, Plivo (OTP), WebSockets, Zegocloud SDK</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">Cloud:</div>
+                        <div class="skill-list">AWS (S3 Bucket), Azure Blob Storage, GCP, Cloudinary</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">DevOps:</div>
+                        <div class="skill-list">GitHub Actions (CI/CD), Postman, Swagger, Winston Logger</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">Architecture:</div>
+                        <div class="skill-list">Microservices, DB Design, System Design</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-category">Version Control:</div>
+                        <div class="skill-list">GitHub, Bitbucket, GitLab</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Professional Experience</div>
+                <div class="job">
+                    <div class="job-header">
+                        <div class="company-info">
+                            <div class="company-name">Ahex Technologies, Hyderabad</div>
+                            <div class="job-title">Associate Software Engineer</div>
+                        </div>
+                        <div class="date-location">Feb 2023 – Present</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Refactored and upgraded the <strong>Talentprise</strong> microservices-based system (Auth, Gateway, Chat, Notification) using GraphQL and Node.js, ensuring smooth transitions to modern tech stacks</li>
+                            <li>Implemented secure <strong>OTP-based login</strong> via Msg91, Twilio, and Plivo in the <strong>Thapala</strong> project; included fallback logic and secure token management</li>
+                            <li>Built and enforced <strong>RBAC</strong>, <strong>rate-limiting</strong>, and <strong>45-day password expiration</strong> policies to strengthen security</li>
+                            <li>Developed and optimized REST APIs with NestJS and PostgreSQL, ensuring low latency and high scalability using Redis caching</li>
+                            <li>Designed the <strong>database schema</strong> and backend architecture for the <strong>Taso</strong> app, supporting real-time live streaming (Zegocloud SDK), user feeds, and social interactions</li>
+                            <li>Managed <strong>file storage</strong> using <strong>Azure Blob</strong> (Thapala) and <strong>AWS S3</strong> (Taso), including signed URLs and efficient media handling</li>
+                            <li>Led development of core features like tCode-based email system, mentorship modules, content feeds, and follow systems</li>
+                            <li>Configured <strong>CORS policies</strong>, handled error logging using Winston & Morgan, and ensured production-grade logging</li>
+                            <li>Collaborated with junior developer on Taso, reviewed code, and helped onboard her to the backend flow</li>
+                            <li>Actively contributed to GitLab/GitHub-based CI/CD pipelines using <strong>GitHub Actions</strong>, streamlining development-to-deploy flow</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Key Projects</div>
+                    
+                    <div class="project">
+                        <div class="project-name">Talentprise (Enterprise Microservices Platform)</div>
+                        <div class="project-description">
+                            <ul>
+                                <li>Refactored legacy services inside a microservices environment; upgraded framework, optimized APIs, and ensured secure GraphQL integrations</li>
+                                <li>Services handled: Auth, Gateway, Chat, Notifications, User Profiles</li>
+                                <li>Used GitLab for version control and deployment coordination across services</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-name">Taso Mobile App (Live + Social Platform)</div>
+                        <div class="project-description">
+                            <ul>
+                                <li>Designed and built scalable backend with Nodejs(ExpressJs); features include user auth, chat, video call, notifications, and admin panel APIs</li>
+                                <li>Integrated <strong>Zegocloud SDK</strong> for live video; implemented media upload via <strong>AWS S3</strong> with signed URLs</li>
+                                <li>Used Firebase for real-time notifications and user alerts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page">
+            <div class="section" style="margin-top: -5px;">
+                <div class="project">
+                    <div class="project-name">Thapala Email System (Secure Mail Platform)</div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Created a secure, scalable email platform using unique tCode instead of email IDs</li>
+                            <li>Implemented advanced email filtering, search, notifications, and <strong>OTP-based login</strong> using Msg91</li>
+                            <li>Stored media/files on <strong>Azure Blob Storage</strong> and handled signed URL generation</li>
+                            <li>Enforced <strong>RBAC</strong>, <strong>CORS policies</strong>, password expiry logic, and <strong>rate limiting</strong> for enhanced security</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-name">YouTube-like Platform (Personal Project)</div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Independently designed and developed a full-featured backend: user signup/login, video uploads (Cloudinary), comments, likes, and search</li>
+                            <li>Used Node.js, TypeScript, PostgreSQL, and Express; project is publicly available on GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-name">Countries App (React.js Project)</div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Built a small-scale React.js app that fetches data of over 250 countries using Fetch API</li>
+                            <li>Implemented dynamic <strong>search and filter functionality</strong>, component state handling using useState, and props management</li>
+                            <li>Used conditional rendering and fragment-based layout to build reusable UI components</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Key Achievements</div>
+                <div class="achievements">
+                    <ul>
+                        <li>Successfully upgraded a complex microservice architecture in Talentprise with zero downtime</li>
+                        <li>Reduced response time by 30% across multiple APIs using query tuning and Redis caching</li>
+                        <li>Mentored a junior developer during the Taso project and improved overall backend code quality</li>
+                        <li>Built a complete backend for a YouTube-like app, handling everything from DB design to deployment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Education</div>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Technology (B.Tech) - Computer Science</div>
+                    <div class="university">Chhattisgarh Swami Vivekanand Technical University, Bhilai • 2020</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Additional Strengths</div>
+                <div class="strengths">
+                    <ul>
+                        <li>Strong understanding of system design and scalable architecture</li>
+                        <li>Experienced with Agile, code reviews, and writing production-ready code</li>
+                        <li>Fast learner with a strong focus on clean, readable, and maintainable code</li>
+                        <li>Actively learning <strong>React.js</strong>: familiar with props, useState, conditional rendering, fragments, and child components</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

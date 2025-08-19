@@ -26,5 +26,5 @@ ex: let x = 10 --> you can do x = 20.
 
 -> diff b/n let & var
 1. Let is a blocked scope. Var is a function scoped can be accessed outside its blocked scope.
-2. let & const can't be accessed before its initialization, var can be accessed before its initilzation with value called undefined
+2. let & const can't be accessed before its initialization, var can be accessed before its initilzation with value called undefined.
 */
