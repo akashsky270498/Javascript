@@ -40,4 +40,4 @@ addCardButton.addEventListener("click", () => {
 setTimeout(() => {
   form.reset();
   console.log("Form Resetted.");
-},6000);
+},1000);

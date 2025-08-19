@@ -16,10 +16,8 @@ const user = {
 console.log(user.fullName);
 
 class CreateUser {
-  constructor(fullName, lastName, age) {
-    (this.firstName = this.firstName),
-      (this.lastName = lastName),
-      (this.age = age);
+  constructor(firstName, lastName, age) {
+    (this.firstName = firstName), (this.lastName = lastName), (this.age = age);
   }
 
   getBirthYear() {
@@ -37,5 +35,7 @@ class CreateUser {
   }
 }
 
-const user1 = new CreateUser('Aman', 'Mishra', 32)
-const user2 = new CreateUser('Anurag', 'Singh', 72)
+const user1 = new CreateUser("Aman", "Mishra", 32);
+const user2 = new CreateUser("Anurag", "Singh", 72);
+console.log(user1);
+console.log(user2);

@@ -1,6 +1,9 @@
 Q-1: What is event Loop?
 Ans: Event loop is a mechanism a JS which is used to handle async operaions. Insted of blocking the whole porgram while waiting for the longer tasks like reading the file or DB queries, Nodejs uses event loop to handle them on background while continue running the other parts of the code. This makes JS efficient & non-blocking.
+
 - Event checks if the CallStack is empty, if so it picks the tasks from CallBack Queue or Priority Queue and place them in CallStack.
+
+- CallStack: CallStack is a collection of functions which are currently under execution if not function then Global Anonymous Function will be there. Micro task queue will have more priority then that of CallBack Queue.
 ====================================================================================================================================
 Q-2: What is process.NextTick(), setImmediate() & setTimeout()?
 Ans: 
@@ -180,6 +183,14 @@ Ans: Docker is a tool that lets u package your app and everything that needs to 
 ====================================================================================================================================
 Q-35: What happens if you don’t await an async function?
 Ans: We will get a Promise we may get the result we may not.
+
+- Can we use await without async? → Only at top-level in modules or special REPLs, otherwise no.
+
+- Does async always return a Promise? → Yes, always.
+
+-Is async/await a function or keyword? → They are keywords, not functions.
+
+- Blocking? → No, it’s non-blocking to the main thread — only suspends that async function.
 ====================================================================================================================================
 Q-36: What is Closure?
 Ans:  A closure is a function that remembers the variables of it surrounding scope even if that scope has finished its execution.
@@ -377,11 +388,36 @@ Ans:
 - HTML collection is live, means it updates automatically when the document got updated, whereas Nodelist is static it doesnot automatically gets updated.
 
 ======================================================================================================================================
+Q:60 Difference between appendChild() & append()?
+Ans:
+- appendChild(): only Node, one at a time.
+- append(): accepts both Node(s) & String(s), multiple allowed.
+- append() function returns undefined, appendChild() returns the appended node.
+- cloneNode(true) for full (deep) copy including text, cloneNode() || cloneNode(false) for shallow copy.
+- Appending existing DOM node moves it, not copies it.
+======================================================================================================================================
+Q:61 What is an Event?
+Ans: It's a signal that tells that something(click, keypress, etc) has happended on the element.
+======================================================================================================================================
+Q:62 What is Event Bubbling?
+Ans: In event bubbling, the event starts from the target element and move upwards towards its ancestors.
+======================================================================================================================================
+Q:63 What is Event Capturing?
+Ans: In event capturing, the event starts from outermost ancestor and move downward to the target element.
+======================================================================================================================================
+Q:64 What is e.stopPropogation()?
+Ans: e.stopPropogation()  stops the event from propagating further (in both the case bubbling & capturing).
+======================================================================================================================================
+Q:65 What is Event Delegation?
+Ans: Event Delegation is a technique where a single event listener is added to a parent element to handle events from its child elements through event bubbling, making the code simpler and more efficient.
+======================================================================================================================================
+Q:66 this keyword?
+Ans: 'this' is a special keyword in JS that refers to the object which is currently executing the function. Its value is determined by how & where the function is called, not where it is defined. In normal function this is dynamic depends on caller, while in arrow function, this is lexically bound (inherited from where the function was executed).
 
-
-
-
-
+-> Global(outside object / class): this = window (or undefined in strict mode) for both local & arrow function.
+-> Object Method: this = object (in normal function), this = window (in arrow function).
+-> Event Listener: this = element in normal function, this = window in arrow function.
+-> Class Method: this = instance for both normal & arrow function.
 
 
 Hey, I’m Akash Thakur — a backend-focused full stack developer with over 2.6 years of experience, mainly working with Node.js, Express.js, PostgreSQL, and SQL.

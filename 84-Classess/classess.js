@@ -24,7 +24,7 @@ user2.age = 17; //we can update it
 console.log(user2)
 
 class createStudent {
-    #age
+    #age 
     constructor(firstName, lastName, age) {
         this.firstName = firstName,
         this.lastName = lastName,
