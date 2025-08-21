@@ -55,14 +55,14 @@ Ans: Breaking the app into individual, loosely-coupled services, where each serv
 Q:6 What is REST?
 Ans: REST (Representational State Transfer):
 - REST API is a leightweight, stateless way for an applications to communicate over the web using standard HTTP methods to access & manipulate the the resources identified by URLs.
-- Stateless means for every request you need to pass frsh info, server doesn't remember any past requests.
+- Stateless in REST means server doesn't store anything any data about client every request from client must include all the information needed (e.g. token)
 - Leightweight means it used JSON or XML not overheading heavy process like SOAP.
 
 
 
 -> Methods: POST = Create Data | PUT = Replace entire data | PATCH = replace partial data | GET = Fetch data | DELETE = Delete data
 
--> REST is stateless — every request must carry auth/data (like JWT), because server doesn’t remember anything between requests.
+-> REST is stateless — Stateless in REST means server doesn't store anything any data about client every request from client must include all the information needed (e.g. token)   
 -> Pros: 
 - Easy to learn.
 - Globally used.
@@ -377,6 +377,8 @@ Ans: gRPC is faster then RESt bcoz:-
 
 Q:68 What is Protocol Buffer?
 Ans: Protocol Buffer protobuf is a language neutral, platform nuetral data serialization format developed by google. It turns the structured data into compact binary messages, making the transmission fast & leightweight perfect for GRPC.
+
+
 
 Q:69 Can gRPC support streaming?
 Ans: Yes, gRPC supports all four modes of streaming - Uninary, Server side streaming, Client side streaming and Full duplex bi-directional streaming all four over single HTTP/2 connection.

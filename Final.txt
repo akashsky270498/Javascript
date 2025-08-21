@@ -1,5 +1,5 @@
 Q-1: What is event Loop?
-Ans: Event loop is a mechanism a JS which is used to handle async operaions. Insted of blocking the whole porgram while waiting for the longer tasks like reading the file or DB queries, Nodejs uses event loop to handle them on background while continue running the other parts of the code. This makes JS efficient & non-blocking.
+Ans: Event loop is a mechanism in JS which is used to handle async operaions. Insted of blocking the whole porgram while waiting for the longer tasks like reading the file or DB queries, Nodejs uses event loop to handle them on background while continue executing the other parts of the code. This makes JS efficient & non-blocking.
 
 - Event checks if the CallStack is empty, if so it picks the tasks from CallBack Queue or Priority Queue and place them in CallStack.
 
@@ -44,6 +44,8 @@ Ans: By using 4 params in middleware:
 Q-8: What is Rate Limiting? How you handle Rate Limiting and RBAC?
 Ans: Rate limiting is a technique use to control the number of API requet client can make in a given time period.
 Using express-rate-limiter && RBAC using custom middleware that check user role before accessing the routes.
+
+Q
 ====================================================================================================================================
 Q-9: What is Idempotent API?
 Ans: Idempotent APIs are those which return same results for same input, no matter how many many times that API get called (GET, PUT, DELETE).
@@ -164,7 +166,7 @@ Ans: JWT is commonly used as it is stateless(doesn't store in session info), sel
 Q-32: How you secure sensitive data in API?
 Ans:
 - Using HTTPS
-- Input validation and Sanitization
+- Input validation and Sanitization (Is the data correct? & Make the data safe)
 - Authentication
 - Authorization
 - Secure headers
@@ -188,7 +190,7 @@ Ans: We will get a Promise we may get the result we may not.
 
 - Does async always return a Promise? → Yes, always.
 
--Is async/await a function or keyword? → They are keywords, not functions.
+- Is async/await a function or keyword? → They are keywords, not functions.
 
 - Blocking? → No, it’s non-blocking to the main thread — only suspends that async function.
 ====================================================================================================================================
@@ -242,7 +244,7 @@ Ans:
 
 - It is also allowed to assign a value directly in a variable without using cont, let & var, it becomes "global variable" which is bad practise and can lead to bugs or memory issues.
 ====================================================================================================================================
-Q:47 Datatypes in JS?
+47 Datatypes in JS?
 Ans: Based on how we are storing & accessing datatypes are divided into two parts:
 - Primitive & Non-Primitive.
 
@@ -252,34 +254,34 @@ Ans: Based on how we are storing & accessing datatypes are divided into two part
 - Non- Primitive(Heap || call by reference): When a varibale is stored in Heap, the variable itself holds the reference (pointer) to the actual memory location where the value is created, It means any changes to the copied value will change the original value also.
 - Object(Array, function etc)
 ====================================================================================================================================
-Q: 48 What is Hoisting?
+48 What is Hoisting?
 Ans:  Hoisting in JavaScript is the behavior where variable and function declarations appear to move to the top of their scope before the code runs. In reality, this happens during the memory creation phase of the JavaScript engine, where all variable and function declarations are stored in memory. Variables declared with var are hoisted and initialized with undefined, so they can be accessed before their declaration but will return undefined. However, variables declared with let and const are also hoisted but not initialized, which means accessing them before their declaration will throw a ReferenceError because they exist in a “Temporal Dead Zone” (TDZ). Function declarations (defined with the function keyword) are fully hoisted, meaning both their name and body are stored in memory, allowing you to call them even before their definition in the code. In contrast, function expressions and arrow functions behave like variables—only the variable name is hoisted (with var as undefined), so calling them before their definition results in an error. This is why understanding hoisting helps avoid bugs and unexpected behavior in JavaScript code.
 ====================================================================================================================================
-Q:49 Undefined & Null?
+49 Undefined & Null?
 Ans: Undefined: A variable is declared but not given (assigned) any value.
 - Null: Intentionally setting or storing Null value to any variable.
 ====================================================================================================================================
-Q:50 What is cookie?
+50 What is cookie?
 Ans: Cookie is a small piece of data stored in the browser by the website to remember information like login, user preference or traking data. It is automatically sent to ht server with every HTTP request.
 ====================================================================================================================================
-Q:51 Whahat is currying in JS?
+51 Whahat is currying in JS?
 Ans: Currying is a technique in JS where a function taking mutliple arguments can be transformed into the sequence of function, each taking one argument at a time.
 ====================================================================================================================================
-Q:52 What is IIFE?
+52 What is IIFE?
 Ans: IIFE is a function that immediately excutes after it is defined. It is typically used to create private scoping & avoid polluting the Global namespace.
 ====================================================================================================================================
-Q:53 What is clustering in JS?
+53 What is clustering in JS?
 Ans: Clustering in NodeJs means running mutliple instances(copies) of your Nodejs application simultaneously, this instances are called "Work process", they all share the same server and port number.
 By default nodejs runs on a single CPU core, which can limit the performance. Clustering allows your app to utilize all the CPU cores, enabling it handle more users & concurrent request at the same time.
 
 ====================================================================================================================================
-Q:54 What is null?
+54 What is null?
 Ans: Null in JS is not just a datatype but it is also a standalone value, it is used to represnt an empty value.
 ====================================================================================================================================
-Q: 55 What is undefined?
+ 55 What is undefined?
 Ans: Undefined is when you defined a variable but didn't assign any value.
 ====================================================================================================================================
-Q:56 What are slice and splice methods?
+56 What are slice and splice methods?
 Ans: 
 - Slice: Slice method of an array excludes the last index value we passed as well it doesn't modify the original array.
 - Splice: Splice method of an array includes the last index value we passed as well as it modifies the original array it pops out the gien range of elements from original array.
@@ -293,10 +295,9 @@ Ans: Two types we have: Low level design && High level design.
 
 47. What is architecture?
 Ans: Internal design details for building an application is called architecture.
-==================================================================================================================================================================================
+======================================================================================================================================
 48. What is Monolitihic Architecture?
-Ans: A simple unified application that handle everything FE, BE & DB all together is called Monolithic Architecture || A cobination of FE, BE and DB written & deployed together 
-is called Monolithic Architecture it is also called Centralized System.
+Ans: A simple unified application that handle everything FE, BE & DB all together is called Monolithic Architecture || A cobination of FE, BE and DB written & deployed together is called Monolithic Architecture it is also called Centralized System.
 
 Str: One codebase -> One deployment.
 
@@ -338,8 +339,7 @@ Ans: Web Scoket is a protocol that allows persistent communication between clien
 
 ======================================================================================================================================
 51. What is Message Queue?
-Ans: To decouple services & handling async tasks like sending emails, notification & SMS and process uploads we use Message queues, Message queue is also use to handle spikes 
-and failures, also it provides realibiity & scalability.
+Ans: To decouple services & handling async tasks like sending emails, notification & SMS and process uploads we use Message queues, Message queue is also use to handle spikes and failures, also it provides realibiity & scalability.
 ======================================================================================================================================
 52. What is Circuit Braker?
 Ans: Circuit Braker is used to detect the failure & cuts of the calls(repeated requests) to prevent overloading the services. After timeout it retries again.
@@ -351,26 +351,29 @@ Ans: An API Gateway is an entry point for all the services it routes the request
 Ans: Splitting the DB into parts based on key(like userId) is called DB Shard. When a single DB cannot handle the volume, we do DB sharding based on the key like (region & userId). 
 Db sharding helps in performance and limits the DB overloads.
 ======================================================================================================================================
-Q:55 What is gRPC?
-Ans: gRPC is a high performance, open source RPC (Remote Procedure Call) developed by gooogle. It allows the services to communicate with each other effectively especially use in microservices
-arcitecture.
+55 What is gRPC?
+Ans: gRPC is high performance, open source (Remote Procedure Call) developed by google. gRPC allows different services to communicate with each other efficiently, especially useful in microservices architecture. gRPC uses HTTP2 || ProtoBuff.
 ======================================================================================================================================
-Q:56 What is BOM?
+56 What is BOM?
 Ans: BOM stands for Browser Object Model, BOM allows javascript to interact with browser window.
 ex: location.reload(), location.href(), history.forward(n), history.back(-n)
 ======================================================================================================================================
-Q:57 What is DOM?
+57 What is DOM?
 Ans: Document Object Model
 - DOM is a programming interface for web document(HTML, XML).
 - DOM represents the page structure as tree of objects,where each elements, attributes and piece of text is a node.
 - Using DOM, JS can access, modify, add or delete the elements.
+
+- DOM is a programming interface for web document(HTML, XML).
+- DOM represents the page str as tree of objects where each elements, attributes & piece of text is a node.
+- Using DOM, JS can access, modify, add & delete the elements.
 ======================================================================================================================================
-Q:58 What is the diff between DOM & BOM?
+58 What is the diff between DOM & BOM?
 Ans:
 - DOM is about the page(content and structure), DOM is W3C standardized.
 - BOM is about the browser(env & features), BOM is not standardized.
 ======================================================================================================================================
-Q:59 Elements Selectors?
+59 Elements Selectors?
 Ans:
 - getElementByTagName(): getElementByTagName() return HTML collection, if no data found it will return HTML collection[].
 
@@ -388,7 +391,7 @@ Ans:
 - HTML collection is live, means it updates automatically when the document got updated, whereas Nodelist is static it doesnot automatically gets updated.
 
 ======================================================================================================================================
-Q:60 Difference between appendChild() & append()?
+60 Difference between appendChild() & append()?
 Ans:
 - appendChild(): only Node, one at a time.
 - append(): accepts both Node(s) & String(s), multiple allowed.
@@ -396,33 +399,97 @@ Ans:
 - cloneNode(true) for full (deep) copy including text, cloneNode() || cloneNode(false) for shallow copy.
 - Appending existing DOM node moves it, not copies it.
 ======================================================================================================================================
-Q:61 What is an Event?
+61 What is an Event?
 Ans: It's a signal that tells that something(click, keypress, etc) has happended on the element.
 ======================================================================================================================================
-Q:62 What is Event Bubbling?
+62 What is Event Bubbling?
 Ans: In event bubbling, the event starts from the target element and move upwards towards its ancestors.
 ======================================================================================================================================
-Q:63 What is Event Capturing?
+63 What is Event Capturing?
 Ans: In event capturing, the event starts from outermost ancestor and move downward to the target element.
 ======================================================================================================================================
-Q:64 What is e.stopPropogation()?
+64 What is e.stopPropogation()?
 Ans: e.stopPropogation()  stops the event from propagating further (in both the case bubbling & capturing).
 ======================================================================================================================================
-Q:65 What is Event Delegation?
+65 What is Event Delegation?
 Ans: Event Delegation is a technique where a single event listener is added to a parent element to handle events from its child elements through event bubbling, making the code simpler and more efficient.
 ======================================================================================================================================
-Q:66 this keyword?
+66 this keyword?
 Ans: 'this' is a special keyword in JS that refers to the object which is currently executing the function. Its value is determined by how & where the function is called, not where it is defined. In normal function this is dynamic depends on caller, while in arrow function, this is lexically bound (inherited from where the function was executed).
 
 -> Global(outside object / class): this = window (or undefined in strict mode) for both local & arrow function.
 -> Object Method: this = object (in normal function), this = window (in arrow function).
 -> Event Listener: this = element in normal function, this = window in arrow function.
 -> Class Method: this = instance for both normal & arrow function.
+======================================================================================================================================
+67 What is REST?
+Ans: Representational State Transfer
+- Rest is leightweight, stateless way for applications to communicate over the web using HTTPs methods to access & manipulate the resources identified by URLs.
+- stateless in REST means server doesnot store anything or any data about client, every request from client side must include all the information needed. (eg. token)
+- leightweight in REST means, it uses JSON or XML not overheading heavy processess like SOAP.
 
+PROS:
+- Easy to understand & use.
+- Clear meaning of operations.
+- Widely Used.
+- Easy to cache.
 
-Hey, I’m Akash Thakur — a backend-focused full stack developer with over 2.6 years of experience, mainly working with Node.js, Express.js, PostgreSQL, and SQL.
-I’ve been working at Ahex Technologies, where I’ve led the backend development of products like Talentprise, Taso, and Thapala — implementing real-time features such as OTP-based login, rate limiting, and signed media uploads using AWS S3 and Azure Blob Storage.
-I’m passionate about writing clean, maintainable code and optimizing API performance. I’ve also worked with Redis, upgraded microservice-based systems, and integrated GraphQL.
-While I’m actively improving my frontend skills with React, my core strength lies in building robust, secure, and scalable backend systems.
+CONS:
+- Not real time.
+- Underfetching: doesnot return everything we need.
+- Overfetching: returns too much data.
 
+- We should use REST API when we need simple CRUD operation or when the system is stateless & not real time.
+- We should not use REST APIs when we need real time update (chat socket apis, notification etc) or when we are sending nested and flexible data bcoz it might get over or under fetched.
 
+- By default REST APIs will give fixed set of data if we want to control we can do it from BE side.
+======================================================================================================================================
+68 What is graphQL?
+Ans: GraphQL is a query language for APIs that let the client ask what exactly they need nothing more, nothing less.
+
+PROS:
+- Single endpoint (/graphql)
+- No versioning is required.
+- Smart queries, searching & filtering (client ask exactly what they need).
+
+CONS: 
+- Harder to build, more code is required.
+- File upload.
+- Harder to cache.
+
+- We should use graphQL when a FE need nested or customized data or when we want to reduce number of API calls.
+- We should not use graphQL, when we need to upload file or when we need simple endpoints or when we have limited infra.
+======================================================================================================================================
+69 When would u use gRPC over REST?
+Ans: We should use gRPC over REST when we need high performance, low latency & efficient communication between different microservices. REST is best for public browser facing APIs.
+======================================================================================================================================
+70 Why is gRPC faster then REST?
+Ans: gRPC is fater then REST bcoz:
+- HTTP2: HTTP2 allows multiple requests under a single connection.
+- ProtoBuff: Protocall Buffer are compact binary format and smaller then JSON.
+- buildIn streaming support.
+======================================================================================================================================
+71 What is Protocol Buffer?
+Ans: Protocol Buffer Protobuff is a language neutral, platform neutral data serialization format developed by google. Protobuff turns the structured data into compact binary format, making the transmission fast & leightweight.
+======================================================================================================================================
+72 can gRPC support streaming?
+Ans: Yes gRPC supports all four types of streaming, Uninary, Server side streaming, Client side streaming and Full duplex by-directional streaming all four over single HTTP connection.
+======================================================================================================================================
+73 Can gRPC be used in browser?
+Ans: No, directly it can't be used in browser.
+======================================================================================================================================
+74 What are the limitations of gRPC when not to use it?
+Ans: 
+- Not natively supported in Browsers.
+- Not ideal for simple public APIs.
+- Harder to debug as it in compact binary format not in human readble format like JSON.
+======================================================================================================================================
+75 What is Throttling?
+Ans: Throttling is a technique used to control the frequency of APIs requests by slowing them down or by spacing them out, instead of blocking them completely.
+-> Rate Limiting: Restrict the number of requests.
+-> Throttling: Control the speed of requests
+======================================================================================================================================
+Hey, I’m Akash Thakur — a backend-focused full stack developer with over 2.6 years of experience, mainly working with Node.js, Express.js, PostgreSQL, and SQL. I’ve been working at Ahex Technologies, where I’ve led the backend development of products like Talentprise, Taso, and Thapala — implementing real-time features such as OTP-based login, rate limiting, and signed media uploads using AWS S3 and Azure Blob Storage.I’m passionate about writing clean, maintainable code and optimizing API performance. I’ve also worked with Redis, upgraded microservice-based systems, and integrated GraphQL. While I’m actively improving my frontend skills with React, my core strength lies in building robust, secure, and scalable backend systems.
+======================================================================================================================================
+
+Memoization => Memoization is the technique used to speed up the function calls by storing or caching the result of function for a given input. If the same input occur again, the function returns the stored results instead of recalculating it.
