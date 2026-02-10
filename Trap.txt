@@ -15,7 +15,7 @@ Ans: Yes, we can but it is lexically bound (inherits from outer scope-> window).
 5: var, let, const hoisting?
 Ans: var is hoisted and initialized as undefined, let & const are also hoisted but they are in TDZ.
 
-6: What happens if you return inside funally block?
+6: What happens if you return inside finally block?
 Ans: It will overrides return from try...catch.
 
 7: typeof NaN?
@@ -41,3 +41,4 @@ Ans: Throw error: Can't set headers after they are sent.
 
 14: What happens if you call delete on array element?
 Ans: Leaves a hole(empty solt), doesnot re-index array.
+

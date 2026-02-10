@@ -392,5 +392,10 @@ Ans:
 - Harder to debug as it is in binary format not in human readble format like JSON.
 - Not ideal for simple public APIs.
 
+===============================================================================================================================
 
+Q:72 What is EC2?
+Ans: EC2 extends to Elastic Cloud Compute. EC2 is like virtual computer (server) on the cloud. We can install anything that we want over the EC2 server like Nodejs, Python, SQL etc. We can also select RAM, OS, CPU & Storage. EC2 charege for the time it runs per sec/min/hr.
 
+Q:73 When to use EC2?
+Ans: We should 

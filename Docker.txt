@@ -1,0 +1,260 @@
+Q:1 What is Docker?
+Ans: Docker is a tool that let you package your app and everything that needs to be into a small unit called container, So that it can be run everywhere & anywhere  fastly, safely & consistently.
+
+# docker --version
+# docker compose version
+=======================================================================================================================================
+Q:2 What is the differenece between docker image & docker container?
+Ans: 
+- Image: Image is like a Blueprint (read-only, like a class). => # docker images
+- Container: Container is an Instance(copy) of image (container is mutable like an object). => # docker ps
+
+=======================================================================================================================================
+Q:3 What is Docker file?
+Ans: Docker file is a script with instructions to build an image.
+# Use Node 20 Alpine
+FROM node:20-alpine
+
+# Set Working Directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install Dependencies
+RUN npm install 
+
+#Cop Project Files
+COPY . .
+
+#Expose Backend Port
+EXPOSE 7555
+
+#Start Server With Hot-Reload
+CMD ["npx", "ts-node-dev", "--respawn", "--transpile-only", "src/index.ts"]
+=======================================================================================================================================
+Q:4 What is Docker Compose?
+Ans: Docker Compose is a tool to manage multi container applications using docker-compose.yml
+# docker compose up --build
+# docker compose down
+# docker compose logs
+=======================================================================================================================================
+Q:5 How to see running conatiners?
+Ans: 
+# docker ps (all running)
+# docker ps -a (all running & stopped)
+=======================================================================================================================================
+Q:6 How do you run the container interactively?
+Ans: docker run -it ubuntu bash
+=======================================================================================================================================
+Q:7 How to access a running container shell?
+Ans: docker run -it <container_id> sh
+=======================================================================================================================================
+Q:8 How do you check container logs?
+Ans: 
+# docker logs <container_id>
+# docker logs -f <container_id> // follow logs
+=======================================================================================================================================
+Q:9 How do you start, stop & remove the container?
+Ans:
+# docker stop <container_id>
+# docker start <container_id>
+# docker rm <container_id>
+=======================================================================================================================================
+Q:10 What is Docker volume?
+Ans: Docker Volumes are persistent storage for containers. Containers are temporary, but volumes keeps the data safe.
+# docker volume ls 
+# docker volume inspect <volume_name>
+=======================================================================================================================================
+Q:11 What is Docker Network?
+Ans: Docker Network is a way for containers to talk to each other.
+# docker network ls
+# docker network inspect bridge
+=======================================================================================================================================
+Q:12 How to you remove unused stuff?
+Ans: docker prune -a (cleans images, containers, networks etc).
+=======================================================================================================================================
+Q:13 What is the difference COPY & ADD in Dockerfile?
+Ans:
+- COPY: copies files/folders.
+- ADD: same as COPY but also supports remote URLs & archives.
+=======================================================================================================================================
+Q:14 What is the difference between Docker & VM?
+Ans:
+- Docker: Shares host OS kernel [leihghtweight, faster].
+- VMs: Runs a full OS with its own kernel [heavy].
+=======================================================================================================================================
+Q:15 How do you check detailed info about a container?
+Ans: docker inspect <container_id>
+
+DevOps
+1.	What is DevOps?
+Ans:- DevOps is a way of working where developers & operations team works together using as automation tools to deliver a software faster, smoother & with fewer bugs.
+Ex: Imagine a burger restaurant:-
+-	Developer: Cooks the burger.
+-	Ops: Delivers the burger to customer.
+-	DevOps: The kitchen screen, bell, food tracker – everything that helps them work together without shouting!
+Stage	Tool	Definition	Example
+Plan	Jira, Trello	Organize what to build	Planning your grocery list
+Code	Git, GitHub	Save & track code changes	Notebook to track burger recipe
+Build	Jenkins, GitHub actions	Automatically converts the code into s/w.	Machine that makes burger automatically.
+Test	Junit, Selenium	Automatically check for the bugs.	Testing the burger before serving.
+Package	Docker	Pack the app with all its ingredients	Packing burger in a box with tissues & ketup.
+Release	Kubernetes, Helm	Send the app to users smoothly	Delivering burger to customer in many places.
+Monitor	Prometheus, Grafana	Watch for the problems after release	CCTV to check if customers are happy with the burger.
+-	
+
+2.	Why DevOps?
+Ans: - Bcoz of Faster Delivery, Continuous Feedback, Automation, Reliability, Teamwork etc.
+
+3.	What is CI/CD?
+Ans: - Continuous Integration/Continuous Delivery 
+-	CI/CD is a process where code is automatically tested, built & deployed so that developers can push there changes faster & safely.
+-	CI: Check & build code when developer commits.
+-	CD: Push working code to live servers automatically.
+
+4.	What is Pipeline?
+Ans: - Pipeline is a series of steps that your code goes through from development to deployment. 
+-	Written as YAML or config.
+-	Can be triggered when Push, PR or Merge,
+5.	What is IaC?
+Ans: Infrastructure as Code means managing server, networks & resources using code instead of clicking buttons in a dashboard. Eg: Terraform, AWS cloud Formation.
+
+6.	What is Containers?
+Ans: A Container is a small portable unit that packages your app & everything that needs to run (OS, libraries, Code etc.) It solves “it’s working in my system problem”. Eg: Docker.
+
+7.	What is Monitoring & Logging?
+Ans: 
+-	Monitoring means watching the health of your app.
+-	Logging is saving what is happening in your app for future analysis.
+
+8.	What is caching?
+Ans: Caching is the process of storing data or information for a set period of time in our computer database.
+
+9.	What is CDN?
+Ans: CDN extends to Content Delivery Network, which is geographically distributed network of proxy servers, & their objective is to serve the content to the user more quickly.
+
+10.	What is throughput?
+Ans: 
+- Volume of work or information passing through the system is called throughput.
+- Number of request processed per second is called throughput.
+- Number of data transmitted per second is called throughput.
+- Throughput is the amount of data transmitting per unit time is called throughput. Throughput is measured in bits per second (bps).
+
+11.	What are the causes of throughput?
+Ans:
+- Latency.
+- Congestion (multiple messages coming at same time).
+- Protocol overhead (Handshaking).
+12.	 How we can improve throughput?
+Ans: We can improve throughput using following ways.
+- Caching.
+CDN.
+Upgrading sources.
+Distributed system.
+Load balancer.
+
+13.	What is Availability?
+Ans: Fault Tolerance is directly proportional to Availability.
+
+14.	How to achieve availability?
+Ans: 
+- High Maintenance.
+- Monitoring.
+- Distributed system.
+- Redundancy = Duplication of nodes (servers): Microservices.
+- Replication = Replication is redundancy but not synchronized.
+15.	What is Consistency?
+Ans: When one or more client request the system, it will be consistent when the entire client received the same data. The data should always be consistent regardless of who is accessing it.
+
+Factors to improve Consistency:
+- Improving network bandwidth.
+- Redundancy based on distance awareness strategies.
+- Stop the read.
+- Database transaction.
+- Data validation.
+
+Strong Read: Stop the read, until all the server is updated with latest data.
+Eventually Read: Do not stop the read, eventually the servers are updated with latest data. 
+Weak Read:  
+
+16.	What is CAP Theorem?
+Ans: For a distributed system, the CAP theorem states that it is possible to attain two properties & the third property always be compromised.
+Consistency, Availability & Partition Tolerance.
+
+17.	What is Scalability?
+Ans: Scalability is the ability of a system to handle increased load by adding resources while maintaining performance.
+Horizontal Scalability: Adding more machines/instances to distribute the load.
+Pros: 
+- High availability
+- No single point of failure
+- Better fault tolerance
+Cons: 
+- Complex architecture
+- Higher operational cost
+Vertical Scalability: Adding more resources (CPU, RAM) to a single machine.
+Pros: 
+- Simple to implement
+- Easy to manage
+Cons: 
+- Single point of failure
+- Limited by hardware capacity
+18.	What is Redundancy?
+Ans: Redundancy is the duplication of critical system components to ensure availability and fault tolerance in case of failure.
+Active Redundancy (Active-Active): Multiple servers are active and serve requests simultaneously through a load balancer.
+Passive Redundancy (Active-Passive): One server is active while others remain on standby and take over only when the active server fails. (Like having the backup cake ready but not used until the main cake fails).
+
+19.	What is Replication?
+Ans: Replication is the process of copying data from one node to one or more nodes and keeping it synchronized to ensure availability and fault tolerance.
+Full Replication: The entire dataset is replicated to all nodes. (Like having multiple exact copy of toys).
+Partial Replication: Only selected parts of the data are replicated across nodes. (Like having exact copy of different parts of toys).
+
+20.	What is caching?
+Ans: Caching is the process of storing data for a set period of time in the computer database.
+- In-memory or local cache: Memcached.
+- Distributed or External cache: Redis or Autospy.
+
+
+21.	What are Cache Eviction Techniques?
+Ans: The process of deleting the data that is stored in cache is called Cache Eviction Techniques.
+- LRU (Least Recently Used)
+- MRU (Most Recently Used)
+- LFU (Least Frequently Used)
+- FIFO (First In First Out)
+- LIFO (Last In First Out)
+- RR (Random Replacement)
+
+22.	What is Load Balancer?
+Ans: 
+- Load Balancer is the process of efficient distribution of network (incoming traffic) across the servers (nodes or components) available in Distributed Systems.
+- The load distribution is equal in every server or nodes.
+- Health check (if one of the server was failed (non-operational) the request is passed to the other server available in DS).
+- Load balancer ensure high availability, scalability & throughput.
+- In monolithic architecture we do not need load balancer bcoz it is vertically scaled but in Microservices we need it.
+
+Advantages:
+- Availability
+- Scalability
+- Flexibility
+- Redundancy
+- Optimization
+- Prevents downtime
+- Better user experience
+Load Balancer Algorithms:
+Static:
+- Round Robin
+- Weighted Round Robin
+- IP Hash algorithm
+- Source IP hash
+
+Dynamic:
+- Least Response Time
+- Least Connection Algorithm
+
+
+
+
+
+
+
+ 
