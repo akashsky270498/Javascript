@@ -61,16 +61,43 @@ nums is sorted in non-decreasing order.
 //   return k;
 // };
 
-const removeDuplicates = (nums) => {
-  let write = 1;
+// const removeDuplicates = (nums) => {
+//   let write = 1;
 
-  for (let read = 1; read < nums.length; read++) {
-    if (nums[read] !== nums[write - 1]) {
-      nums[write] = nums[read];
-      write++;
+//   for (let read = 1; read < nums.length; read++) {
+//     if (nums[read] !== nums[write - 1]) {
+//       nums[write] = nums[read];
+//       write++;
+//     }
+//   }
+//   return write;
+// };
+
+// const removeDuplicates = (nums) => {
+//   let i = 0;
+
+//   for (let j = 0; j < nums.length; j++) {
+//     if (nums[j] !== nums[i]) {
+//       i++;
+//       nums[i] = nums[j];
+//     }
+//   }
+//   return i + 1;
+// };
+
+
+const removeDuplicates = (nums) => {
+  let k = 0;
+  // let arr = []
+  for (let num of nums) {
+    if (k === 0 || num !== nums[k - 1]) {
+      nums[k++] = num;
+      // arr.push(num)
     }
   }
-  return write;
-};
-console.log(removeDuplicates([1, 1, 2, 3])); //2
+  // return arr;
+  return k;
+}
+
+console.log(removeDuplicates([1, 1, 2, 3])); //3
 console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])); // 5

@@ -9,7 +9,7 @@ const data = await fetchData.json();
 3: What does NaN === NaN return?
 Ans: false.
 
-4: Can you access this inside an arrow function?
+4: Can you access "this" inside an arrow function?
 Ans: Yes, we can but it is lexically bound (inherits from outer scope-> window).
 
 5: var, let, const hoisting?

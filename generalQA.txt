@@ -393,9 +393,146 @@ Ans:
 - Not ideal for simple public APIs.
 
 ===============================================================================================================================
+Streams: Streams are object in JS which is used to read & write the data piece by piece in chunks instead of loading them all into the memory at once, this improves the performance for large files. I have used it while reading large XL files or while uploading large files in AWS S3.
 
-Q:72 What is EC2?
-Ans: EC2 extends to Elastic Cloud Compute. EC2 is like virtual computer (server) on the cloud. We can install anything that we want over the EC2 server like Nodejs, Python, SQL etc. We can also select RAM, OS, CPU & Storage. EC2 charege for the time it runs per sec/min/hr.
+Buffer: Buffer is a store in memory which is used to store raw data like files, images, network data etc. So that nodejs process them efficiently, especially when data arrives in chunks.
 
-Q:73 When to use EC2?
-Ans: We should 
+Middleware is a function in Nodejs which runs before the request reaches to the controller. Middleware is used for global error handling, logs, Authentication etc.
+
+If we will not use next() function in the middleware request get hangs, reuest never reaches to the next middleware/handler.
+
+app.use():  app.use() is used to handle all the HTTP Methods & also use for applying middlewares.
+app.get: app.get() is used to handle only get request for specific routes.
+
+Rate limiter is a technique which is used to handle the number of API request a client can make in the gien time frame. I implemented rate limiter using express-rate-limiter package. RBAC is used for authorization usually implemented using custom middleware which checks the user role before accessing the routes.
+
+Idempotent APIs are those APIs which gives same output for the same input no matter how many tiime we call it (GET, PUT, DELETE etc)
+
+Using Authorization Bearer Headers & CORS using cors package cors is used to verify wheather the request is coming from right origin or not.
+
+We must use Redis over Postgres when we want a access a static data frequently & fast.
+
+Each Services have their own DB.
+Realtion are defined locally means no direct linking of the tables.
+We have used migrations so that DB changes are safe & tracable.
+
+I implemented web sockets using socket.io library for managing connection roooms, amits,events and receive events.
+
+We have different services like:
+Auth, Notification, Scoring, Matching, Headhunter, Enterprise, AI, Chat, Talent.
+
+For each services we have different DB.
+For communication overhead we have used gRPC.
+Each services have their own CI/CD pipeline.
+
+If one of the microservices goes down only that service will be non-functional rest will work as expected. We can use Retry Logic or Circuit Braker to up/recover that service.
+
+Circuit Braker is used to detect the failure & cuts off the call (repeated requests) to prevent overloading the server. After sometime it retries again.
+
+We integrated Zegocloud:
+- we have used the SDK shared by them.
+- From BE I have issued the access token & handled session management.
+- Also from BE I have implemented join, leave, end events using socket.io
+
+- I have used indexing in various columns like subject, sender.
+- I have written raw query like Select * from emails.
+- Also handled the edge case like if the sender is blocked email should not be received by the receiver.
+
+- I have used signed URL bcoz:
+- First bcoz of security reason.
+- It also prevents direct access of the bucket.
+- Also it reduces BE load.
+
+I will optimize by doing:
+- Using pagination.
+- Optimized Queries like using indexing etc.
+- Redis if data is static.
+- Using async await.
+
+We handle memory leaks in JS by monitoring the memory usage and also by avoiding the usage of global variable and cleaning timers & intervals.
+PUT: update entire data || PATCH: update desire data.
+
+Nodejs is an open source, cross platform JS run time environment that executes JS code outside the browser built on google v8 engine it is designed for building fast, scalable & event driven applications.
+
+ExpressJs is a leightweight nodejs web application framework which is used to develop APIs & web servers easily, also simplifies middlewares, routing & req/res mgmt.
+
+Node js is single threaded bcoz of its event driven and non blocking I/O model. this design hepls nodejs to handle multiple connections at the same time without creating threads for each of them. This makes nodejs fast and efficient especially for heavy I/O tasks like reading large files, DB queries & caling APIs.
+
+Clustering in nodejs means running multiple instances copies of the nodejs application simultaneously. this instanses are called work process and this all share same port and server. by defauly nodejs runs on single CPU core which can limit the performance clustering allows to utilize all the CPU cores enabling it handle more users & concurrent rquest at the same time.
+
+
+
+
+Nodejs is an open source cross platform JS run time environment that executes JS code outside th browser, built on google v8 engine. This is designed to build fast, scalable & event driven applications.
+
+Nodejs is single threaded bcoz of its event driven & non-blocking I/O model. This design hepls nodejs to handle multiple connection at the same time without creating node for each one. This makes nodejs fast & efficient, especially for heavy input output task like reading large files,  DB queries & calling APIs.
+
+Clustering in nodejs is like running multiple instances of your nodejs applications simultaneously. This instances are called work process. this process share same server & port. By default nodejs runs on single CPU core but clustering allow to utilize all the CPU cores enabling it to handle multiple users & concurrent request at the same time.
+
+ExpressJs is a leightweight web application nodejs web framework which allow us to build APIs & web servers easily also simplifies middlewares, routing & req/res mgmt.
+
+System design is a process of designing the elements of the system like architecture, components and modules & the different interfaces of the component that goes through that system.
+Internal design details for building an application is known as architecture.
+
+A simple unified application that consist of FE, BE and DB are called Monolithic architecture || A combination of FE, BE and DB written & deployed together is called Monolithic Architecture, also called as Centralized System.
+
+Advanatages:
+- Easy to build.
+- Easy to Understand, Test & Deploy.
+- Less DevOps Complexity.
+- Best for small size team & MVPs.
+
+Disadvantages:
+- SPOF.
+- CI/CD is riskier as for every little change we need to build & deploy.
+- Hard to Scale
+
+Breaking the app into individual lossely coupled services where each services have their own responsibility is called Microservices.
+A single individual services that is connected to a network that share common resources, communicate & co-ordinate to achieve common goals is called Microservices.
+
+P:
+- Independent scaling.
+- Lossely coupled DB, each services will have diff dataB.
+- Teams can work independently.
+- Faster Deployments.
+- No SPOF.
+
+C:
+- Hard to manage the sync and network,
+- More Devops is required.
+
+
+REST: Representational State Transfer
+- REST is a leightweight, stateless way for an apllication to communicate over the web using HTTP Methods to access & manipulate the resources identified by URLs.
+- Statelesss means server doesnot store any data about the client every req from client side must include all the info needed.
+- LeightWeight: means it uses normal JSON & XML not heavy process like SOAP.
+
+PROS:
+- Easy to understand.
+- Clear meaning of operation.
+- Widely Used.
+- Easy to Cache.
+- Good for Normal CRUD APIs.
+
+CONS: 
+- Not real time.
+- Underfetching.
+- Overfetching.
+
+We should use REST api when we have simple CRUD operation or when the system is stateless & not real time.
+We should not use when we need real time updates like Chat Socket etc or when we are sending nested & flexible data it might get over or under fetch.
+
+GraphQL is a query language for the APIs let the client ask what exactly they need nothing more nothing less.
+
+PROS:
+- Single endpoint.
+- No versioning is required.
+- Smart queries easy for searching & filtering.
+
+CONS:
+- File Upload.
+- Harder to Cache.
+- Harder to build more code is required.
+
+We should use GraphQL when FE needs nested complex flexible or customized data or when we want to reduce number of api calls.
+We should not use when we have simple CRUD operation or when we want File Upload or or when we have simple endpoints or when we have limited infra.

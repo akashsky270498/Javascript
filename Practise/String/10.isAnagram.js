@@ -14,5 +14,7 @@ var isAnagram = function (s, t) {
 
   return true;
 };
+
+
 console.log(isAnagram("anagram", "nagaram"));
 console.log(isAnagram("rat", "car"));

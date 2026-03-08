@@ -7,7 +7,7 @@ Ans: Event loop is a mechanism in JS which is used to handle async operations. I
 ====================================================================================================================================
 Q-2: What is process.NextTick(), setImmediate() & setTimeout()?
 Ans: 
-- process.NextTick(): process.NextTick() runs immediately after the current function finishes it;'s execution, before anything else(Timers & I/O).
+- process.NextTick(): process.NextTick() runs immediately after the current function finishes it's execution, before anything else(Timers & I/O).
 - setImmediate(): setImmediate() runs after the current I/O event completes, in the next round of the event loop.
 - setTimeout(): setTimeout() runs after specified delay.
 
@@ -17,7 +17,7 @@ Ans: We will use process.nextTick() instead of setImmediate() when we want the c
 Q-3: What is Promise? What is Promise.all() & Promise.allSettled()?
 Ans: Promise is an object, Promise reprents future results of an async operations. We have 3 states in promise:-
 - pending, fullfilled, rejected.
-- Promise.all(): resolves when all the promises succeed, rejects if any failed. (used to handle multiple API's at same time.)
+- Promise.all(): resolves when all the promises succeed,    rejects if any failed. (used to handle multiple API's at same time.)
 - Promise.allSettled(): resolves when all the promises are settled, regardless of success & failure.
 
 Can a Promise change its state once it is fulfilled?
@@ -34,6 +34,7 @@ app.use((req, res, next) => {
     console.log("Req: ", req);
     next();
 })
+If we will not use next() in the middleware request gets hangs, request never reaches to the next middleware/handler.
 ====================================================================================================================================
 Q-6: What is app.use() & app.get()?
 Ans:
@@ -86,7 +87,7 @@ Ans: Mostly that service will go down & not all the services.
 Q-17: How did you integrate Zegocloud SDK in Taso?
 Ans: 
 - Used ther SDK in FE.
-- From be issued access token and handled session logic.
+- From BE issued access token and handled session logic.
 - Managed events like Join, Leave & End via web socket.
 
 ====================================================================================================================================
@@ -94,7 +95,7 @@ Q-18:  Explain how you designed the email filtering logic in Thapala
 Ans: 
 - Used DB indexing (sender, subject & tags)
 - Filtering at query level -> Select * from emails where tCode="***********" and tags LIKE "%S%"
-- User specific role like if he/she is blocked he should not come  .
+- User specific role like if he/she is blocked he should not come.
 ====================================================================================================================================
 Q-19: Why did you use signed URLs for S3 and Azure Blob?
 Ans:
@@ -137,7 +138,7 @@ Ans:
 - refreshToken: The refresh token is a long-lived token used to obtain a new access token when the old one expires.It is not sent with every API request, usually stored securely in HttpOnly cookies, and helps avoid forcing the user to log in again.
 ====================================================================================================================================
 Q-25: How do you store tokens securely on the client side?
-Ans:HttpOnly cookie to avoid xss attack (accessToken) db (refreshToken).
+Ans: HttpOnly cookie to avoid xss attack (accessToken) db (refreshToken).
 ====================================================================================================================================
 Q-26: How do you handle errors from DB or async operations?
 Ans: Using try...catch block also I use winston to log errors and to hide it from the client.
@@ -220,6 +221,9 @@ Ans: Using REST (sync), message queues like Kafka/RabbitMQ(async) or gRPC for fa
 Q-41: What is Expressjs?
 Ans: ExpressJs is a leightweight nodejs web application framework that is used to develop APIs & web servers easily, also simplefies the routing, middlewares & req/res mgmt.
 ====================================================================================================================================
+Q: What is NestJS?
+Ans: NestJS is a structured nodejs framework that is built on the top of Expressjs or Fastify that helps building scalable maintainable BE applications using module, DI & a clean architecture.
+====================================================================================================================================
 Q-42: How do you handle errors in ExpressJs?
 Ans: 
 - Using try...catch.
@@ -276,15 +280,14 @@ Ans: Cookie is a small piece of data stored in the browser by the website to rem
 Ans: Currying is a technique in JS where a function taking mutliple arguments can be transformed into the sequence of function, each taking one argument at a time.
 ====================================================================================================================================
 52 What is IIFE?
-Ans: IIFE is a function that immediately excutes after it is defined. It is typically used to create private scoping & avoid polluting the Global namespace.
+Ans: IIFE is a function that immediately executes after it is defined. It is typically used to create private scoping & avoid polluting the Global namespace.
 ====================================================================================================================================
 53 What is clustering in JS?
-Ans: Clustering in NodeJs means running mutliple instances(copies) of your Nodejs application simultaneously, this instances are called "Work process", they all share the same server and port number.
-By default nodejs runs on a single CPU core, which can limit the performance. Clustering allows your app to utilize all the CPU cores, enabling it handle more users & concurrent request at the same time.
+Ans: Clustering in NodeJs means running mutliple instances(copies) of your Nodejs application simultaneously, this instances are called "Work process", they all share the same server and port number.By default nodejs runs on a single CPU core, which can limit the performance. Clustering allows your app to utilize all the CPU cores, enabling it handle more users & concurrent request at the same time.
 
 ====================================================================================================================================
 54 What is null?
-Ans: Null in JS is not just a datatype but it is also a standalone value, it is used to represnt an empty value.
+Ans: Null in JS is not just a datatype but it is also a standalone value, it is used to represent an empty value.
 ====================================================================================================================================
  55 What is undefined?
 Ans: Undefined is when you defined a variable but didn't assign any value.
@@ -343,7 +346,6 @@ Ans: Web Scoket is a protocol that allows persistent communication between clien
 
 - We should use web sockets when we need real time updates and also when we need two way instant communication.
 - We should avoid using web socket when we are dealing with CRUD operation also when scaling large number of open connections is a concern.
-
 ======================================================================================================================================
 51. What is Message Queue?
 Ans: To decouple services & handling async tasks like sending emails, notification & SMS and process uploads we use Message queues, Message queue is also use to handle spikes and failures, also it provides realibiity & scalability.
@@ -497,6 +499,7 @@ Ans: Throttling is a technique used to control the frequency of APIs requests by
 ======================================================================================================================================
 76 What is an API?
 Ans: An API is an interface that defines how client & server communicate. It specifies how requests are made from client side and how responses is gettting returned from server, enabling data exchange & integration between two systems.
+
 ======================================================================================================================================
 Hey, I’m Akash Thakur — a backend developer with over 2.6 years of experience, mainly working with Node.js, Express.js, PostgreSQL, and SQL. I’ve been working at Ahex Technologies, where I’ve led the backend development of products like Talentprise, Taso, and Thapala — implementing real-time features such as OTP-based login, rate limiting, and signed media uploads using AWS S3 and Azure Blob Storage.I’m passionate about writing clean, maintainable code and optimizing API performance. I’ve also worked with Redis, upgraded microservice-based systems, and integrated GraphQL. While I’m actively improving my frontend skills with React, my core strength lies in building robust, secure, and scalable backend systems.
 ======================================================================================================================================
@@ -535,7 +538,7 @@ Ans: CORS is a browser security feature not a server security feature, CORS veri
 Q: How do you logout a user if u r using stateless JWT's?
 Ans: We logout a user in stateless system by deleting the token in the client side or by blacklisting the token in the server side until it expires.
 ======================================================================================================================================
-Q: How do you scale web scokets in 10 different servers?
+Q: How do you scale web sockets in 10 different servers?
 Ans: We scale web sockets in 10 different servers using sharing message brokers like Redis so all servers can sync socket events.
 ======================================================================================================================================
 Q: What is backpressure in TCP stream?
