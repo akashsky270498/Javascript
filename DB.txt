@@ -166,7 +166,7 @@ Ans: Durability states that transaction has made permanenet changes.
 ===============================================================================================================================
 Q:34 What is join?
 Ans: 
-- Join is a claise which is used add two or more table, based on the related columns between them.
+- Join is a clause which is used add two or more table, based on the related columns between them.
 - Join is used to combine two or more tables (multiple tables) into a single output.
 - To perform join operation one column name in all the tables must be same.
 
@@ -206,6 +206,11 @@ AND, OR, NOT NULL, NULL, LIKE, IN, NOT IN, >, <, >=,<=,=,<>
 ===============================================================================================================================
 Q:38 What is CASE Statement?
 Ans: A CASE statement allow us to specify the condition and also allow us to specify what data we want in return when the condition will get met.
+A CASE statement allow us to specify the conditions and also allow us to speify what we want in return when the condition will get met.
+Think of CASE like an IF–ELSE in SQL.
+If a condition is true → do something
+If another condition is true → do something else.
+So CASE lets SQL make decisions.
 
 Ex: Select empDemo.empId, eName, eRole, jobTitle,
 	CASE
@@ -247,6 +252,8 @@ Select Fname, Lname, Salary, Gender, COUNT(gender), OVER(Partition By Gender) as
 Q:43 What is CTE?
 Ans: CTE extends to Common table expression as the name suggests it is a temporary result set which is used to manipulate complex sub-queries. CTE is a virtual table, created during execution of complex sub queries & used by the query and eliminated after the query is executed.
 
+A CTE extends to Common Table Expression as the name suggest it is a temporary result set created using WITH, used inside a query to simplify complex queries.
+
 WITH CTE_EMP as
 	(Select ENo, Ename, Sal, Gender,
 	COUNT(Gender) OVER (Partition by Gender),
@@ -263,11 +270,14 @@ Ans: Temporary table is more likely as Permanent table. Temp tables are created 
 ===============================================================================================================================
 Q:45 What is Stored Procedure ?
 Ans: Stored Procedure is a group of SQL stms. that is stored in the DB. A Store Procedure can take input parameter & A SP can be used over the networks by several different user and also several different users can call them by differernt inputs. A SP can reduce network traffic & increase performance and if we modify SP everyone who are going to use will get the updated SP.
+
+- A Stored Procedure is a pre-written set of SQL statements that is stored in the Database & can be executed whenever its needed.
+Reusable, Less Network Traffic, Faster Execution.
 ===============================================================================================================================
 Q:46 what is veiw ?
 Ans: A view in SQL is a virtual table that allows you to present data from one or more tables in a customized way without storing the data separately.
-It is defined by a SQL query that selects and possibly transforms data from existing tables. Views are used to simplify complex queries, enhance security, and provide a 
-consistent interface to the data.
+It is defined by a SQL query that selects and possibly transforms data from existing tables. Views are used to simplify complex queries, enhance security, and provide a consistent interface to the data.
+
 
 
 CREATE VIEW BorrowedBooks AS

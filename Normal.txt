@@ -1,0 +1,74 @@
+Q:1 Tell me Something about yourself ?
+Ans: I'm a BE developer with 3+ years of experience specialsing in Nodejs, ExpressJs, PostgreSQL, Typescript/Javascript. At Ahex Technologies I have built Scalable REST & GraphQL APIs, integrated AI/LLM services & Optimized DBs reducing API latency by 30-35% & improving DB efficiency by 20-25%. My most relevant projects is MayBeAtHome where I have implemented OpenAI Semantic search that improved property match accuracy by 35-40%. I'm exiting about this role bcoz ...
+
+Q:2 Tell me about a time when you debugged a complex issue under pressure?
+Ans: 
+- Last year on july it was a Monday morning I still remember that morning when I was working on TalentPrise when thousands of users where active, our API response time suddenly become 5x slower.
+- So my responsibility was to quciky find the root cause and fix it without affecting the users much.
+- So firstly what I did is I looked into the monitoring metrices in AWS Cloudwatch & I got to know that Chat microservice is taking most of the time. Then I looked deeper & discovered that database query was running a full table scan bcoz an index was accidently removed during a migration.
+- Then I added that index back to the Database & I also temporary increased the redis TTL time so that fewer request will hit the DB while the fix was deploying.
+- The result is within 20 minutes the response went back to normal.
+- Later on  we have added automatic query plan checks in the CI pipeline to make sure missing indexes are caught before the deployment.
+
+Q:3 Describe a situation where you had an ambiguous requirement? How did you handled it?
+Ans:
+Recently it happens to me when we were working on May be at Home project our Project Manager asked us to implement Smart Search, but there were no clear technical specifications about what exactly need to change.
+
+- So our goal was to understand the real problem and come with the solution that actually helps the users.
+- So instead of guessing what I did is I arranged a discussion with project owner and some of my collegues and we came to know about the problem the problem was keyword search couldn't understand the user intent.
+- So what we decided is to build a Semantic Search prototype using Vector Embeddings from OpenAI.
+- We further discuss this with the Stakeholder they liked the idea and approved it.
+- We build the final version in 2-3 weeks of time.
+- From this  what I learned is instead of making the guess & waiting for the perfect specifications for ambigous requirement its better to talk with the stakeholder & build a quick prototype.
+
+Q:4 How do you handle working on multiple customer engagements simultaneously?
+Ans: 
+- Time management.
+- Documentation.
+- Communication.
+- Understanding the domain. 
+
+Q:5 Explain Memory Management & Potential Memory Leaks in Nodejs?
+Ans: Nodejs manages memory automatically using the garbage collector in the v8 engine, which uses a mark & sweep algorithm approach to remove the unused objects. However, memory leaks can still happen if refrences are unintentionally kept in the application.
+
+- Common causes of Memory Leaks are:
+- Unclosed browser instances in Puppeteer.
+- Unresolved Promise holding closures.
+- Accumulating Event Listeners.
+- Large Unbounded Caching.
+- We should also avoid Global Variables & Timers and Intervals.
+
+For Debugging Memory Leaks I use:
+- I run nodejs with --inspect flag to take the Heap snapshots in Chrome DevTools.
+- We also use clinic.js, especially tools like  Doctor & Heap Profiler to analyze Memory Usage & detect performance bottlenecks in Nodejs applications.
+
+setImmediate(() => {
+    process.memoryUsage()
+})
+
+Q:6 Exaplin How JS is Single Threaded? What is Event Loop & How does it work?
+Ans: Javascript is single threaded which means it can execute one task at a time using the callstack. To handle the async tasks like Timers, API calls or file operations JS make uses of event loop.
+
+- Event loop is a mechanism in JS which is use to handle the async operations, instead of waiting for the longer taks like Timers, API calls or file operation JS make use of an event loop which handle this tasks on the background while contiue executing the other parts of the code, this make JS efficient & non-blocking.
+
+- CallStack is where the Sync code runs. Callstack is the collection of functions which are under execution, if no functiona are are there Global Anonymous function are present once it finishes the sync code execution it picks the tasks from Microtask Queue (Promises) & then from Macrotask Quere(Set time functions). Microtask Queue have > priority then Macrotask Queue.
+
+ex: 
+setTimeout(() => console.log("timeout"), 0);
+Promise.resolve().then(() => console.log("promise"));
+o/p: promise, timeout.
+
+Q:7 Difference Between Promise.all, Promise.allSettled, Promise.race, Promise.any?
+Ans: 
+- Promise.all(): Waits for all promise to get succeed, If one fails, all promise fails immediately.
+Usecase: when u need all results together.
+
+- Promise.allSettled(): Waits for all promises to get finished, Doesn't fail if any of the promise get rejected, return status + value/reason.
+Usecase: When u want results even if some fails.
+
+- Promise.race(): Returns results of first promise that settled (resolve or rejected).
+Usecase: Timeout pattern.
+
+- Promise.any(): Return the first successful promise, Ignores rejected one, Fails only if all promises rejected.
+Usecase: Fallback strategy.
+Ex: Try multiple APIs return whichever works fine.

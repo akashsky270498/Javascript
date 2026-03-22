@@ -75,13 +75,9 @@ Ans: A scalable authentication system typically includes JWT-based authenticatio
 ======================================================================================================================================
 
 Common Redis use cases:
-
 API caching
-
 session storage
-
 rate limiting
-
 pub/sub messaging
 
 ======================================================================================================================================
@@ -91,12 +87,10 @@ SQL: Structured Schema, Strong Consistency, Relational Tables, Postgres, MYSQL.
 No-SQL: Flexible Schema, Better for large scale distributed systems, Document or key-value storage, MongoDB, Redis.
 
 ======================================================================================================================================
-Q: What is the difference between SQL and NoSQL databases?
+Q: How do you handle errors in production APIs?
 Ans: Using Centralized error handling mechanism sensitive data should not get exposed in error responses, Error Handling Middlewares, with HTTP Status Codes, Winsten loggers etc.
 
 ======================================================================================================================================
-Q: How do you handle errors in production APIs?
+Q: How do you handle Traffic Spikes in production APIs?
 Ans: Handling large traffic spikes involves multiple strategies such as horizontal scaling, rate limiting, DB query optimization, caching frequently used data using Redis. Also Load Balancer can distribute traffic across multiple servers instances to maintain system scalability.
-
-
 ======================================================================================================================================
