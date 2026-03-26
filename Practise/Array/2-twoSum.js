@@ -37,7 +37,22 @@ Constraints:
 Only one valid answer exists.
 */
 
-const twoSum = (nums, target) => {
+// const twoSum = (nums, target) => {
+//   let map = new Map();
+
+//   for (let i = 0; i < nums.length; i++) {
+//     let x = nums[i];
+//     let y = target - x;
+
+//     if (map.has(y)) {
+//       return [map.get(y), i];
+//     }
+//     map.set(x, i);
+//   }
+//   return [];
+// };
+
+const twoSum = function (nums, target) {
   let map = new Map();
 
   for (let i = 0; i < nums.length; i++) {
@@ -52,4 +67,4 @@ const twoSum = (nums, target) => {
   return [];
 };
 
-console.log(twoSum([2, 7, 11, 15], 17));
+console.log(twoSum([2, 7, 11, 15], 26));

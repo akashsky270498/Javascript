@@ -25,13 +25,26 @@ Output: false
 // const containsDuplicate = (nums) => new Set(nums).size !== nums.length;
 
 //No extra space
-var containsDuplicate = function (nums) {
-  nums.sort((a, b) => a - b);
+// var containsDuplicate = function (nums) {
+//   nums.sort((a, b) => a - b);
 
-  for (let i = 1; i <= nums.length; i++) {
-    if (nums[i] === nums[i - 1]) return true;
+//   for (let i = 1; i <= nums.length; i++) {
+//     if (nums[i] === nums[i - 1]) return true;
+//   }
+//   return false;
+// };
+
+const containsDuplicate = function (nums) {
+  if (!Array.isArray(nums)) return false;
+
+  let seen = new Set();
+
+  for (let num of nums) {
+    if (!seen.has(num)) {
+      seen.add(num);
+    }
   }
-  return false;
+  return Array.from(seen);
 };
 
 console.log(containsDuplicate([1, 2, 3, 3]));

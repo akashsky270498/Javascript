@@ -1,19 +1,30 @@
-const moveZeros = (nums) => {
-  let x = 0;
+// const containsDuplicate = (nums) => new Set(nums).size !== nums.length;
+var containsDuplicate = function (nums) {
+  const seen = new Set();
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0) {
-      nums[x] = nums[i];
-      x++;
-    }
+  for (let num of nums) {
+    if (seen.has(num)) return true;
+    seen.add(num);
   }
-
-  for (let i = x; i < nums.length; i++) {
-    nums[i] = 0;
-  }
-  return nums;
+  return false;
 };
 
-console.log(moveZeros([0, 1, 0, 3, 12])); // [1,3,12,0,0]
-console.log(moveZeros([0])); // [0]
-console.log(moveZeros([]));
+console.log(containsDuplicate([1, 2, 3, 3]));
+console.log(containsDuplicate([1, 2, 3, 4]));
+
+var removeDuplicates = function (nums) {
+  if (!Array.isArray(nums)) return false;
+
+  // const seen = new Set();
+
+  // for (let num of nums) {
+  //   if (!seen.has(num)) {
+  //     seen.add(num);
+  //   }
+  // }
+  // return [...seen];
+
+  return Array.from(new Set(nums))
+};
+console.log(removeDuplicates([1, 1, 2, 2, 3, 4, 4]));
+console.log(removeDuplicates([]));
