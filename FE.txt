@@ -21,7 +21,6 @@ Ans: initially some queries were doing full table scans & inefficient joins.
 - I analyzed the slow queries using database logs & EXPLAIN plans. Then I added appropriate indexes on frequently filtered columns & optimized query structures.
 - I also reduced unnecessary queries by doing batch operations & using proper rlsnships, which improved Read & Write efficiency.
 
-
 ======================================================================================================================================
 Q: How did you deliver features ahead of schedule?
 Ans: From the beginning I build reusable modules & well structured services. Instead of implementing everything from scratch for each feature. I reused existing Authentication modules, error handling, db utility, validation pipes etc. This all reduced the implemntation time & allowed us to ship the several BE features faster than the planned sprints.

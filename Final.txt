@@ -86,7 +86,7 @@ Ans: Mostly that service will go down & not all the services.
 ====================================================================================================================================
 Q-17: How did you integrate Zegocloud SDK in Taso?
 Ans: 
-- Used ther SDK in FE.
+- Used their SDK in FE.
 - From BE issued access token and handled session logic.
 - Managed events like Join, Leave & End via web socket.
 
