@@ -4,7 +4,7 @@ Ans: Event loop is a mechanism in JS which is used to handle async operations. I
 - Event checks if the CallStack is empty, if so it picks the tasks from CallBack Queue or Priority Queue and place them in CallStack.
 
 - CallStack: CallStack is a collection of functions which are currently under execution if not function then Global Anonymous Function will be there. Micro task queue will have more priority then that of CallBack Queue(Macro Task Queue).
-====================================================================================================================================
+======================================================================================================================
 Q-2: What is process.NextTick(), setImmediate() & setTimeout()?
 Ans: 
 - process.NextTick(): process.NextTick() runs immediately after the current function finishes it's execution, before anything else(Timers & I/O).
@@ -222,7 +222,19 @@ Q-41: What is Expressjs?
 Ans: ExpressJs is a leightweight nodejs web application framework that is used to develop APIs & web servers easily, also simplefies the routing, middlewares & req/res mgmt.
 ====================================================================================================================================
 Q: What is NestJS?
-Ans: NestJS is a structured nodejs framework that is built on the top of Expressjs or Fastify that helps building scalable maintainable BE applications using module, DI & a clean architecture.
+Ans: NestJS is a structured nodejs framework that is built on the top of Expressjs or Fastify which follows a modular & scalable architecture similar to angular.
+
+Q: What is Dependency Injection?
+Ans: instead of creating the objects manually that are injected to make the code more reusable & testable.
+
+Q: Why NestJS over Express?
+Ans: NestJs over Express bcoz nestJS provide better structure, modular architecture & built-in features like Dependency Injections.
+
+Q: What are modules in NestJS?
+Ans: Modules organizzes the code into seprate feature like user, auth, products etc.
+
+Q: Is NestJs slower than Express?
+Ans: Yes, slight overhead due to structure but negligible in real world & it is very good for scalability & maintanability of the code & also for large scale applications.
 ====================================================================================================================================
 Q-42: How do you handle errors in ExpressJs?
 Ans: 
@@ -254,7 +266,7 @@ Ans:
 
 - It is allowed to initialize a variable without any value using let keyword (let a) bydefault it will store "undefined".
 
-- It is also allowed to assign a value directly in a variable without using cont, let & var, it becomes "global variable" which is bad practise and can lead to bugs or memory issues.
+- It is also allowed to assign a value directly in a variable without using const, let & var, it becomes "global variable" which is bad practise and can lead to bugs or memory issues.
 ====================================================================================================================================
 47 Datatypes in JS?
 Ans: Based on how we are storing & accessing datatypes are divided into two parts:

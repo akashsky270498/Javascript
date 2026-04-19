@@ -1,0 +1,214 @@
+Q: Tell me about your experience with AWS?
+Ans: I have primarily worked on AWS backend-focused role where I handled Storage, Performance Opimization, Deployments of the Applications and Monitoring.
+In my projects I have used S3 for storing User generated content like Images & Documents. To improve the Performance & reduce Latency, I integrated CloudFront as a CDN layer on the top of S3.
+For backend services I have used EC2 to deploy the NodeJS applications, manage runtime environments & handle production workloads.
+On the Monitoring side I have used CloudWatch extensivley for logging, debugging issues & tracking system performance.
+I also have hands on exposure to AWS Lambda, where I built event driven functions for asynchronous processing, helping reduce API latency & decouple services.
+
+Q: Where you have used S3?
+Ans: 
+- I have used S3 for storing the user-uploaded Images & Documents.
+- I have also used for pre-signed URLs for secure uploads.
+- Avoided storing files on backend servers (better scalability).
+
+How?
+- Backend generates pre-signed URLs using AWS SDK.
+- Client uploads directly on S3 Bucket.
+- Reduces Load on Backend Servers & improves performance.
+
+Q: Why CloudFront?
+Ans:
+- To reduce Latency by caching the content closer to the user.
+- Reduces load on S3 bucket as well.
+- Imrpove UX.
+
+How?
+- Created CloundFront Distribution.
+- Connected it with S3 bucket.
+- Used CDN URLs insted of direct S3 URL.
+
+Q: 4 Why did you use EC2?
+Ans: Well I have used EC2 on Powergotha projects, We have deployed the Nodejs backend services on EC2.
+-  There I have hosted Nodejs APIs .
+- Managed environments & runtimes.
+- Used Redis for caching.
+
+Q: How did you deployed?
+Ans: 
+- We have created EC2 instances setup with Nodejs.
+- Used GitHUB Actions for CI/CD.
+- Pipeline: Code Push -> Build -> Test -> SSH into EC2 -> Deploy.
+- Used PM2 to keep App running & Auto Start.
+
+Q: How did you handled downtime?
+Ans:
+- Used PM2 auto-restart.
+- Error Handling.
+- CloudWatch logs for debugging.
+
+Q: How did you Scale?
+Ans:
+- Initially vertical Scaling.
+- Designed Stateless services.
+- Redis for shared caching.
+- Can also scale horizontally using Load Balancer & Auto Scaling.
+
+Q: Why Ec2 over Lambda?
+Ans: 
+- Bcoz we need Long Running Backend Services & More control over environments.
+
+Q: Where you have used Lambda?
+Ans: In talentprise project I have used Lambda for asynchronous & event driven workflows.
+- Lambda functions triggers after user actions.
+- Handled Background tasks.
+- Reduced API Latency.
+
+Example:
+- When user updates the profile - trigger Lambda.
+- Lambda process the data & sends Notifications.
+
+Q: How was Lambda triggered?
+Ans:
+- lambda invoked using AWS SDK from Nodejs services.
+- Used async/event-driven patterns.
+
+Q: Why Lambda?
+Ans: 
+- Non Blocking Operations.
+- Better Scalability.
+- Cost efficiency.
+- Decoupled architecture.
+
+Q: How did you deployed Lambda?
+Ans: 
+- Created functions on AWS Console.
+- Uploaded the code (zip).
+- Configured environments variables.
+- Attached IAM role.
+
+Q: How did you handled failures?
+Ans:
+- AWS CloudWatch logs for debugging.
+- Retry mechanism.
+- Proper Error Handling.
+
+Q: What is Cold Start?
+Ans: 
+- Delay when Lambda starts after idle period.
+- Minimal impact for async tasks.
+
+Q: How did you used CloudWatch?
+Ans:
+- Logs Monitoring.
+- Debugging production issues.
+- Performance tracking.
+
+How?
+- Logs from Lambda & EC2.
+- Used for error tracking.
+
+Q: What is IAM Role v/s Policy?
+Ans: 
+- Role is like Authentication = Who can access.
+- Policy is Authorization = What actions can be performed. (permissions).
+
+usage: 
+- Lambda role to access S3.
+- No hardcoded credentials.
+
+Q: What is SQS?
+Ans: SQS extnds to Simple Queue Service.
+- SQS is a queue service for async processing.
+
+Why use it?
+- To Handle Spikes.
+- Decouple services.
+
+Q: What is DLQ?
+Ans: Failed msgs go here after retries.
+
+Q: What if Lambda runs twice?
+Ans:
+- We have to design an Idempotent systems.
+- Use unique IDs.
+- Avoid duplicate operations.
+
+Q: What is API Gateway?
+Ans: 
+- Entry point for APIs.
+- Can trigger Lambda.
+
+Q: How did you optimize AWS Cost?
+Ans:
+- Use Lambda insted of EC2 when possible.
+- Use caching Redis.
+- S3 lifecycle Policies.
+
+- Safety Line: I haven’t implemented this in production yet, but I understand the concept and how it fits into system design.
+
+
+Q: Explain you system architecture?
+Ans:
+- Client -> hits backend API (EC2/NestJS service).
+- API handles the request + validation.
+- For Sync Work - DB(Postgres/MySQL).
+- For async Work - trigger Lambda (via SDK).
+- Lambda process Background tasks like notifications.
+- Static assests - S3.
+- CDN - Cloudfront.
+- Logs/metrices - Cloudwatch.
+
+Key design points
+- Stateless backend Services - Easy Scaling.
+- Redis Caching - Reduces DB load.
+- Async Processing - Better Latency.
+- Observability via Logs & Metrices.
+
+Q: Tell me a production issue you solved using AWS?
+Ans: In powergotha we faced intermittent API failures & latency Spikes.
+
+Problem:
+- APIs were slowing down under load.
+- Some requests timing out.
+
+How I debugged?
+- Using cloudwatch logs to trace rooms.
+- Identified repeated DB-heavy queries.
+
+Fix: 
+- Added Redis Caching Layers.
+- Optimized Queries.
+- Imrpoved Logging for visibility.
+
+Result:
+- Reduced API Latency Significantly.
+- Improved System Statbility.
+
+Q: What happens internally when Lambda is invoked?
+
+Ans:
+- AWS allocates compute
+- Initializes runtime (cold start if needed)
+- Executes handler
+- Returns response
+- Logs go to CloudWatch
+
+Q: How do you optimize Lambda performance?
+Ans:
+- Reduce package size
+- Use efficient code
+- Avoid unnecessary dependencies
+- Use caching where possible
+
+Q: What if Lambda fails midway?
+Ans:
+- Retry mechanism
+- Logging via CloudWatch
+- Can use DLQ for failed events
+
+Q: How would you improve your architecture?
+Ans:
+- Introduce SQS for buffering
+- Add DLQ for failures
+- Use Auto Scaling + Load Balancer for EC2
+- Move more async tasks to Lambda

@@ -37,4 +37,4 @@ function maxConsecutiveOnes(arr) {
 }
 
 console.log(maxConsecutiveOnes([1, 1, 0, 1, 1, 1])); // 3
-console.log(maxConsecutiveOnes([1, 0, 1, 1, 0, 1])); // 2
+console.log(maxConsecutiveOnes([1, 0, 1, 0,0, 0, 1])); // 2

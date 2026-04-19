@@ -1,0 +1,132 @@
+1. Find all users
+- db.users.find({})
+
+2. Get users with age > 25
+- db.users.find({age: { $gt:25 }})
+
+3. Get users with age > 25 & city="delhi"
+- db.users.find({ age: { $gt: 25}, city='delhi});
+
+4. Get users in Delhi or Mumbai
+- db.users.find({
+    $or: [{ city: "Delhi}, {city: "Mumbai}]
+})
+
+5. Users whose age is 20,25,30
+- db.users.find({
+    age: {$in: [20, 25, 30]}
+})
+
+6. Update user name
+db.users.updateOne(
+    {_id: 1},
+    { $set: { name: 'Alex'}}
+)
+
+7. Increase user age by 1
+db.users.updateOne(
+    {_id: 1},
+    { $ inc: { age: 1 }}
+)
+
+8. Delete user By _id
+db.users.deleteOne( {_id: 1 })
+
+9. Sort user by age in desc order
+- db.users.find().sort({ age: -1 })
+
+10. Get top 5 users
+- db.users.find().limit(5)
+
+11. Count total users
+- db.users.countDocuments({})
+
+12. Total users per city
+- db.users.aggregate([
+    { $group: { _id: '$city'}, total: { $sum: 1 }}
+])
+
+13. Total users per city where age > 25;
+- db.users.aggregate([
+    { $match: { age: { $gt: 25 }}},
+    { $group: { _id: '$city'}, total: { $sum: 1 }}
+])
+
+14. Total users per city where totalCount > 5;
+-db.users.aggregate([
+    { $group: {_id: "$city", totalUsers: {$sum: 1}}},
+    { $match: {totalUsers: {$gt: 5}}}
+])
+14. Get users with orders
+- db.users.aggregate([
+    { $lookup: {
+        from: 'orders',
+        localField: '_id',
+        foreignField: 'user_id',
+        as: 'orders'   
+    }}
+])
+
+15. Show only name and age
+-db.users.find({}, { name: 1, age: 1, _id: 0 })
+
+Q:1 What is MongoDB?
+Ans:
+- MongoDB is a No-SQL Database.
+- MongoDB stores data in JSON like documents (BSON).
+- MongoDB is schemaless, meaning flexible structure.
+
+Q:2 Why MongoDB?
+Ans: 
+- Bcoz of flexible structure.
+- Bcoz it is good for unstructured data.
+- Good for horizontal scaling.
+
+Q:3 What is document?
+Ans: A single record is known as document just like JSON object.
+
+Q:4 What is BSON?
+Ans: BSON is Binary JSON format used internally by MondoDB.
+
+Q:5 What is collection?
+Ans: Collection is a group of documents similar to table in SQL.
+
+Q:6 What is schema design in MongoDB?
+Ans: Designing & deciding how data is structured in the documents.
+
+Q:7 What is Embeddings & Refrencing?
+Ans: 
+- Embeddings: Data gets stored in the same document, Faster reads.
+- Referencing: Store relations using IDs, Better for large data.
+
+Q:8 What is indexing?
+Ans: Indexing is use to speed up the queries without indexing mongoDB will do full collection scan. Indexing hepls for Faster reads but cause slower writes.
+
+Q:9 What is Aggregation in MongoDB?
+Ans: Aggregation in MongoDB is used to process & transform the Data.
+Ex: $match, $group,$sort etc.
+
+Q:10 What is Replication in MongoDB?
+Ans: Copying the data across multiple servers to ensure high Availability is called Replication.
+- Primary Replication: Which handles the writes.
+- Secondry Replication: Read Copies.
+
+Q:11 What is Sharding in MongoDB?
+Ans: Spliting the data across multiple server is calles Sharding, Sharding is used for Scaling large data.
+
+Q:12 Does mongoDB supports Transactions?
+Ans: Yes, MongoDB supports multi document transaction to ensure Data Consistency.
+
+Q:13 Does MongoDb supports Joins?
+Ans: Yes MongoDB supports join using $lookup.
+
+Q:14 How do you improve MongoDB performance?
+Ans: 
+- Using Indexing.
+- Avoid Large Documents.
+- By optimizing Queries.
+
+Q:15 Mongoose v/s MongoDB?
+Ans:
+- MongoDb is a Database.
+- Mongoose is a ODM(Object Data Modeling Library) which adds Schema & Validation.

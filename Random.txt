@@ -1,0 +1,52 @@
+Q:1 What is SAST?
+Ans: SAST extends to "Static Application Security Testing". SAST is a Security technique where we can scan the source code without running the application to find vulnerabilities like SQL Injection, XSS attacks etc.
+
+Tool Ex: SonarQube, Checkmarx etc. - It check your code before execution for Security Issues.
+
+Q:2 What is DAST?
+Ans: DAST extends to "Dynamic Application Security Testing". DAST is a Security technique where we can scan the application while it is running to find vulnerabilities like SQL Injection, XSS attacks etc.
+
+Tool Ex: OWASP ZAP, Burp Suite etc. - It check your application during runtime for Security Issues.
+
+Q:3 What is SCA?
+Ans: SCA extends to "Software Composition Analysis". SCA checks the third-party libraries or dependencies used in the project to find vulnerabilities.
+
+Tool Ex: Black Duck - It checks your dependencies not your code.
+
+Q:4 Difference between SAST & SCA?
+Ans:
+- SAST: SAST checks your source (written) code.
+- SCA: SCA checks the dependencies & 3rd parties libraries we have used in our project.
+
+Q:5 What is NX?
+Ans: NX is an Extensible Development Tool for Monorepos.
+- NX is a tool which is used to manage multiple applications & libraries inside a single repository(monorepo).
+- One Repo -> Multiple apps + shared code.
+
+Q:6 Why NX is used?
+Ans: NX is used for Code Sharing, Better Organization & Faster builds using Caching.
+
+Q:7 What is ELK?
+Ans: ELK: "Elastic Search || Logstash || Kibana".
+- ELK is a logging & Monitoring stack which is used to Collect, Process & Visualze the logs. ELK helps us to debug production issues using logs.
+- Elastic Search - Store the Logs.
+- Logstash - Process the Logs.
+- Kibana - Shows the Logs in UI.
+
+Q:8 What is Jest?
+Ans: Jest is a JS testing framework which is used to write unit tests, mock functions, Snapshot tests & ensure code works correctly.
+
+Q:9 What is Unit Testing?
+Ans: Testing individual functions & components in isolation to enusre our application works correctly is called Unit Testing.
+
+Q:10 What is Mocking?
+Ans: Mocking is replacing real deps with fake one for testing. 
+
+Q:11 What is snapshot testing?
+Ans: Comparing the UI output with previous version of UI to detect the changes is called Snapshot testing.
+
+Q:12 Why testing is Important?
+Ans: Testing is imp bcoz it ensures that code works correctly & prevent bugs from reaching it to production.
+
+
+

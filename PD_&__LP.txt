@@ -1,0 +1,196 @@
+Q: Explain your project?
+Ans: 
+- I have worked on Talentprise AI based talent marketplace handlig 50k+ DAU.
+- It is a microservices based backend built on NestJS, Postgres, Redis & AWS.
+- I was responsible for building scalable APIs, Optimizing database Queries & Improving performnces using redis chaching.
+- One key improvement I made was improving the API latency by 30% by introducing cahing & optimizing queries.
+- We also ensured high availbility using proper error handling, retries, timeout & monitoring.  
+
+Q: How did you design your APIs?
+Ans: I design my APIs using REST std principle clear response based endpoints, HTTP Methods & Status Code.
+I also keep APIs stateless & use validation at request level. For Complex use cases I use GraphQL, for flexible data fetching.
+
+Q: How did you handle versioning?
+Ans: I used URI like /api  /v1/. This helps backend compatiblility.
+
+Q: Why PostgreSQL?
+Ans:  PostgreSQL bcoz it is realible, ACID Compliant & can handle complex queries as well. It is also suitable for realtional data, supports indexing, JOINS and ensure data consistency.
+
+Q: Hou did you optimized the query?
+Ans: I optimized query by adding necessary & appropriate indexing, removing unnecessary joins, selected required fields & used pagination for large date sets. I also analyzed slow queries & improved them.
+
+Q: What indexing did you used?
+Ans: I used both B-Tree indexing & Composite indexing, B-Tree indexing for column used in WHERE, JOINS & ORDER BY & Composite indexes for frequently queried column combinations.
+
+Q: Where exactly did you used caching?
+Ans: I used Redis caching for frequently accessed data like user profile & search results to reduce database loads & to improve response time.
+
+Q: Which chaching strategy u used?
+Ans: I used cache-aside strategy, first check the Redis, If data not found fetch it from database and then return.
+
+Q: How JWT Works?
+Ans: JWT contains encoded user details which is sent with every API request from the client side through Headers & server verifies it to authenticate the requests without storing session.
+
+Q: How do you secure APIs?
+Ans: Using JWT Authentication, RBAC, CORS, User Validation & Sanitization, Rate Limiting & Throttling, Data Encryption at REST & Also ensuring sensitive data should not get exposed.
+
+Q: Why Microservices over Monolithic?
+Ans: Microservices over Monolithic bcoz first reason is Independent Scaling, second is Better Fault Isolation & the thrid one is Faster Development since services are loosely coupled.
+
+Q: How Services Communicate?
+Ans: Services can communicate mainly through REST APIs. For async communication we can make use of Messaging Queues like RabbitMQ as well but in my project we have used gRPC.
+
+Q: What happens if Redis goes down?
+Ans: If Redis goes down system falls back to database. Although it may increase Latency, but our priority should be system should still work. Later on we use retry mechanism or monitor to recover quickly.
+
+Q: How do you handle High Traffic?
+Ans: I handled High Traffic using Redis(caching), Load Balancing, Horizontal Scaling & Optimizing Database Queries. Also we can use Rate Limiting to prevent abuse.
+
+Q: How do you ensure 99.5% Uptime?
+Ans: I ensured 99.5% uptime by designing Fault Tolerence System using Retries, Timeout, Better Logging & monitoring, Proper Error Handling & Avoiding Single Point of Failure.
+
+Q: How do you debug Production Issue?
+Ans: I debug production issue using following techniques:
+- I will jump to Logging & monitoring metrices.
+- I will go through the failing services deeply & try to discover the cause of failure.
+- I will copy the curl from production env & test it in my local.
+- I will check for the dependencies.
+- I will try to rollback to the previous commit.
+- I will do hotfix.  
+
+=========================================================================================================
+                                        LP's
+=========================================================================================================
+
+Q:1 Have you ever Improved the performance (Customer Obsession)?
+Ans: Yes I did!
+- Stiuation: In talentprise users were facing slow API issues means APIs taking time to give response when the number of user increases or when the traffic spikes we can say.
+- Task: So my task is to reduce the Latency of an APIs.
+- Action: So what I did was I monitored the logs in cloudwatch & discovered that repeated DB calls are present in the code. So I removed the unnecessary DB calls & introduced Redis caching to cache the frequently accessed data and also optimized the queries.
+- Result: As a result the API response time reduced by 30% & User complains also reduced.
+
+Q:2 When did u took extra responsibility? (ownership)
+Ans: 
+- S: Yes in many of the projects usually the deployment process was slow due to manual deployments & also error prone.
+- T: So my task was to reduce & improve the deployment time.
+- A: what I did is, i have implemented CI/CD Pipeline using GitHUB Actions.
+- R: & that results to imrpove the deployment time from 30 mins to 5 mins & also reduced the error rate.
+
+Q:3 Have you ever debugged the tough cases (Deep Dive)?
+Ans:
+- S: In one of my project Messaging delay was coming.
+- T: So my task was to find out the root cause & to imrpove it.
+- A: So what I did was I monitored the logs & analyze that some of the tables are doing FULL TABLE SCAN due to missing indexing so I have added back the missing indexing.
+- R: & this  result to reduce the latency and latency come down to < 100ms. 
+
+Q:4 What u did in emergency Stiuation (Bias for Action)?
+Ans:
+- S: So the Stiuation was like in Production one of the microservices were consuming high memory due to which the container was getting restart again & again.
+- T: So my task was to stable the service immediately.
+- A: So quickly I checked the logs & container metrices & I suspected that due to large payload processing the memory is getting exhausted. So without waiting for the full debugging I implemented limit in request payload temporay & also implemented rate limiting at the specific endpoint.
+- R: as a result the service temporay got stable & later on i dive deeped inside the issue and fixed it which also result on improving performance.  
+
+Q:5 When u have Simplefied the system (Invent & Simplify)?
+Ans:
+-S: In Microservices system Communication was very messy, complex & hard to manage.
+-T: So the task to simplify the interactions & improve maintainability.
+-A: So what I did was I introduced API Gateway which acts as a single entry point for all the client requests & handles routing, authentication, rate limiting & caching.
+-R: As a result the system became more maintainable & scalable.
+
+Q:6 Tell me about a desicion you made & that was correct?
+Ans: 
+-S: So the situtaion was we needed to choose caching strategy for high load APIs.
+-T: So my task was to decide & choose between caching or scaling.
+-A: Based on access pattern & data volatality I choose caching strategy & implemented it.
+-R: This results in reducing the DB loads & imrpoving the performance by 25%.
+
+Q:7 Why you have not choosen Scaling?
+AnS: Yes ofcoure scaling was the option but I choosed based on the access pattern & data volatality.
+- The problem was repeated queries & was a kind of static data So i decided to go with caching.
+- If I had gone with scaling repeated queries would still be there & also it would increase the cost also thorugh scaling we can distribute the load but we cant eliminate it.  
+   
+Q:8 Tell me something new you learned quickly?
+Ans:
+- S: I needed to implement AI_based Semantic Search in maybetathome project.
+- T: So my task to learn the OpenAI + also about the Semantic search quickly.
+- A: So what I did is I explored Embeddings, build a prototype, integrated with DB queries.
+- R: As a result I implemented it successfully & it also improved the search accuracy by 40%.
+
+Q:9 Tell me about mentoring or improvement team quality?
+Ans: 
+- S: Code quality often varies with the team.
+- T: So the task was to improve maintainability & readiability of the code.
+- A: So I have actively participated in the Code Reviews & suggested best practises.
+- R: As a result this reduces the bugs & improved code quality & consistency.
+
+Q:10 Tell me about a time you improved quality?
+Ans: 
+-S: Earlier in one of out project the APIs had incosistent response format & error handling.
+-T: So the task was to improve the quality of an APIs as well as to make it standard.
+-A: So what I did was I introduced the std response format & logging & error handling across the project.
+-R: As a result it improved code quality & reduce error rate  become easy to debug & lesser production issues occur.
+
+Q:11 Tell me about a scalable system you designed?
+Ans: 
+- S: In talentprise as it needed more than 30k+ DAU.
+- T: So the task was to design a scalable Backend system.
+- A: What I did was I understood the requirement every crearly & the I built the microservices architecture, also introduced caching, horizontal scaling, Load Balancing & DB optimization, clean & resuable code as well.
+- R: As a result we have achieve 99.5% uptime and handled scaling smmothly.
+
+Q:12 Tell me how you optimized resources?
+Ans: 
+-S: In one of my project High DB load increasing Infra Cost.
+-T: So my task was to reduce cost without impacting the resources.
+-A: So what I did is I introduced Redis Caching & also optimized the queries.
+-R: As a result it reduced the DB & Infra cost as well.
+
+Q:13 Tell me about a time when you build trust?
+Ans: 
+- S: So the situation was Team depended on the stable APIs for frontend.
+- T: So the task was to acheive reliability & Stability on APIs.
+- A: So I delivered the APIs on time with proper testing & Documentation.
+- R: As a result Team was able to deleiver the project on time & also it improved the team morale.
+
+Q:14 Tell me about a disagreement?
+Ans: 
+-S: So the situtaion was we needed to choose caching strategy for high load APIs.
+-T: So my task was to decide & choose between caching or scaling.
+-A: Based on access pattern & data volatality I choose caching strategy & implemented it.
+-R: This results in reducing the DB loads & imrpoving the performance by 25%.
+
+Q:15 Tell me about a tight deadline?
+Ans: 
+-S: Multiple features needed urgently for production release.
+-T: So my task was to deliver those feature on time without breaking the system.
+-A: So what I did was first of all I gained all the clarity about the features noted them down & then I prioritize the task based on the bussiness needs, reused the components & tested the critical paths before release just to make sure that nothing breaks.
+-R: As a result I delivered all the features on time with zero major issues.
+
+Q:16 Tell me about a time you failed?
+Ans:
+-S: Initially I deployed a feature in production without proper load testing.
+-T: So my task was to handle the production slowdown.
+-A: So I quickly rolled back to previous commit, & I performed the load testing I identified the bottlenecks & fixed it.
+-R: As a result I learned the importance of load testing & implemented it in my future projects.
+
+-S: In one of my project, I implemented Redis caching to improve the performance of an API, But I didn't design a proper Cache invalidation Technique.
+-T: After deployment user started seeing Stale data, which affected the UX.
+-A: I investigated that Cache data was not being updated after database changes. I fixed this by implementing Cache invalidation on updates & added a TTL to ensure data freshness.
+-R: The issue was resolved & user started getting the correct data.From this, I learned that caching is not just about speed but also about consistency & proper invalidation is critical.
+"Caching without invalidation is more dangerous than no caching."
+
+Q:17 Tell me about Ambigous requirement?
+Ans:
+- S: Recently it happens to me when we were working on May be at Home project our Project Manager asked us to implement Smart Search, but there were no clear technical specifications about what exactly need to change.
+
+-T: So our goal was to understand the real problem and come with the solution that actually helps the users.
+- So instead of guessing what I did is I arranged a discussion with project owner and some of my collegues and we came to know about the problem the problem was keyword search couldn't understand the user intent.
+- So what I decided is to build a Semantic Search prototype using Vector Embeddings from OpenAI.
+-A: I further discuss this with the Stakeholder they liked the idea and approved it.
+-R: I build the final version in 2-3 weeks of time.
+- From this  what I learned is instead of making the guess & waiting for the perfect specifications for ambigous requirement its better to talk with the stakeholder & build a quick prototype.
+
+
+
+===================================================================================================================
+
+

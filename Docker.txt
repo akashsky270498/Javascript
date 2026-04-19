@@ -3,20 +3,20 @@ Ans: Docker is a tool that let you package your app and everything that needs to
 
 # docker --version
 # docker compose version
-=======================================================================================================================================
-Q:2 What is the differenece between docker image & docker container?
+======================================================================================================================
+Q:2 What is the diffrence between docker image & docker container?
 Ans: 
 - Image: Image is like a Blueprint (read-only, like a class). => # docker images
 - Container: Container is an Instance(copy) of image (container is mutable like an object). => # docker ps
 
-=======================================================================================================================================
+======================================================================================================================
 Q:3 What is Docker file?
 Ans: Docker file is a script with instructions to build an image.
 # Use Node 20 Alpine
 FROM node:20-alpine
 
 # Set Working Directory
-WORKDIR /app
+WORKDIR /app 
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
@@ -32,60 +32,176 @@ EXPOSE 7555
 
 #Start Server With Hot-Reload
 CMD ["npx", "ts-node-dev", "--respawn", "--transpile-only", "src/index.ts"]
-=======================================================================================================================================
+======================================================================================================================
 Q:4 What is Docker Compose?
 Ans: Docker Compose is a tool to manage multi container applications using docker-compose.yml
 # docker compose up --build
 # docker compose down
 # docker compose logs
-=======================================================================================================================================
+======================================================================================================================
 Q:5 How to see running conatiners?
 Ans: 
 # docker ps (all running)
 # docker ps -a (all running & stopped)
-=======================================================================================================================================
+======================================================================================================================
 Q:6 How do you run the container interactively?
 Ans: docker run -it ubuntu bash
-=======================================================================================================================================
+======================================================================================================================
 Q:7 How to access a running container shell?
 Ans: docker run -it <container_id> sh
-=======================================================================================================================================
+======================================================================================================================
 Q:8 How do you check container logs?
 Ans: 
 # docker logs <container_id>
 # docker logs -f <container_id> // follow logs
-=======================================================================================================================================
+======================================================================================================================
 Q:9 How do you start, stop & remove the container?
 Ans:
 # docker stop <container_id>
 # docker start <container_id>
 # docker rm <container_id>
-=======================================================================================================================================
+======================================================================================================================
 Q:10 What is Docker volume?
 Ans: Docker Volumes are persistent storage for containers. Containers are temporary, but volumes keeps the data safe.
 # docker volume ls 
 # docker volume inspect <volume_name>
-=======================================================================================================================================
+======================================================================================================================
 Q:11 What is Docker Network?
 Ans: Docker Network is a way for containers to talk to each other.
 # docker network ls
 # docker network inspect bridge
-=======================================================================================================================================
+======================================================================================================================
 Q:12 How to you remove unused stuff?
 Ans: docker prune -a (cleans images, containers, networks etc).
-=======================================================================================================================================
+======================================================================================================================
 Q:13 What is the difference COPY & ADD in Dockerfile?
 Ans:
 - COPY: copies files/folders.
 - ADD: same as COPY but also supports remote URLs & archives.
-=======================================================================================================================================
+======================================================================================================================
 Q:14 What is the difference between Docker & VM?
 Ans:
 - Docker: Shares host OS kernel [leihghtweight, faster].
 - VMs: Runs a full OS with its own kernel [heavy].
-=======================================================================================================================================
+======================================================================================================================
 Q:15 How do you check detailed info about a container?
 Ans: docker inspect <container_id>
+======================================================================================================================
+Q:16 What is Docket Cached Layer?
+Ans: 
+- Docker builds images in Layers. So each instructions in DockerFile creates a layer. So If nothing changes then Docker resuses the cached layer - this hepls build become faster.
+Imp for Optimization: Copy package.json first, install deps, then copy code.
+======================================================================================================================
+Q:17 What is the difference between CMD & ENTRYPOINT?
+Ans:
+- CMD: CMD is a default command that runs when container starts. It can be easily overridden.
+- ENTRYPOINT: ENTRYPOINT is a fixed command that runs when container starts. It cannot be easily overridden.
+======================================================================================================================
+Q:18 How do Containers Communicate?
+Ans: Containers Communicate using the same network, Just use container name as host name.
+======================================================================================================================
+Q:19 What is Multi stage build?
+Ans: Multi stage build is used to reduce the size of an Image seprating the build & runtime.
+eg:
+- Build stage - Install dev deps.
+- Final stage - only production files.
+======================================================================================================================
+Q:20 How do you optimize the docker images?
+Ans: 
+- I wil use Alpine images.
+- I will use Multi Stage Build.
+- I will Minimze layers.
+- I will use .dockerignore to exclude unnecessary files.
+- I will cache the deps.
+======================================================================================================================
+Q:21 What happens if containers crashes?
+Ans: If containers crashes by deafult it will stop if I have not used the restart policy, If used it will restart automatically.
+- docker run --restart:always
+======================================================================================================================
+Q:22 How do you pass env variables?
+Ans: 
+- docker run -e NODE_ENV=production.
+- .env file with docker compose.
+======================================================================================================================
+Q:23 How do you debug a container?
+Ans: 
+- docker logs
+- docker exec -it
+- docker inspect
+======================================================================================================================
+Q:24 What is kubernetes?
+Ans: Kubernetes is a container orchestration tool that manages deployments, scaling, networking & storage of the containers automatically.
+======================================================================================================================
+Q:25 What is Pod?
+Ans: Pod is the smallest unit in kubernetes, Pod can have one or more containers.
+======================================================================================================================
+Q:26 What is Node?
+Ans: A Node is a machine (VM or Physical) where the Pod runs.
+======================================================================================================================
+Q:27 What is Cluster?
+Ans: Cluster is a group of node manages by Kubernetes.
+======================================================================================================================
+Q:28 What is Deployment?
+Ans: Deployment is used to manage & scale the Pods. Deployment ensure that desired number of pods are always running.
+======================================================================================================================
+Q:29 What is Service?
+Ans: Services exposes the pods & allow Communication.
+- ClusterIP - internal.
+- NodePort - external (via port).
+- Load Balancer - external (via cloud).
+======================================================================================================================
+Q:30 What is ReplicaSet?
+Ans: ReplicaSet ensures that fixed number of pod replicas are running.
+======================================================================================================================
+Q:31 What is ConfigMap?
+Ans: ConfigMap is used to store non-sensitive configuration data.
+======================================================================================================================
+Q:32 What is Secret?
+Ans: Secret is used to store sensitive data like passwords, tokens, API keys etc.
+======================================================================================================================
+Q:33 What is horizontal Pod Autoscaler?
+Ans: Horizontal Pod AutoScaler automatically scales pods based on CPU/memory usage.
+======================================================================================================================
+Q:34 What happens if a Pod dies?
+Ans: Kubernetes automatically re-creates it.(Auto-Healing).
+======================================================================================================================
+Q:35 Difference between Docker & Kubernetes?
+Ans:
+- Docker is used to run containers.
+- Kubernetes is used to manage the conatiners.
+======================================================================================================================
+Q:36 What is rolling deployment?
+Ans: Rolling deployment means gradually updates the pods without downtime.
+======================================================================================================================
+Q:37 What is Ingress?
+Ans: Ingress is something that manages external access to services(like routing, domain-based access).
+======================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 DevOps
 1.	What is DevOps?
