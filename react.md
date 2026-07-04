@@ -74,6 +74,9 @@ Ans: We should not mutate the state directly in react bcoz React won't detect th
 Q:18 What causes component re-render when using useState?
 Ans: When state changes - React re-renders the component.
 
+Q: Can a component re-renders without state change?
+Ans: Yes, a component can re-render without state change. React re-renders based on changes in props, state or parent component re-renders not just local state.
+
 Q:19 How you have used useState?
 Ans: 
 - To store the API response.
@@ -115,7 +118,7 @@ Q:29 How deeply you have used the hooks?
 Ans: I have used useSate & useEffect in my projects & I'm familier with other hooks conceptualy.
 
 Q:30 What is props?
-ans: Props extends to 'properties' in react & props are used to pass the data from a child component to parent component. Props will make the component re-usable.
+ans: Props extends to 'properties' in react & props are used to pass the data from a parent component to child component. Props will make the component re-usable.
 ===================================================================================================================
 Q:31 What is Redux?
 Ans: Redux is a State Management Library for Js Apps, primarily used with react, Redux is used to manage the Global State. Redux stores all the data in a Central Store.

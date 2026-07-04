@@ -4,7 +4,7 @@ Ans: I'm a BE developer with 3+ years of experience specialsing in Nodejs, Expre
 Q:2 Tell me about a time when you debugged a complex issue under pressure?
 Ans: 
 - Last year on july it was a Monday morning I still remember that morning when I was working on TalentPrise when thousands of users where active, our API response time suddenly become 5x slower.
-- So my responsibility was to quciky find the r       oot cause and fix it without affecting the users much.
+- So my responsibility was to quciky find the root cause and fix it without affecting the users much.
 - So firstly what I did is I looked into the monitoring metrices in AWS Cloudwatch & I got to know that Chat microservice is taking most of the time. Then I looked deeper & discovered that database query was running a full table scan bcoz an index was accidently removed during a migration.
 - Then I added that index back to the Database & I also temporary increased the redis TTL time so that fewer request will hit the DB while the fix was deploying.
 - The result is within 20 minutes the response went back to normal.

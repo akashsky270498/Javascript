@@ -25,12 +25,12 @@ Constraints:
 const maxSum = function (nums, k) {
     const n = nums.length;
     let windowSum = 0;
-    
+
     for (let i = 0; i < k; i++) {
         windowSum += nums[i];
     }
 
-    let maxSum  = windowSum;
+    let maxSum = windowSum;
     for (let j = k; j < n; j++) {
         windowSum += nums[j];
         windowSum -= nums[j - k];

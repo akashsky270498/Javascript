@@ -2,19 +2,19 @@ Q: Explain your project?
 Ans: 
 - I have worked on Talentprise AI based talent marketplace handlig 50k+ DAU.
 - It is a microservices based backend built on NestJS, Postgres, Redis & AWS.
-- I was responsible for building scalable APIs, Optimizing database Queries & Improving performnces using redis chaching.
-- One key improvement I made was improving the API latency by 30% by introducing cahing & optimizing queries.
+- I was responsible for building scalable APIs, Optimizing database Queries & Improving performances using redis chaching.
+- One key improvement I made was improving the API latency by 30% by introducing caching & optimizing queries.
 - We also ensured high availbility using proper error handling, retries, timeout & monitoring.  
 
 Q: How did you design your APIs?
 Ans: I design my APIs using REST std principle clear response based endpoints, HTTP Methods & Status Code.
-I also keep APIs stateless & use validation at request level. For Complex use cases I use GraphQL, for flexible data fetching.
+I also keep my APIs stateless & validation at the request level. For complex use cases I use GraphQL, for flexible data fetching.
 
 Q: How did you handle versioning?
 Ans: I used URI like /api  /v1/. This helps backend compatiblility.
 
 Q: Why PostgreSQL?
-Ans:  PostgreSQL bcoz it is realible, ACID Compliant & can handle complex queries as well. It is also suitable for realtional data, supports indexing, JOINS and ensure data consistency.
+Ans:  PostgreSQL bcoz it is reliable, ACID Compliant & can handle complex queries as well. It is also suitable for relational data, supports indexing, JOINS and ensure data consistency.
 
 Q: Hou did you optimized the query?
 Ans: I optimized query by adding necessary & appropriate indexing, removing unnecessary joins, selected required fields & used pagination for large date sets. I also analyzed slow queries & improved them.

@@ -15,7 +15,7 @@ function frequncyCounterUsingObject(arr) {
   return freq;
 }
 
-// console.log(frequncyCounterUsingObject([1, 2, 2, 3, 3, 3])); // { '1': 1, '2': 2, '3': 3 }
+console.log(frequncyCounterUsingObject([1, 2, 2, 3, 3, 3])); // { '1': 1, '2': 2, '3': 3 }
 console.log(
   frequncyCounterUsingObject([
     "Apple",
@@ -29,14 +29,19 @@ console.log(
 
 // Using Map
 
-const frequencyCounterUsingMap = (arr) => {
+const frequencyCounterUsingMap = (arrs) => {
+  if (!Array.isArray(arrs) || arrs.length === 0) return {};
+
   const freqMap = new Map();
 
-  for (const key of arr) {
-    freqMap.set(key, (freqMap.get(key) || 0) + 1);
+  for (let arr of arrs) {
+    freqMap.set(arr, (freqMap.get(arr) || 0) + 1);
   }
-  return freqMap;
-};
+
+  console.log(new Map(Object.entries(Object.fromEntries(freqMap))))
+  return Object.fromEntries(freqMap);
+
+}
 
 // console.log(frequencyCounterUsingMap([1, 2, 2, 3, 3, 3])); // { '1': 1, '2': 2, '3': 3 }
 // console.log(frequencyCounterUsingMap(["Apple", "Banana", "Apple", "Orange", "Banana", "Apple"])); // { 'Apple': 3, 'Banana': 2, 'Orange': 1 }

@@ -24,20 +24,15 @@ Constraints:
 
 const maxSum = function (nums, k) {
     const n = nums.length;
-    let windowSum = 0;
-    
-    for (let i = 0; i < k; i++) {
-        windowSum += nums[i];
-    }
-
-    let maxSum  = windowSum;
-    for (let j = k; j < n; j++) {
-        windowSum += nums[j];
-        windowSum -= nums[j - k];
-        maxSum = Math.max(windowSum, maxSum);
+    let maxSum = 0;
+    for (let i = 0; i <= n - k; i++) {
+        let sum = 0;
+        for (let j = i; j < k + i; j++) {
+            sum += nums[j];
+        }
+        maxSum = Math.max(maxSum, sum);
     }
     return maxSum;
 }
 
 console.log(maxSum([100, 200, 300, 400], 2))
-console.log(maxSum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4))

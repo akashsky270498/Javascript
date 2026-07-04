@@ -14,7 +14,7 @@ Ans: SCA extends to "Software Composition Analysis". SCA checks the third-party 
 Tool Ex: Black Duck - It checks your dependencies not your code.
 
 Q:4 Difference between SAST & SCA?
-Ans:
+Ans: 
 - SAST: SAST checks your source (written) code.
 - SCA: SCA checks the dependencies & 3rd parties libraries we have used in our project.
 
@@ -25,7 +25,7 @@ Ans: NX is an Extensible Development Tool for Monorepos.
 
 Q:6 Why NX is used?
 Ans: NX is used for Code Sharing, Better Organization & Faster builds using Caching.
-
+      
 Q:7 What is ELK?
 Ans: ELK: "Elastic Search || Logstash || Kibana".
 - ELK is a logging & Monitoring stack which is used to Collect, Process & Visualze the logs. ELK helps us to debug production issues using logs.
@@ -47,6 +47,7 @@ Ans: Comparing the UI output with previous version of UI to detect the changes i
 
 Q:12 Why testing is Important?
 Ans: Testing is imp bcoz it ensures that code works correctly & prevent bugs from reaching it to production.
+
 
 
 
